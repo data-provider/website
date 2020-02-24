@@ -55,6 +55,7 @@
 
 .home.mainContainer {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .home.mainContainer .container {
@@ -71,6 +72,10 @@
   font-size: 20px;
   font-weight: 1;
   text-align: left;
+}
+
+#home-motivation {
+  background-color: #f7f7f7;
 }
 
 .code-example {
