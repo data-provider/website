@@ -1,6 +1,6 @@
 # Data Provider Documentation website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/389bc98a-a293-4f34-aebc-b3eaece3f011/deploy-status)](https://app.netlify.com/sites/mocks-server/deploys) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a92f8352-bec6-496d-a960-fd55e93269ae/deploy-status)](https://app.netlify.com/sites/data-provider/deploys) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 Deployed at [https://www.data-provider.org][website-url]
 
