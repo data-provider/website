@@ -142,7 +142,7 @@ class Index extends React.Component {
               )}).`
             },
             {
-              title: "Events emitter",
+              title: "Data, loading and error states",
               content: `Sed vestibulum mauris egestas libero gravida, et luctus velit malesuada. Donec sodales ut ipsum sed placerat. Suspendisse quis tristique risus. Duis eu orci nec sem consequat consectetur. [Sed eget](${docUrl(
                 "get-started-intro"
               )}).`
@@ -273,10 +273,45 @@ export const authorsWithBooks = new Selector(
       );
     };
 
-    const Roadmap = () => (
+    const Events = () => {
+      return (
+        <CodeExampleSection
+          id="home-events"
+          title="Event emitter"
+          left={`Donec a odio vulputate, volutpat libero eget, semper ligula. Quisque est nisl, lacinia sit amet mattis vitae, tristique eu metus. Curabitur sapien libero, tincidunt sed feugiat quis, lacinia et arcu. Nulla facilisi.
+
+Curabitur vulputate tincidunt congue. Aliquam nulla nisi, tristique eu egestas sit amet, mollis rhoncus purus.
+`}
+          right={`
+\`\`\`javascript
+import { booksProvider } from "data/books";
+import {
+  authorsProvider,
+  authorsModelProvider
+} from "data/authors";
+
+booksProvider.on("readStart", () => {
+  console.log("Books request started");
+});
+
+authorsModelProvider.onChild("*", eventName => {
+  if (["update", "delete", "create"].includes(eventName)) {
+    console.log("A book has been modified, cleaning cache");
+    authorsProvider.cleanCache();
+  }
+});
+
+\`\`\`
+`}
+        />
+      );
+    };
+
+    const Motivation = () => (
       <div
         className="productShowcaseSection paddingBottom paddingTop"
         style={{ textAlign: "center" }}
+        id="home-motivation"
       >
         <h2>Motivation</h2>
         <p>
@@ -304,7 +339,7 @@ export const authorsWithBooks = new Selector(
       const pageUrl = page => baseUrl + (language ? `${language}/` : "") + page;
 
       return (
-        <div className="productShowcaseSection paddingBottom">
+        <div className="productShowcaseSection paddingBottom ">
           <h2>Who is Using This?</h2>
           <p>This project is used by all these people</p>
           <div className="logos">{showcase}</div>
@@ -326,7 +361,8 @@ export const authorsWithBooks = new Selector(
           <Cache />
           <Agnostic />
           <Selectors />
-          <Roadmap />
+          <Events />
+          <Motivation />
           <Showcase />
         </div>
       </div>
