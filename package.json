@@ -1,0 +1,39 @@
+{
+  "name": "data-provider-website",
+  "description": "Data Provider documentation website",
+  "version": "2.0.0-alpha.4",
+  "private": true,
+  "author": "Javier Brea",
+  "license": "MIT",
+  "repository": "https://github.com/data-provider/website",
+  "scripts": {
+    "lint": "eslint website",
+    "lint-staged": "lint-staged",
+    "start": "cd website && npm run start"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.18.3",
+    "husky": "4.2.3",
+    "lint-staged": "10.0.7",
+    "prettier": "1.19.1"
+  },
+  "lint-staged": {
+    "website/pages/**/*.js": "eslint",
+    "website/core/**/*.js": "eslint",
+    "website/i18n/**/*.js": "eslint",
+    "website/static/**/*.js": "eslint",
+    "website/siteConfig.js": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
+  "engines": {
+    "node": "10.x || 12.x || 13.x"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "github>data-provider/ci-cd-shared-config"
+  ],
+  "node": {
+    "supportPolicy": ["lts_latest"]
+  }
+}
