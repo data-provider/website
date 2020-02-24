@@ -142,7 +142,7 @@ class Index extends React.Component {
               )}).`
             },
             {
-              title: "Events emitter",
+              title: "Handler data, loading and error",
               content: `Sed vestibulum mauris egestas libero gravida, et luctus velit malesuada. Donec sodales ut ipsum sed placerat. Suspendisse quis tristique risus. Duis eu orci nec sem consequat consectetur. [Sed eget](${docUrl(
                 "get-started-intro"
               )}).`
