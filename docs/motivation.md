@@ -37,4 +37,4 @@ As a summary, main targets of this project are:
 - Unify the interfaces of different data origins, in order to isolate the pieces about the knwoledge from where are the data being retrieved.
 - Provide simple methods to handle loading and error states.
 
-I hope that, __if this library does not result useful, at least this principles do, because this is the really important part of the project, more than the code itself.__
+I hope that, __if this library does not result useful, at least these principles do, because this is the really important part of the project, more than the code itself.__
