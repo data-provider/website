@@ -96,7 +96,7 @@ const siteConfig = {
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
-  docsSideNavCollapsible: true,
+  docsSideNavCollapsible: false,
 
   gaTrackingId: "UA-158982048-1",
   gaGtag: true,

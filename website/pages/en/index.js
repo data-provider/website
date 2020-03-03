@@ -77,6 +77,8 @@ class HomeSplash extends React.Component {
         Powered by Redux
         <br />
         Agnostic about data origins
+        <br />
+        Framework agnostic, but integrations available
       </h3>
     );
 
@@ -129,23 +131,17 @@ class Index extends React.Component {
           contents={[
             {
               title: "Selectors inspired by Reselect",
-              content: `Lorem ipsum dolor sit amet, [adipiscing elit](${docUrl(
-                "get-started-intro"
-              )}) Donec turpis neque, pretium at efficitur vitae, congue sed sem. Nam gravida vehicula ante ut aliquet. Mauris sed ante pharetra.`
+              content: `Compute data derived from other Providers or Selectors with a [familiar but very powerful syntax](${docUrl(
+                "selectors-dependencies"
+              )}).`
             },
             {
               title: "Cache and memoization",
-              content: `Aliquam [ultricies dolor nec](${docUrl(
-                "get-started-intro"
-              )}) augue hendrerit elementum. Donec sit amet rhoncus ipsum. Mauris non augue dignissim arcu placerat sodales vel ut est. Nam imperdiet ut magna convallis finibus. [Suspendisse](${docUrl(
-                "get-started-intro"
-              )}).`
+              content: `Optimized. Don't care about how many times do you call simultaneously to read a provider.`
             },
             {
               title: "Data, loading and error states",
-              content: `Sed vestibulum mauris egestas libero gravida, et luctus velit malesuada. Donec sodales ut ipsum sed placerat. Suspendisse quis tristique risus. Duis eu orci nec sem consequat consectetur. [Sed eget](${docUrl(
-                "get-started-intro"
-              )}).`
+              content: `Handling asynchronies implies handling error and loading states. Data Provider makes this job for you.`
             }
           ]}
           layout="fourColumn"
@@ -158,19 +154,23 @@ class Index extends React.Component {
         <CodeExampleSection
           id="home-react"
           title="React hooks and HOCs"
-          left={`
-Maecenas scelerisque tristique viverra. Suspendisse finibus [erat erat](${docUrl(
-            "get-started-intro"
-          )})
-Nam hendrerit rutrum eros, quis sagittis dolor pulvinar vel. Suspendisse ut vehicula turpis. Duis tempor, turpis vitae varius vulputate, quam tellus pellentesque ex, non bibendum metus justo lobortis arcu. Pellentesque sed eros vel nisl molestie maximus sit amet et odio.
-`}
+          left={`The @data-provider/react package __give you HOCs to connect a Provider to your component__, creating a wrapper component handling all the logic for you.
+
+It also provides __hooks like "useData", "useLoading", etc.__
+
+__Optimized__, it takes care of reading the data and re-render the component only when your desired props have changed.`}
           right={`
 \`\`\` javascript
 import { withDataProvider } from "@data-provider/react";
+
 import { booksProvider } from "data/books";
+import ErrorComponent from "components/error";
 
 const Books = ({ data, loading, error }) => {
-  return <BooksList data={data} loading={loading} error={error} />;
+  if (error) {
+    return <ErrorComponent error={error}/>
+  }
+  return <BooksList data={data} loading={loading} />;
 };
 
 export default withDataProvider(booksProvider)(Books);
@@ -187,23 +187,26 @@ export default withDataProvider(booksProvider)(Books);
           background="lightBackground"
           title="Cache and memoization"
           left={`
-Donec a odio vulputate, volutpat libero eget, semper ligula.
+ The built-in cache ensures that Providers are __computed only once__.
 
-Quisque est nisl, lacinia sit amet mattis vitae, tristique eu metus. Curabitur sapien libero, tincidunt sed feugiat quis, lacinia et arcu.
+Don't care about when a data has to be retrieved. Simply retrieve it always, Data Provider will do the optimization. __Avoid orchestrators and build fully modular pieces.__
 
-Nulla facilisi. Curabitur vulputate tincidunt congue. Aliquam nulla nisi, tristique eu egestas sit amet, mollis rhoncus purus. Sed non massa tincidunt, dignissim tortor et, accumsan nulla. 
+Cache can be cleaned on-demand, and some specific origins providers implementations __even do it automatically__ when needed.
 `}
           right={`
 \`\`\` javascript
-import { withData, useRefresh } from "@data-provider/react";
-import { booksProvider } from "data/books";
+import Books from "views/books";
 
-const BooksLengthComponent = ({ data }) => {
-  useRefresh(booksProvider);
-  return <div>There are {data.length} books</div>;
+const RenderBooksTwice = () => {
+  return (
+    <div>
+      <Books />
+      <Books />
+    </div>
+  );
 };
 
-export default withData(booksProvider)(Books);
+export default RenderBooksTwice;
 \`\`\`
 `}
         />
@@ -216,9 +219,11 @@ export default withData(booksProvider)(Books);
           id="home-agnostic"
           title="Agnostic about data origins"
           left={`
-Morbi dictum nisi non ex convallis venenatis. Phasellus vestibulum sollicitudin nulla et semper. Vestibulum suscipit pellentesque laoreet. Curabitur viverra mattis semper. Maecenas consectetur diam sed lectus sagittis ornare.
+The Provider class provides the cache, state handler, etc., but not the "read" method. The "read" behavior is implemented by __different Data Provider Origins packages__.
 
-Donec dapibus purus enim, at finibus nulla volutpat at. Curabitur nec felis condimentum, tincidunt enim et, consequat mauris. 
+There are different origins available, such as __Axios, LocalStorage, Memory, etc.__ and building your own is so easy as extending the Provider class with a custom "readMethod".
+
+Sharing the same interface for all origins, and being able to build Selectors combining all of them implies that your logic will be __completely isolated about WHERE the data is being retrieved.__
 `}
           right={`
 \`\`\`javascript
@@ -246,9 +251,13 @@ export const favoriteBooks = new LocalStorage("favorite-books", {
           id="home-selectors"
           title="Selectors inspired by Reselect"
           background="lightBackground"
-          left={`Donec a odio vulputate, volutpat libero eget, semper ligula. Quisque est nisl, lacinia sit amet mattis vitae, tristique eu metus. Curabitur sapien libero, tincidunt sed feugiat quis, lacinia et arcu. Nulla facilisi.
+          left={`Selectors are __recomputed whenever any dependency changes.__
 
-Curabitur vulputate tincidunt congue. Aliquam nulla nisi, tristique eu egestas sit amet, mollis rhoncus purus.
+Exposing the __same interface than providers__ make consumers agnostic about what type of Provider or Selector are they consuming.
+
+As in Reselect, __Selectors are composable__. They can be used as input to other selectors.
+
+__Powerful dependencies api__: Catch dependencies errors, retrieve them in parallel, return different providers programmatically, etc.
 `}
           right={`
 \`\`\`javascript
@@ -257,16 +266,56 @@ import { Selector } from "@data-provider/core";
 import { booksProvider } from "data/books";
 import { authorsProvider } from "data/authors";
 
-export const authorsWithBooks = new Selector(
-  authorsProvider,
+export const booksWithAuthor = new Selector(
   booksProvider,
-  (authors, books) => {
-    return authors.map(author => ({
-      ...author,
-      books: books.filter(book => book.authorId === author.id)
+  authorsProvider,
+  (books, authors) => {
+    return books.map(book => ({
+      ...book,
+      author: authors.find(
+        author => author.id === book.authorId
+      )
     }))
   }
 );
+\`\`\`
+`}
+        />
+      );
+    };
+
+    const Queryable = () => {
+      return (
+        <CodeExampleSection
+          id="home-queryable"
+          title="Queryable"
+          left={`Providers instances can be queried, which returns a new child instance with his own "query" value.
+
+Each different child has a different cache, different state, etc.
+
+Different origins can use the "query" value for different purposes (API origins will normally use it for adding different params or query strings to the provider url)
+
+When the parent provider cache is clean, also the children is. _(For example, cleaning the cache of an API origin requesting to "/api/books", will also clean the cache for "/api/books?author=2")_
+`}
+          right={`
+\`\`\`javascript
+import { useData, useLoading } from "@data-provider/react";
+
+import { bookProvider } from "data/books";
+import BookCard from "components/book-card";
+
+const Book = ({ id }) => {
+  const provider = bookProvider.query({ id });
+  const book = useData(provider);
+  const loading = useLoading(provider);
+
+  if (loading) {
+    return <Loading />;
+  }
+  return <BookCard title={book.title} author={book.author} />;
+};
+
+export default Book;
 \`\`\`
 `}
         />
@@ -277,26 +326,27 @@ export const authorsWithBooks = new Selector(
       return (
         <CodeExampleSection
           id="home-events"
-          title="Event emitter"
-          left={`Donec a odio vulputate, volutpat libero eget, semper ligula. Quisque est nisl, lacinia sit amet mattis vitae, tristique eu metus. Curabitur sapien libero, tincidunt sed feugiat quis, lacinia et arcu. Nulla facilisi.
+          title="Redux store and event emitter"
+          left={`In most of cases, the integrations packages available (like @data-provider/react) will save you having to interact directly with the providers, but, for most complex use cases you can __listen to its events__.
 
-Curabitur vulputate tincidunt congue. Aliquam nulla nisi, tristique eu egestas sit amet, mollis rhoncus purus.
+If this is not enough, as Data Provider uses Redux to handle providers states, it also provides an "storeManager" that allows to __migrate it to your own store__ using "combineReducers".
+
+Every single provider also has a method for accesing to his own "state" directly.
 `}
           right={`
 \`\`\`javascript
-import { booksProvider } from "data/books";
 import {
   authorsProvider,
-  authorsModelProvider
+  authorProvider
 } from "data/authors";
 
-booksProvider.on("readStart", () => {
-  console.log("Books request started");
+authorsProvider.on("readStart", () => {
+  console.log("Authors request started");
 });
 
-authorsModelProvider.onChild("*", eventName => {
+authorProvider.onChild("*", eventName => {
   if (["update", "delete", "create"].includes(eventName)) {
-    console.log("A book has been modified, cleaning cache");
+    console.log("An author has been modified, cleaning cache");
     authorsProvider.cleanCache();
   }
 });
@@ -315,11 +365,12 @@ authorsModelProvider.onChild("*", eventName => {
       >
         <h2>Motivation</h2>
         <p>
-          Sed vestibulum mauris egestas libero gravida, et luctus velit malesuada. Donec sodales ut
-          ipsum sed placerat. Suspendisse quis tristique risus. Duis eu orci nec sem consequat
-          consectetur.
-          <br />
-          Sed eget ullamcorper sapien, varius dignissim quam. Vivamus malesuada feugiat rhoncus.
+          As a front-end developer and what some call an &quot;architect&quot; in very big
+          projects, I spent lot of time of last years trying to achieve a{" "}
+          <a href={docUrl("motivation")}>
+            fully modular system in which the team could{" "}
+            <b>reuse pieces across many applications...</b>
+          </a>
         </p>
       </div>
     );
@@ -359,8 +410,9 @@ authorsModelProvider.onChild("*", eventName => {
           <Features />
           <ReactFeatures />
           <Cache />
-          <Agnostic />
           <Selectors />
+          <Agnostic />
+          <Queryable />
           <Events />
           <Motivation />
           <Showcase />
