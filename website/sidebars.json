@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Welcome": ["about-docs", "motivation"],
-    "Getting started": ["get-started-intro"]
+    "Welcome": ["about-docs"],
+    "Introduction": ["getting-started", "motivation"]
   }
 }
