@@ -20,7 +20,7 @@ Most of times this is made simply because we want to optimize, save resources av
 
 ## The solution
 
-So, maybe the solution can be to make every single piece responsible of requesting always the data it needs _(connecting always them to the providers they want to read)_, and doing in the most atomical way possible, requesting only the data they want, and in the format they expect _(using specific selectors)_.
+So, maybe the solution can be to make every single piece responsible of requesting always the data it needs _(connecting always them to the providers they want to read)_, and doing in the most granular way possible, requesting only the data they want, and in the format they expect _(using specific selectors)_.
 
 This solution simply is at charge of providing cache and memoization in order to avoid unnecesary resources comsumption, and to abstract the pieces about the fact of from where are they reading the data. They don't need to know about the existance of an API, or an State, or localStorage, or whatever. They simply need the data, is the "data layer" which should be the one responsible of knowing about where the data is being retrieved or sended.
 
