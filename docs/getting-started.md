@@ -7,18 +7,18 @@ title: Intro
 
 Data Provider is a data provider _(surprise!)_ with states ands built-in cache for JavaScript apps.
 
-The main target of the library are front-end applications, but it could be used also in Node.js.
+The main target of the library are front-end applications, but it could be used also in [Node.js][nodejs].
 
-It helps you providing async data to your components informing them about loading and error states.
-It also provides a cache layer, so you don´t have to worry about when to read the data, and allows you to combine the results of different data origins using a syntax very similar to the known Reselect, recalculating them only when one of the dependencies cache is cleaned.
+It helps you __providing async data__ to your components informing them about __loading and error states__.
+It also provides a __cache layer__, so you don´t have to worry about when to read the data, and allows you to __combine the results of different data providers__ using a syntax very similar to the known [Reselect][reselect], recalculating them only when one of the dependencies cache is cleaned.
 
-As its states are managed with Redux, you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which can be migrated to your own store)_
+As its states are managed with [Redux][redux], you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which can be migrated to your own store and maintained separated)_
 
-You can use Data Provider with React, or with any other view library. Separated plugins are available for that purpose, as @data-provider/react.
+You can use Data Provider with [React][react], or with any other view library. Separated addons are available for that purpose, as [@data-provider/react][data-provider-react].
 
-Data Provider is agnostic about data origins, so it can be used to read data from a REST API, from localStorage, or from any other origin. Choose one of the available plugins depending of the type of the origin you want to read from, as @data-provider/axios, or @data-provider/browser-storage.
+Data Provider is __agnostic about data origins__, so it can be used to read data from a REST API, from localStorage, or from any other origin. Choose one of the available plugins depending of the type of the origin you want to read from, as [@data-provider/axios][data-provider-axios], or [@data-provider/browser-storage][data-provider-browser-storage].
 
-It has a light weight, about 4kb gzipped _(you have to add the Redux weight to this)_, and addons usually are even lighter.
+It has a __light weight__, about 4kb gzipped _(you have to add the Redux weight to this)_, and addons usually are even lighter.
 
 ## Main features
 
@@ -30,7 +30,7 @@ As a summary, what Data Provider gives to you is:
 * Selectors
 * Event emitter
 
-And, the most important thing... promotes isolation from the data layer.
+And, the most important thing... __promotes isolation from the data layer, and separates your data cache from your global state.__
 
 ## Installation
 
@@ -46,7 +46,7 @@ Read the [installation](installation.md) page for further info.
 
 ## Basic example
 
-Define two basic providers and combine them using a simple Selector. We will use the @data-provider/axios origin to illustrate this example, but the syntax is applicable to all types of origins.
+Define two basic providers and combine them using a simple Selector. We will use the [@data-provider/axios][data-provider-axios] origin to illustrate this example, but the syntax is applicable to all types of origins.
 
 ```javascript
 
@@ -115,7 +115,7 @@ runExample();
 
 ## Basic example of usage with React
 
-Take advantage of the @data-provider/react addon, and use hooks to retrieve the data from a React component:
+Take advantage of the [@data-provider/react][data-provider-react] addon, and use hooks to retrieve the data automatically from a React component:
 
 ```javascript
 import React from "react";
@@ -148,4 +148,10 @@ In next chapters we will try to show you how the cache of a "collection" can be 
 
 But first, you should [read the "motivation" page](motivation) to really understand why this library exists, what problems can solve, or, at least, what bad patterns can help to prevent.
 
-
+[nodejs]: https://nodejs.org/en/
+[redux]: https://redux.js.org/
+[react]: https://reactjs.org/
+[data-provider-react]: https://www.npmjs.com/package/@data-provider/react
+[data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios
+[data-provider-browser-storage]: https://www.npmjs.com/package/@data-provider/browser-storage
+[reselect]: https://github.com/reduxjs/reselect
