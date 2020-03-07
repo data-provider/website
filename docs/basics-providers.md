@@ -21,6 +21,8 @@ _Why to add two different providers, one for the collection an one for the model
 
 > Keep in mind that this guide will talk only about the REST Api origin provided by [@data-provider/axios][data-provider-axios], but the concepts can be applied to any type of origin, as Data Provider is origin agnostic.
 
+### Fetch tasks from the API
+
 Define the `tasks` provider using the `Axios` Class from the [@data-provider/axios][data-provider-axios] package. Arguments accepted by the `Axios` Class are:
 
 * id - All Provider addons should receive an `id` as first argument _(useful for debugging purposes and for [configuring providers](basics-configuration.md))_.
