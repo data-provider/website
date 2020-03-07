@@ -36,7 +36,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: "getting-started", label: "Docs" },
+    { doc: "getting-started", label: "Get started" },
+    { doc: "basics-intro", label: "Tutorial" },
+    { doc: "api-reference", label: "API" },
     { page: "help", label: "Help" }
   ],
 
@@ -96,7 +98,7 @@ const siteConfig = {
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
-  docsSideNavCollapsible: false,
+  docsSideNavCollapsible: true,
 
   gaTrackingId: "UA-158982048-1",
   gaGtag: true,

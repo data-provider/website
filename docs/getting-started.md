@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Intro
+title: Get started
 ---
 
 ## Getting started with Data Provider
@@ -12,7 +12,7 @@ The main target of the library are front-end applications, but it could be used 
 It helps you __providing async data__ to your components informing them about __loading and error states__.
 It also provides a __cache layer__, so you don´t have to worry about when to read the data, and allows you to __combine the results of different data providers__ using a syntax very similar to the known [Reselect][reselect], recalculating them only when one of the dependencies cache is cleaned.
 
-As its states are managed with [Redux][redux], you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which can be migrated to your own store and maintained separated)_
+As its states are managed with [Redux][redux], you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which [can be migrated to your own store](api-store-manager.md))._
 
 You can use Data Provider with [React][react], or with any other view library. Separated addons are available for that purpose, as [@data-provider/react][data-provider-react].
 
@@ -40,7 +40,7 @@ Data Provider is available as a package in the NPM registry:
 npm i --save @data-provider/core redux
 ```
 
-It is also available as a precompiled UMD package that defines a `window.dataProvider` global variable. The UMD package can be used as a `<script>` tag directly, you only have to remember to first load Redux with another `<script>` tag.
+It is also available as a precompiled UMD package that defines a `window.dataProvider` global variable. The UMD package can be used as a `<script>` tag directly, you only have to remember to [first load Redux with another `<script>` tag][redux-installation].
 
 Read the [installation](installation.md) page for further info.
 
@@ -138,7 +138,7 @@ const Books = () => {
 export default Books;
 ```
 
-_NOTE: This is a very basic example of what @data-provider/react can do. In a real application, this could be solved even easier using one of the HOCs that the library provides._ Check the @data-provider/react page for further info.
+_NOTE: This is a very basic example of what @data-provider/react can do. In a real application, this could be solved even easier using one of the HOCs that the library provides._ Check the [@data-provider/react][data-provider-react] docs for further info.
 
 ## Next steps
 
@@ -146,10 +146,11 @@ Previous examples don't show the real power of Data Provider, and how it should 
 
 In next chapters we will try to show you how the cache of a "collection" can be cleaned automatically when a "model" is updated, how creating "queries" for the origins _(as url parameters or query strings)_ can be delegated completely to the providers, etc.
 
-But first, you should [read the "motivation" page](motivation) to really understand why this library exists, what problems can solve, or, at least, what bad patterns can help to prevent.
+But first, you should [read the "motivation" page](motivation.md) to really understand why this library exists, what problems can solve, or, at least, what bad patterns can help to prevent.
 
 [nodejs]: https://nodejs.org/en/
 [redux]: https://redux.js.org/
+[redux-installation]: https://redux.js.org/introduction/installation
 [react]: https://reactjs.org/
 [data-provider-react]: https://www.npmjs.com/package/@data-provider/react
 [data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios

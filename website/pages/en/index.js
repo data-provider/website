@@ -78,7 +78,7 @@ class HomeSplash extends React.Component {
         <br />
         Agnostic about data origins
         <br />
-        Framework agnostic, but integrations available
+        Framework agnostic
       </h3>
     );
 
@@ -131,7 +131,7 @@ class Index extends React.Component {
           contents={[
             {
               title: "Selectors inspired by Reselect",
-              content: `Compute data derived from other Providers or Selectors with a [familiar but very powerful syntax](${docUrl(
+              content: `Compute data derived from other Providers or Selectors with a [familiar and very powerful syntax](${docUrl(
                 "selectors-dependencies"
               )}).`
             },
@@ -154,11 +154,13 @@ class Index extends React.Component {
         <CodeExampleSection
           id="home-react"
           title="React hooks and HOCs"
-          left={`The @data-provider/react package __give you HOCs to connect a Provider to your component__, creating a wrapper component handling all the logic for you.
+          left={`Data Provider is not concerned about the views, but UI binding addons are available.
+
+The [@data-provider/react](https://www.npmjs.com/package/@data-provider/react) package __gives you HOCs to connect providers to your components__, creating a wrapper component handling all the logic for you.
 
 It also provides __hooks like "useData", "useLoading", etc.__
 
-__Optimized__, it takes care of reading the data and re-render the component only when your desired props have changed.`}
+__Optimized__, it takes care of reading the data and re-renders the component only when your desired props have changed.`}
           right={`
 \`\`\` javascript
 import { withDataProvider } from "@data-provider/react";
@@ -219,9 +221,9 @@ export default RenderBooksTwice;
           id="home-agnostic"
           title="Agnostic about data origins"
           left={`
-The Provider class provides the cache, state handler, etc., but not the "read" method. The "read" behavior is implemented by __different Data Provider Origins packages__.
+The Provider class provides the cache, state handler, etc., but not the "read" method. The "read" behavior is implemented by __different Data Provider Origins addons__.
 
-There are different origins available, such as __Axios, LocalStorage, Memory, etc.__ and building your own is so easy as extending the Provider class with a custom "readMethod".
+There are different origins available, such as __[Axios](https://www.npmjs.com/package/@data-provider/axios), [LocalStorage](https://www.npmjs.com/package/@data-provider/browser-storage), [Memory](https://www.npmjs.com/package/@data-provider/memory), etc.__ and building your own is so easy as extending the Provider class with a custom "readMethod".
 
 Sharing the same interface for all origins, and being able to build Selectors combining all of them implies that your logic will be __completely isolated about WHERE the data is being retrieved.__
 `}
@@ -255,9 +257,11 @@ export const favoriteBooks = new LocalStorage("favorite-books", {
 
 Exposing the __same interface than providers__ make consumers agnostic about what type of Provider or Selector are they consuming.
 
-As in Reselect, __Selectors are composable__. They can be used as input to other selectors.
+As in [Reselect](https://github.com/reduxjs/reselect), __Selectors are composable__. They can be used as input to other selectors.
 
-__Powerful dependencies api__: Catch dependencies errors, retrieve them in parallel, return different providers programmatically, etc.
+__Powerful [dependencies api](${docUrl(
+            "api-selector"
+          )})__: Catch dependencies errors, retrieve them in parallel, declare them as functions returning other providers or selectors, etc.
 `}
           right={`
 \`\`\`javascript
@@ -327,9 +331,11 @@ export default Book;
         <CodeExampleSection
           id="home-events"
           title="Redux store and event emitter"
-          left={`In most of cases, the integrations packages available (like @data-provider/react) will save you having to interact directly with the providers, but, for most complex use cases you can __listen to its events__.
+          left={`In most of cases, the integrations addons available (like [@data-provider/react](https://www.npmjs.com/package/@data-provider/react)) will save you having to interact directly with the providers, but, for most complex use cases you can __listen to its events__.
 
-If this is not enough, as Data Provider uses Redux to handle providers states, it also provides an "storeManager" that allows to __migrate it to your own store__ using "combineReducers".
+If this is not enough, as Data Provider uses [Redux](https://redux.js.org/) to handle providers states, it also provides an [\`storeManager\`](${docUrl(
+            "api-store-manager"
+          )}) that allows to __migrate it to your own store__ using  \`combineReducers\`.
 
 Every single provider also has a method for accesing to his own "state" directly.
 `}

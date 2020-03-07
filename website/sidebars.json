@@ -1,6 +1,23 @@
 {
   "docs": {
     "Welcome": ["about-docs"],
-    "Introduction": ["getting-started", "motivation", "installation"]
+    "Introduction": ["getting-started", "motivation", "installation"],
+    "Basic Tutorial": [
+      "basics-intro",
+      "basics-providers",
+      "basics-selectors",
+      "basics-queries",
+      "basics-configuration",
+      "basics-usage-with-react",
+      "basics-example"
+    ],
+    "API Reference": [
+      "api-reference",
+      "api-provider",
+      "api-selector",
+      "api-providers",
+      "api-store-manager",
+      "api-providers-and-selectors-methods"
+    ]
   }
 }
