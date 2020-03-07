@@ -7,17 +7,17 @@ A Selector combines origins or other selectors (what we call __"dependencies"__)
 
 Selectors have the same interface than providers, so views don't need to know if they are using a provider or a selector. Selectors can also be queried, and you can use the query value for querying the selector dependencies, or in your `selector` function.
 
-Whenever a dependency cache is clean, the selector cache will also be clean, and will be recalculated when it is read again.
+Whenever a dependency cache is cleaned, the selector cache will also be cleaned, and will be recalculated when it is read again.
 
 ## `Selector(...dependencies, selectorFunction, [options])`
 
 ### Arguments
 
-* __`...dependencies`__ _(arguments)_: Dependencies can be defined in different ways. They can be providers, other selectors instances, functions returning other dependencies, an array of dependencies, or even `dependency objects`, which are objects with specific properties that allows to catch dependencies errors, apply queries to dependencies, etc. The full [dependencies API is described in the chapter bellow](#selector-dependencies).
+* __`...dependencies`__ _(arguments)_: Dependencies can be defined in different ways. They can be providers, other selectors instances, functions returning other dependencies, an array of dependencies, or even `dependency objects`, which are objects with specific properties that allows to catch dependencies errors, etc. The full [dependencies API is described in the chapter bellow](#selector-dependencies).
 * __`selectorFunction`__ _(Function)_: A function receiving the dependencies results, and the query applied to the selector in case it is queried. Read the [selector function API in the chapter bellow](#selector-function).
 * __`options`__ _(Object)_: An object containing options for the selector, which properties can be:
 	* __`id`__ _(String)_: Id for the provider instance. It is used internally as namespace in the store. It is also useful for debugging purposes.
-	* __`initialState`__ _(Object)_: Object containing `loading`, `error` and `data` properties, which will define the initial state of the selector, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then inmediatelly `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will save that extra render in the initialization)._
+	* __`initialState`__ _(Object)_: Object containing `loading`, `error` and `data` properties, which will define the initial state of the selector, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then inmediatelly `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will avoid that extra render in the initialization)._
 
 ### Returns
 
@@ -55,19 +55,19 @@ console.log(completedTasks.state);
 
 ```
 
-> This is a very basic example. Read "Selector dependencies" bellow for a more detailed explanation.
+> This is a very basic example. Read [Selector dependencies section](#selector-dependencies) bellow for a more detailed explanation.
 
 ### Tips
 
 * Use clear identificators in your selectors. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console. If you do not provide one, Data Provider will assign one `uuid` automatically.
 * When an `id` is duplicated, Data Provider will automatically append a suffix to it and will print a warning.
-* Define always the `initialState`, it will save you extra format checks in your views, and will save an initial extra render, as described in the Arguments API.
+* Define always the `initialState`, it will save you extra format checks in your views, and will avoid an initial extra render, as described in the Arguments API.
 
 <hr/>
 
 ## Selector function
 
-The selector function receives the results of all provided dependencies, and the value of the selector query _(undefined if it is not queried)_
+The selector function receives the results of all provided dependencies, and the value of the selector query _(undefined if it is not queried)_. It is executed only the first time for each different query while the cache is valid.
 
 The provided function should follow the next API:
 
@@ -221,4 +221,8 @@ const selector = new Selector(
 
 ### Tips
 
-* The power of the dependencies API should allows you to retrieve all data you need using a single selector, but a better approach is to create one different selector for each level of granularity, so they can be used separately when needed. As they are composable, you can combine those selectors into another one, and so on... So, __better use Selectors composition instead of defining lots of dependencies in a single one__.
+* You can combine all described formats of dependencies as you want.
+* The power of the dependencies API should allow you to retrieve all data you need using a single selector, but a better approach is to create one different selector for each level of granularity, so they can be used separately when needed. As they are composable, you can combine those selectors into another one, and so on... So, __better use selectors composition instead of defining lots of dependencies in a single selector__.
+
+> You have more examples available about how to use selector dependencies in the [recipes page](recipes-index.md).
+
