@@ -25,7 +25,7 @@ Let's define a selector for filtering tasks in base of their `completed` status:
 ```javascript
 import { Selector } from "@data-provider/core";
 
-export const completedTasks = new Selector(
+export const uncompletedTasks = new Selector(
   tasks,
   tasksResults => tasksResults.filter(task => task.completed === false)
 );
@@ -51,7 +51,7 @@ export const task = new Axios("task", {
   url: "/task/:id"
 });
 
-export const completedTasks = new Selector(
+export const uncompletedTasks = new Selector(
   tasks,
   tasksResults => tasksResults.filter(task => task.completed === false)
 );

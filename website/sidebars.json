@@ -11,6 +11,10 @@
       "basics-usage-with-react",
       "basics-example"
     ],
+    "Recipes": [
+      "recipes-index",
+      "recipes-querying-selectors"
+    ],
     "API Reference": [
       "api-reference",
       "api-provider",
