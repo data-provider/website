@@ -15,7 +15,7 @@ Let's add an action for updating todos. It will be a simple `Function` which wil
 
 For updating a todo, we will use the `todo` provider, which corresponds to an specific todo "model". Querying it using the `urlParams` property will turn the url of the request into `/todos/[id]` _(read the [@data-provider/axios addon][data-provider-axios] docs for further info about how to use its queries)_
 
-By default, the [@data-provider/axios addon][data-provider-axios] uses the PUT HTTP verb when the `update` method is used, but this behavior can be changed using the provider options, as we will see in the next chapter.
+By default, the [@data-provider/axios addon][data-provider-axios] uses the PATCH HTTP verb when the `update` method is used, but this behavior can be changed using the provider options.
 
 ```javascript
 const updateTodo = (id, completed) => {
@@ -115,11 +115,17 @@ import { Axios } from "@data-provider/axios";
 import { Selector } from "@data-provider/core";
 
 export const todos = new Axios("todos", {
-  url: "/todos"
+  url: "/todos",
+  initialState: {
+    data: []
+  }
 });
 
 export const todo = new Axios("todo", {
-  url: "/todo/:id"
+  url: "/todos/:id",
+  initialState: {
+    data: {}
+  }
 });
 
 export const todosFiltered = new Selector(
@@ -129,6 +135,12 @@ export const todosFiltered = new Selector(
       return todosResults;
     }
     return todosResults.filter(todo => todo.completed === query.completed)
+  },
+  {
+    id: "todos-filtered",
+    initialState: {
+      data: []
+    }
   }
 );
 
