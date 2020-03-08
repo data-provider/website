@@ -89,37 +89,30 @@ TodoList.propTypes = {
 export default TodoList;
 ```
 
-### `components/Link.js`
+### `components/Button.js`
 
 ```javascript
 import React from "react";
 import PropTypes from "prop-types";
 
-const Link = ({ active, children, onClick }) => {
-  if (active) {
-    return <span>{children}</span>
-  }
-
+const Button = ({ active, children, onClick }) => {
   return (
-    <a
-      href=""
-      onClick={e => {
-        e.preventDefault()
-        onClick()
-      }}
+    <button
+      disabled={active}
+      onClick={onClick}
     >
       {children}
-    </a>
+    </button>
   )
 };
 
-Link.propTypes = {
+Button.propTypes = {
   active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
-export default Link;
+export default Button;
 ```
 
 ### `components/Filters.js`
@@ -127,15 +120,15 @@ export default Link;
 ```javascript
 import React from "react";
 
-import Link from "./Link";
+import Button from "./Button";
 
 const Filters = ({ onClick, showCompleted }) => (
   <p>
-    Show: <Link onClick={() => onClick(null)} active={showCompleted === null}>All</Link>
+    Show: <Button onClick={() => onClick(null)} active={showCompleted === null}>All</Button>
     {', '}
-    <Link onClick={() => onClick(false)} active={showCompleted === false}>Active</Link>
+    <Button onClick={() => onClick(false)} active={showCompleted === false}>Active</Button>
     {', '}
-    <Link onClick={() => onClick(true)} active={showCompleted === true}>Completed</Link>
+    <Button onClick={() => onClick(true)} active={showCompleted === true}>Completed</Button>
   </p>
 );
 
