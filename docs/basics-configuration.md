@@ -13,7 +13,7 @@ Doing it in this way also allows to better reuse our providers, so we could even
 
 The Data Provider library give to us an utility for configuring groups of providers at a time (read the [providers API page](api-providers.md) for further info).
 
-Let's use it to set the `baseUrl` option of all our providers of type `axios` (created using the [@data-provider/axios addon][data-provider-axios])
+Let's use it to set the `baseUrl` option of all our providers of type `axios` (created using the [@data-provider/axios addon][data-provider-axios]).
 
 ```javascript
 import { providers } from "@data-provider/core";

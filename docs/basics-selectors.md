@@ -44,11 +44,17 @@ import { Axios } from "@data-provider/axios";
 import { Selector } from "@data-provider/core";
 
 export const todos = new Axios("todos", {
-  url: "/todos"
+  url: "/todos",
+  initialState: {
+    data: []
+  }
 });
 
 export const todo = new Axios("todo", {
-  url: "/todos/:id"
+  url: "/todos/:id",
+  initialState: {
+    data: {}
+  }
 });
 
 export const uncompletedTodos = new Selector(

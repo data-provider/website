@@ -9,15 +9,15 @@ That said, for this example we are going to use the [@data-provider/react][data-
 
 ## Installing the React addon
 
-React bindings are not included in Data Provider by default. You need to install them explicitly:
+React bindings are not included in Data Provider by default. You need to install them explicitly, as well as [react-redux][react-redux], which is a peer dependency of the addon:
 
 ```bash
-npm i @data-provider/react
+npm i @data-provider/react react-redux
 ```
 
 ## Preface
 
-This guide assumes that you already know how to create and organize React components.
+This guide assumes that __you already know how to create and organize React components__. It also assumes that you have installed all needed dependencies to run a React app, have created the required files, as `public/index.html`, and have added the needed commands to your `package.json` file. If not, __you can do it easily using [Create React App][create-react-app]__ (if you do so, you can delete all contents inside the `src` folder after creating the application, as all needed files inside that folder are the one described in this guide).
 
 The important point to understand here is that we are going to create "Presentational components", which don't have to know anything about Data Provider, and "Container Components" __(as they are called in the ["Redux - Usage with React" docs][redux-react])__, or "Modules", as I like to call them.
 
@@ -32,7 +32,7 @@ About what Redux docs call "Container Components", here we are going to call the
 
 ## Presentational components
 
-We have also to mention that __we are not going to worry about the performance of the example__. You'll see here some "React bad patterns" that should be avoided in a real app, as defining callbacks directly in the components props using arrow functions. But again, the purpose of this guide is not to learn about how to use React, so, we made this intentionally in favour of the examples simplicity.
+We also have to mention that __we are not going to worry about the performance of the example__. You'll see here some "React bad patterns" that should be avoided in a real app, as defining callbacks directly in the components props using arrow functions. But again, the purpose of this guide is not to learn about how to use React, so, we made this intentionally in favour of the examples simplicity.
 
 ### `components/Todo.js`
 
@@ -69,7 +69,7 @@ import Todo from "./Todo";
 
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>
-    {todos.map(todo => (
+    {todos.map((todo, index) => (
       <Todo key={index} {...todo} onClick={onTodoClick} />
     ))}
   </ul>
@@ -92,7 +92,7 @@ export default TodoList;
 ### `components/Link.js`
 
 ```javascript
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 const Link = ({ active, children, onClick }) => {
@@ -127,13 +127,15 @@ export default Link;
 ```javascript
 import React from "react";
 
+import Link from "./Link";
+
 const Filters = ({ onClick, showCompleted }) => (
   <p>
-    Show: <Link onClick={() => onClick()} active={showCompleted === null}>All</FilterLink>
+    Show: <Link onClick={() => onClick(null)} active={showCompleted === null}>All</Link>
     {', '}
-    <Link onClick={() => onClick(false)} active={showCompleted === false}>Active</FilterLink>
+    <Link onClick={() => onClick(false)} active={showCompleted === false}>Active</Link>
     {', '}
-    <Link onClick={() => onClick(true)} active={showCompleted === true}>Completed</FilterLink>
+    <Link onClick={() => onClick(true)} active={showCompleted === true}>Completed</Link>
   </p>
 );
 
@@ -183,11 +185,13 @@ In the "modules" is where we are going to bind the presentational components to 
 Here, we simply render the `AddTodo.js` component, defining the `onSubmit` callback, which in our case will call to the `createTodo` action.
 
 ```javascript
+import React from "react";
+
 import { createTodo } from '../data/todos';
 import AddTodoComponent from "../components/AddTodo";
 
 const AddTodo = () => {
-  return <AddTodoComponent onSubmit={text => createTodo(text)}>;
+  return <AddTodoComponent onSubmit={text => createTodo(text)} />;
 };
 
 export default AddTodo;
@@ -201,13 +205,14 @@ To connect the provider, we will use the `useData` and `useLoading` methods of t
 
 ```javascript
 import React from "react";
-import { useData, useLoading } from "@data-provider/react";
+import { useData, useLoading, useRefresh } from "@data-provider/react";
 
 import { todosFiltered, updateTodo } from "../data/todos";
 import TodoList from "../components/TodoList";
 
 const FilteredTodoList = ({ showCompleted }) => {
-  const todosProvider = todosFiltered.query({ completed: showCompleted })
+  const todosProvider = todosFiltered.query({ completed: showCompleted });
+  useRefresh(todosProvider);
   const todos = useData(todosProvider);
   const loading = useLoading(todosProvider);
 
@@ -230,7 +235,6 @@ In this component we are going to handle the state of the `completed` filter and
 
 ```javascript
 import React, { useState } from "react";
-import { useData } from "@data-provider/react";
 
 import Filters from "../components/Filters";
 import FilteredTodoList from "./FilteredTodoList";
@@ -279,7 +283,47 @@ export default App;
 
 > We are rendering twice the `TodoList` module intentionally in order to show how both can live together at the same time, and both will react to the changes in the providers. One will show the uncompleted todos by default, and the other one the completed ones, but you can set the filter of each one without affecting the another.
 
+## Migrating the store
 
+Data Provide [React addon][data-provider-react] uses [react-redux][react-redux] to provide Redux bindings for React, so components need access to the Redux store. To do so, we are going to use the React Redux `Provider`, and we are also going to "migrate" the Data Provider store to the store of our app using the Data Provide `storeManager`.
+
+We define a namespace for the Data Provider store, and use Redux `combineReducers` to migrate it to our app store, in this way, we could define our own application reducers without any conflict. After this, we use the Data Provider `storeManager` to set our app store as the Data Provider store, indicating to it the namespace to use. Read the [storeManager API](api-store-manager.md) for further info.
+
+### `index.js`
+
+```javascript
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+import { storeManager } from "@data-provider/core";
+
+import "./app/config";
+import App from "./app/App";
+
+const DATA_PROVIDER_STORE = "data";
+
+const store = createStore(
+  combineReducers({
+    [DATA_PROVIDER_STORE]: storeManager.reducer
+  }),
+  window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+storeManager.setStore(store, DATA_PROVIDER_STORE);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
+> Here we are also importing the `app/config.js` file created during the configuration chapter of this guide in order to configure the providers.
+
+[create-react-app]: https://github.com/facebook/create-react-app
 [data-provider-react]: https://www.npmjs.com/package/@data-provider/react
 [redux-react]: https://redux.js.org/basics/usage-with-react
 [redux-tutorial]: https://redux.js.org/basics/basic-tutorial
+[react-redux]: https://react-redux.js.org/

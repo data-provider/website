@@ -15,6 +15,8 @@ In the previous page, we created a selector called `uncompletedTodos`, but, what
 
 When we use the `query` method of a selector, we must provide an object as first argument. The value of the object will be received in the `selector function` as last argument. Read the [Selector API page](api-selector.md) for further info.
 
+We are also going to give to the selector an id, and an initial state. Doing it, we avoid extra work in our views to check the data format during the first render, before the data has been fetched. (The `data` property of the selector will contain an empty array from the initialization).
+
 So, let's change the selector:
 
 ```javascript
@@ -25,6 +27,12 @@ export const todosFiltered = new Selector(
       return todosResults;
     }
     return todosResults.filter(todo => todo.completed === query.completed)
+  },
+  {
+    id: "todos-filtered",
+    initialState: {
+      data: []
+    }
   }
 );
 ```
@@ -48,11 +56,17 @@ import { Axios } from "@data-provider/axios";
 import { Selector } from "@data-provider/core";
 
 export const todos = new Axios("todos", {
-  url: "/todos"
+  url: "/todos",
+  initialState: {
+    data: []
+  }
 });
 
 export const todo = new Axios("todo", {
-  url: "/todos/:id"
+  url: "/todos/:id",
+  initialState: {
+    data: {}
+  }
 });
 
 export const todosFiltered = new Selector(
@@ -62,6 +76,12 @@ export const todosFiltered = new Selector(
       return todosResults;
     }
     return todosResults.filter(todo => todo.completed === query.completed)
+  },
+  {
+    id: "todos-filtered",
+    initialState: {
+      data: []
+    }
   }
 );
 ```
