@@ -18,42 +18,42 @@ This means that, every data you need in a selector can be defined using his depe
 
 For those using the selector, they don't need to know where the data come from, and will have to handle an unique `loading` state, the one provided by the selector itself.
 
-### Getting uncompleted tasks
+### Getting uncompleted todos
 
-Let's define a selector for filtering tasks in base of their `completed` status:
+Let's define a selector for filtering todos in base of their `completed` status:
 
 ```javascript
 import { Selector } from "@data-provider/core";
 
-export const uncompletedTasks = new Selector(
-  tasks,
-  tasksResults => tasksResults.filter(task => task.completed === false)
+export const uncompletedTodos = new Selector(
+  todos,
+  todosResults => todosResults.filter(todo => todo.completed === false)
 );
 ```
 
-That's all. Now, if we call to `completedTasks.read()`, tasks will be fetched from the server and filtered in client side, then returned to us. No matter how many times do you call to the read method, the selector function will not be re-executed until the cache of the `tasks` provider is clean. _(Or until the selector cache itself is clean. In that case, the selector function will be re-executed, but the tasks will not be fetched from the server again, in case the cache of the provider has not been clean)_
+That's all. Now, if we call to `uncompletedTodos.read()`, todos will be fetched from the server and filtered in client side, then returned to us. No matter how many times do you call to the read method, the selector function will not be re-executed until the cache of the `todos` provider is cleaned. _(Or until the selector cache itself is cleaned. In that case, the selector function will be re-executed, but the todos will not be fetched from the server again, in case the cache of the provider has not been cleaned)_
 
 ## Source code
 
 We will keep both providers and selectors in the same file for better comprehension of the example:
 
-### `data/tasks.js`
+### `data/todos.js`
 
 ```javascript
 import { Axios } from "@data-provider/axios";
 import { Selector } from "@data-provider/core";
 
-export const tasks = new Axios("tasks", {
-  url: "/tasks"
+export const todos = new Axios("todos", {
+  url: "/todos"
 });
 
-export const task = new Axios("task", {
-  url: "/task/:id"
+export const todo = new Axios("todo", {
+  url: "/todos/:id"
 });
 
-export const uncompletedTasks = new Selector(
-  tasks,
-  tasksResults => tasksResults.filter(task => task.completed === false)
+export const uncompletedTodos = new Selector(
+  todos,
+  todosResults => todosResults.filter(todo => todo.completed === false)
 );
 ```
 

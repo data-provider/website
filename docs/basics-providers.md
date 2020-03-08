@@ -12,18 +12,28 @@ When we define a Provider, we'll get a provider instance that should be alive du
 
 Remember that providers are queryable, so you don't need to create a provider for each specific model, the approach is defining a provider for each different resource in the data origin. In the case of an API example, you should define a provider for each different API url.
 
-So, now we are going to define a provider for the tasks collection and another one for the task models.
+## Using the Axios addon
 
-* tasks - Will fetch data from `/tasks`
-* task - will fetch data from `/tasks/:id`
+Remember that Data Provider is not concerned about specific data origins. For this example, as we are going to retrieve todos from a REST API, we are going to use the [@data-provider/axios][data-provider-axios] addon.
 
-_Why to add two different providers, one for the collection an one for the model? Well, even when the "tasks" and the "task" could seem to be the same "entity", the type of data returned by the API differs in both cases, and the queries that both origins will accept will be different too. So, for simplicity, we'll keep them as separated origins, and later we will [define a relation between them](basics-relations.md) in order to bind their caches lifecycle._
+First of all, install it:
+
+```bash
+npm i @data-provider/axios
+```
 
 > Keep in mind that this guide will talk only about the REST Api origin provided by [@data-provider/axios][data-provider-axios], but the concepts can be applied to any type of origin, as Data Provider is origin agnostic.
 
-### Fetch tasks from the API
+### Fetch todos from the API
 
-Define the `tasks` provider using the `Axios` Class from the [@data-provider/axios][data-provider-axios] package. Arguments accepted by the `Axios` Class are:
+Now we are going to define a provider for the todos collection and another one for the todo models.
+
+* todos - Will fetch data from `/todos`
+* todo - will fetch data from `/todos/:id`
+
+_Why to add two different providers, one for the collection an one for the model? Well, even when the "todos" and the "todo" could seem to be the same "entity", the type of data returned by the API differs in both cases, and the queries that both origins will accept will be different too. So, for simplicity, we'll keep them as separated providers, and later we will [define a relation between them](basics-actions.md) in order to bind their caches lifecycle._
+
+Arguments accepted by the `Axios` Class are:
 
 * id - All Provider addons should receive an `id` as first argument _(useful for debugging purposes and for [configuring providers](basics-configuration.md))_.
 * options - An options object is provided as second argument. Options will differ depending of the type of origin. In this case, we will define the `url` of the API. We do not define now the `baseUrl`, [this configuration](basics-configuration.md) is delegated to the main file of the application, avoiding coupling the providers to it, which improves its reusability.
@@ -32,36 +42,36 @@ Define the `tasks` provider using the `Axios` Class from the [@data-provider/axi
 ```javascript
 import { Axios } from "@data-provider/axios";
 
-export const tasks = new Axios("tasks", {
-  url: "/tasks"
+export const todos = new Axios("todos", {
+  url: "/todos"
 });
 ```
 
-Now define another provider for retrieving specific tasks. In this case, the `url` includes a parameter. The value of the parameter will be defined by the query value that we will pass to the provider when using it:
+Now define another provider for retrieving specific todos. In this case, the `url` includes a parameter. The value of the parameter will be defined by the query value that we will pass to the provider when using it:
 
 ```javascript
-export const task = new Axios("task", {
-  url: "/task/:id"
+export const todo = new Axios("todo", {
+  url: "/todos/:id"
 });
 ```
 
-> Maybe you have noticed that using only the "tasks" origin could be enough, as retrieving each task from the server separately could be not necessary. We are doing it for better comprehension of the examples. Performance of the resultant application is not the target of this guide.
+> Maybe you have noticed that using only the "todos" origin could be enough, as retrieving each todo from the server separately could not be necessary. We are doing it for better comprehension of the examples. Performance of the resultant application is not the target of this guide.
 
 ## Source code
 
 We will maintain our data sources separated from the views, this is why this file is located under the `data` folder. This is not a requisite, you could organize the code of your application in any way, but it is strongly recommended.
 
-### `data/tasks.js`
+### `data/todos.js`
 
 ```javascript
 import { Axios } from "@data-provider/axios";
 
-export const tasks = new Axios("tasks", {
-  url: "/tasks"
+export const todos = new Axios("todos", {
+  url: "/todos"
 });
 
-export const task = new Axios("task", {
-  url: "/task/:id"
+export const todo = new Axios("todo", {
+  url: "/todos/:id"
 });
 ```
 
