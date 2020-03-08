@@ -7,6 +7,7 @@
       "basics-providers",
       "basics-selectors",
       "basics-queries",
+      "basics-actions",
       "basics-configuration",
       "basics-usage-with-react",
       "basics-example"
@@ -21,7 +22,8 @@
       "api-selector",
       "api-providers",
       "api-store-manager",
-      "api-providers-and-selectors-methods"
+      "api-providers-and-selectors-methods",
+      "api-events"
     ]
   }
 }

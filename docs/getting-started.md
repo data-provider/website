@@ -144,7 +144,7 @@ _NOTE: This is a very basic example of what @data-provider/react can do. In a re
 
 Previous examples don't show the real power of Data Provider, and how it should be used to isolate completely your components from the data layer, where a great part of the business rules should reside.
 
-In next chapters we will try to show you how the cache of a "collection" can be cleaned automatically when a "model" is updated, how creating "queries" for the origins _(as url parameters or query strings)_ can be delegated completely to the providers, etc.
+In next chapters we will try to show you how the cache of a "collection" can be cleaned automatically when a "model" is updated, how to use selectors dependencies to completely manage all your data using them, how to define "queries" for the origins _(as url parameters or query strings)_ can be delegated completely to the selectors, etc.
 
 But first, you should [read the "motivation" page](motivation.md) to really understand why this library exists, what problems can solve, or, at least, what bad patterns can help to prevent.
 
