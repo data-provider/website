@@ -3,7 +3,7 @@ id: api-providers
 title: providers
 ---
 
-## Brief explanation
+## Purpose
 
 Data Provider gives to us a way for managing a provider or a groups of providers without having to import them directly. For that purpose, it exports the `providers` object.
 
@@ -179,3 +179,8 @@ _(Number)_: Total count of selected providers and selectors, including children 
 #### Returns
 
 _(Array)_: Array containing all selected providers and selectors.
+
+## Tips
+
+* Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable accross applications.
+* Use the addons automatic tags for configuring all providers of the same type at a time _(as using the "axios" tag to set the `baseUrl` of the API)_
