@@ -371,8 +371,8 @@ authorProvider.onChild("*", eventName => {
       >
         <h2>Motivation</h2>
         <p>
-          As a front-end developer and what some call an &quot;architect&quot; in very big
-          projects, I spent lot of time of last years trying to achieve a{" "}
+          As a front-end developer and what some call an &quot;architect&quot;, I&apos;ve worked in
+          very big projects, so I spent lot of time of last years trying to achieve a{" "}
           <a href={docUrl("motivation")}>
             fully modular system in which the team could{" "}
             <b>reuse pieces across many applications...</b>

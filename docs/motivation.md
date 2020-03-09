@@ -5,7 +5,7 @@ title: Motivation
 
 ## The problem
 
-As a front-end developer and what some call an &quot;architect&quot; in very big projects, I spent lot of time of last years trying to achieve a fully modular system in which the teams could __reuse pieces across many applications__.
+As a front-end developer and what some call an &quot;architect&quot;, I've worked in very big projects, so I spent lot of time of last years trying to achieve a fully modular system in which the teams could __reuse pieces across many applications__.
 
 For simple components this is a relativelly easy job, but, when pieces are connected to data origins or to a global state _(what I usually call a &quot;module&quot;)_, then the thing changes, but why?...
 
