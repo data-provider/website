@@ -13,6 +13,7 @@ About origin addons, methods described here are common to all of them, but some 
 * [Selector](api-selector.md)
 * [providers](api-providers.md)
 * [storeManager](api-store-manager.md)
+* [eventNames](api-events.md)
 
 ## Providers and selectors methods
 

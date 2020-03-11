@@ -43,10 +43,7 @@ Arguments accepted by the `Axios` Class are:
 import { Axios } from "@data-provider/axios";
 
 export const todos = new Axios("todos", {
-  url: "/todos",
-  initialState: {
-    data: []
-  }
+  url: "/todos"
 });
 ```
 
@@ -54,10 +51,7 @@ Now define another provider for retrieving specific todos. In this case, the `ur
 
 ```javascript
 export const todo = new Axios("todo", {
-  url: "/todos/:id",
-  initialState: {
-    data: {}
-  }
+  url: "/todos/:id"
 });
 ```
 
@@ -73,17 +67,11 @@ We will maintain our data sources separated from the views, this is why this fil
 import { Axios } from "@data-provider/axios";
 
 export const todos = new Axios("todos", {
-  url: "/todos",
-  initialState: {
-    data: []
-  }
+  url: "/todos"
 });
 
 export const todo = new Axios("todo", {
-  url: "/todos/:id",
-  initialState: {
-    data: {}
-  }
+  url: "/todos/:id"
 });
 ```
 

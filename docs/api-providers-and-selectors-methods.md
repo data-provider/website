@@ -106,7 +106,6 @@ book = books.queries.ofAuthor(2);
 book.read(); // Fetch to /books/2
 ```
 
-
 <hr/>
 
 ### `config(options)`
@@ -174,7 +173,7 @@ Adds `listener` to the given `eventName`. Read the [events API chapter](api-even
 #### Arguments
 
 * `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked any time the specific `eventName` has been dispatched.
+* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched.
 
 #### Returns
 
@@ -200,7 +199,7 @@ Adds `listener` to the given `eventName` when it occurs in any of the provider o
 #### Arguments
 
 * `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked any time the specific `eventName` has been dispatched in any of the selector or provider "children".
+* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched in any of the selector or provider "children".
 
 #### Returns
 
@@ -228,7 +227,7 @@ Adds `listener` to the given `eventName`. The `listener` will be automatically u
 #### Arguments
 
 * `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked any time the specific `eventName` has been dispatched.
+* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched.
 
 #### Returns
 
@@ -249,14 +248,14 @@ await books.read();
 
 <hr/>
 
-### `onChild(eventName, listener)`
+### `onceChild(eventName, listener)`
 
 Adds `listener` to the given `eventName` when it occurs in any of the provider or selector "children" (queried instances). The `listener` will be automatically unsubscribed after its first execution. Read the [events API chapter](api-events.md) for further info.
 
 #### Arguments
 
 * `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked any time the specific `eventName` has been dispatched in any of the selector or provider "children".
+* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched in any of the selector or provider "children".
 
 #### Returns
 
