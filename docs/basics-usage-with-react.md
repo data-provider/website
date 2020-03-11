@@ -69,7 +69,7 @@ import Todo from "./Todo";
 
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>
-    {todos.map((todo, index) => (
+    {todos && todos.map((todo, index) => (
       <Todo key={index} {...todo} onClick={onTodoClick} />
     ))}
   </ul>
@@ -88,6 +88,8 @@ TodoList.propTypes = {
 
 export default TodoList;
 ```
+
+> Note the expression `todos && todos.map`. We are ensuring that `todos` have value before executing the `map` method. This can be easily avoided defining an `initialState` for the provider or selector. It has been omitted in this guide for simplicity, but it is highly recommended to define the `initialState` to avoid this type of extra checks in the views.
 
 ### `components/Button.js`
 
@@ -209,7 +211,7 @@ const FilteredTodoList = ({ showCompleted }) => {
   const todos = useData(todosProvider);
   const loading = useLoading(todosProvider);
 
-  if (loading && !todos.length) {
+  if (loading && !todos) {
     return <div>Loading...</div>;
   }
   return (
@@ -220,7 +222,7 @@ const FilteredTodoList = ({ showCompleted }) => {
 export default FilteredTodoList;
 ```
 
-> Note the expression `(loading && !todos.length)` that we are using to handle the loading state. Data Provider inform to us when the `todos` are being loadded, but we don't want to show the "loading..." indicator every time data is loading. It will be shown only the first time the data is being loaded, while `todos` collection is empty. Rest of times, the current todos state will be shown until the `todos` are fetched again, and then replaced. In this way we __avoid unwanted flickerings__ in the UI.
+> Note the expression `(loading && !todos)` that we are using to handle the loading state. Data Provider inform to us when the `todos` are being loadded, but we don't want to show the "loading..." indicator every time data is loading. It will be shown only the first time the data is being loaded, while `todos` collection is empty. Rest of times, the current todos state will be shown until the `todos` are fetched again, and then replaced. In this way we __avoid unwanted flickerings__ in the UI.
 
 ### `modules/TodoList.js`
 

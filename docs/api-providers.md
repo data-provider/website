@@ -60,7 +60,20 @@ The `providers` object has next methods:
 
 #### Returns
 
-A group of providers containing the provided tag. The returned "selection" has its own methods, which are describe in the [providers selection Methods](#providers-selection-methods) chapter below.
+A group of providers containing the provided tag. The returned "selection" has its own methods, which are described in the [providers selection Methods](#providers-selection-methods) chapter below.
+
+#### Example
+
+```javascript
+import { providers } from "@data-provider/core";
+
+const books = new Axios("books-from-api", {
+  url: "/books",
+  tags: ["api"]
+});
+
+providers.getByTag("api").cleanCache();
+```
 
 <hr/>
 
@@ -75,6 +88,19 @@ A group of providers containing the provided tag. The returned "selection" has i
 A selection of providers with the provided id (normally only one). The returned "selection" has its own methods, which are describe in the [providers selection Methods](#providers-selection-methods) chapter below.
 
 > The `providers` object also contains all methods described in the `providers selection` Methods chapter. The only difference is that the `provider selection` will contain all instantiated providers and selectors.
+
+#### Example
+
+```javascript
+import { providers } from "@data-provider/core";
+
+const books = new Axios("books-from-api", {
+  url: "/books",
+  tags: ["api"]
+});
+
+providers.getById("books-from-api").cleanCache();
+```
 
 ## `providers selection` Methods
 
@@ -92,6 +118,14 @@ Calls to the `config` method of selected providers with provided configuration o
 
 The `providers selection` object itself.
 
+#### Example
+
+```javascript
+providers.getByTag("axios").config({
+  baseUrl: "http://localhost:3000"
+});
+```
+
 <hr/>
 
 ### `cleanCache()`
@@ -101,6 +135,18 @@ Cleans the cache of selected providers and selectors.
 #### Returns
 
 The `providers selection` object itself.
+
+#### Examples
+
+```javascript
+providers.getByTag("axios").cleanCache();
+// clean cache of Axios providers
+```
+
+```javascript
+providers.cleanCache();
+// clean cache of all providers and selectors
+```
 
 <hr/>
 
@@ -112,6 +158,18 @@ Resets the state of selected providers and selectors. Read the [providers and se
 
 The `providers selection` object itself.
 
+#### Examples
+
+```javascript
+providers.getByTag("axios").resetState();
+// reset state of all Axios providers
+```
+
+```javascript
+providers.resetState();
+// reset state of all providers
+```
+
 <hr/>
 
 ### `on(eventName, listener)`
@@ -121,6 +179,14 @@ Subscribes the provided listener to the given `eventName` in selected providers.
 #### Returns
 
 _(Function)_: A function that unsubscribes all added listeners.
+
+#### Examples
+
+```javascript
+providers.getByTag("axios").on("readStart", () => {
+  console.log("A provider is fetching from the API");
+});
+```
 
 <hr/>
 
@@ -132,6 +198,14 @@ Subscribes the provided listener to the given `eventName` in selected providers 
 
 _(Function)_: A function that unsubscribes all added listeners.
 
+#### Examples
+
+```javascript
+providers.getByTag("axios").onChild("readStart", () => {
+  console.log("A parametrized request to the API has started");
+});
+```
+
 <hr/>
 
 ### `once(eventName, listener)`
@@ -141,6 +215,15 @@ Subscribes the provided listener to the given `eventName` in selected providers 
 #### Returns
 
 _(Function)_: A function that unsubscribes all added listeners.
+
+#### Examples
+
+```javascript
+providers.getByTag("axios").once("readStart", () => {
+  console.log("A provider has started fetching from the API");
+  console.log("This message will be shown only once");
+});
+```
 
 <hr/>
 
@@ -152,6 +235,15 @@ Subscribes the provided listener to the given `eventName` in selected providers 
 
 _(Function)_: A function that unsubscribes all added listeners.
 
+#### Examples
+
+```javascript
+providers.getByTag("axios").onceChild("readStart", () => {
+  console.log("A parametrized request to the API has started");
+  console.log("This message will be shown only once");
+});
+```
+
 <hr/>
 
 ### `call(methodName, ...arguments)`
@@ -161,6 +253,14 @@ Calls to the given method using given arguments in selected providers and select
 #### Returns
 
 (Array): Array containing the returned results by each one of the providers and selectors. The array will contain `undefined` in the positions corresponding to providers that didn't have the provided method.
+
+#### Examples
+
+```javascript
+providers.getById("book").call("update", {
+  title: "foo"
+});
+```
 
 <hr/>
 
@@ -174,13 +274,31 @@ Calls to the given method using given arguments in selected providers and select
 
 _(Number)_: Total count of selected providers and selectors, including children (queried instances).
 
+#### Example
+
+```javascript
+const size = providers.getByTag("axios").size;
+console.log(`Currently there are ${size} axios providers`);
+console.log(`There are ${providers.size} providers and selectors in total`);
+```
+
 ### `elements`
 
 #### Returns
 
 _(Array)_: Array containing all selected providers and selectors.
 
+#### Example
+
+```javascript
+providers.elements.forEach(provider => {
+  console.log(`Found provider with id ${provider.id}`);
+});
+```
+
 ## Tips
 
 * Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable accross applications.
 * Use the addons automatic tags for configuring all providers of the same type at a time _(as using the "axios" tag to set the `baseUrl` of the API)_
+
+[data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios
