@@ -61,7 +61,7 @@ console.log(completedTasks.state);
 
 * Use clear identificators in your selectors. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console. If you do not provide one, Data Provider will assign one `uuid` automatically.
 * When an `id` is duplicated, Data Provider will automatically append a suffix to it and will print a warning.
-* Define always the `initialState`, it will save you extra format checks in your views, and will avoid an initial extra render, as described in the Arguments API.
+* Define always the `initialState`, it will save you extra format checks in your views, and will avoid an initial extra render, as described in the [Arguments API](#arguments).
 
 <hr/>
 
@@ -126,7 +126,7 @@ const tasksWithUserData = new Selector(
 
 ### As a function returning a dependency
 
-You can define a dependency as a function returning a provider or selector instance, queried or not. This is very powerful, because you can apply different queries to your dependencies based on your own query value, or even based on the results of the previous dependencies, which makes the Selector very composable.
+You can define a dependency as a function returning another dependency in any of the formats described in this chapter. This is very powerful, because you can apply different queries to your dependencies based on your own query value, or even based on the results of the previous dependencies, which makes the Selector very composable.
 
 The provided function should follow the next API:
 
@@ -139,7 +139,7 @@ The provided function should follow the next API:
 
 ##### Returns
 
-Can return a provider or selector instance, queried or not. _(In next releases of Data Provider is expected to allow returning also arrays of dependencies, or any other allowed format of defining dependencies)_
+Can return a dependency in any of the formats described in this chapter.
 
 ```javascript
 const booksWithAuthorNameInTheTitle = new Selector(
@@ -152,16 +152,18 @@ booksWithAuthorNameInTheTitle.query({ author: 5 }).read();
 // Will fetch /authors/5, then /books?title-contains=shakespeare, then return list of books
 ```
 
-### As an object
+### As a `catchDependency` execution
 
-You can define dependencies as an object with next properties:
+You can define selector dependencies using the method `catchDependency` exported by the library. When used, dependencies errors will be catched and the provided `catch` method result will be returned instead.
 
-* __`dependency`__ _(selector dependency)_: A selector dependency defined as a provider or selector instance, or as a function. When it is defined as a function, it should follow the same API described above for the dependencies defined as functions.
-* __`catch`__ _(Function)_: Function that will be executed in case of the dependency is rejected with an error.
+#### `catchDependency(dependency, catchMethod)`
 
-When defining a `catch` property for a dependency, the provided function should follow the next API:
+* __`dependency`__ _(selector dependency)_: A dependency defined in any of the formats described in this chapter.
+* __`catchMethod`__ _(Function)_: Function that will be executed in case of the dependency is rejected with an error.
 
-#### `catch(error, query, previousResults)`
+The provided `catchMethod` function should follow the next API:
+
+#### `catchMethod(error, query, previousResults)`
 
 ##### Arguments
 
@@ -171,17 +173,17 @@ When defining a `catch` property for a dependency, the provided function should 
 
 ##### Returns
 
-Can return any value, and then it will be assumed as the value of the dependency that failed, or another dependency, defined in any of the formats allowed. In the second case, the returned dependency will be read, and the returned value by the failed one will be the value of this new one.
+Can return any other dependency defined in any of the formats allowed. The returned dependency will be read, and the returned value by the failed one will be the value of this new one.
 
 If you throw an error inside the catch function, or return a rejected Promise, then the dependency will be considered as errored, but with your error instead of with the original one.
 
 ```javascript
+import { catchDependency } from "@data-provider/core";
+
 const selector = new Selector(
-  {
-    dependency: tasks,
-    catch: () => [] // returns an empty array when dependency tasks fail
-  },
-  tasksResults => tasksResults
+  catchDependency(tasks, () => []), // returns an empty array when dependency tasks fail
+  catchDependency(users, () => anotherUsersOrigin),// retrieve books from other origin when books fail
+  (tasksResults, usersResults) => tasksResults
 );
 ```
 
@@ -204,7 +206,7 @@ const selector = new Selector(
 );
 ```
 
-Arrays of dependencies are in fact dependencies, and accept any type of dependencies inside, so you could combine them in any of the formats described above:
+Arrays of dependencies are in fact dependencies, and accept any type of dependencies inside, so you could combine them in any of the formats described in this chapter:
 
 ```javascript
 const selector = new Selector(
@@ -218,6 +220,52 @@ const selector = new Selector(
   }
 );
 ```
+
+### As a Promise
+
+You can use a promise directly as a Selector dependency. Resolved value will be the result of the dependency, and it will be considered as errored in case the Promise is rejected. Take into account that Promises __can be used, but you should use them only in exceptional cases__, because one of the main features of the selectors, which is cleaning their own cache when any of the dependencies cache is cleaned obviously __will not work in case of native Promises__.
+
+```javascript
+const selector = new Selector(
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve("foo");
+    }, 3000);
+  }), // Will wait 3 seconds before reading tasks
+  tasks,
+  (promiseResult, tasksResults) => {
+    console.log(promiseResult);
+    // foo
+  }
+);
+```
+
+### As any value
+
+Any value? Yes, if you provide any other value, as a `String`, `Number`, `null`, `undefined`... the "dependency" will be resolved with that value.
+
+This could seem an strange behavior, but in some scenarios you could want to "stop" the dependencies flow depending of the result of a previous dependency. In that case, you could use a dependency defined as a function, and decide to return another dependency, or directly some value, for example:
+
+```javascript
+const selector = new Selector(
+  books,
+  (query, previosResults) => {
+    if (!previosResults.length) {
+      return []; // There are no books, I don't mind the authors, return empty array.
+    }
+    return authors; // There are books. Let's read the "authors" provider.
+  },
+  (booksResults, authorsResults) => {
+    return booksResults.map(book => {
+      return {
+        ...book,
+        authorName: authorsResults.find(author => author.id === book.author)
+      }
+    });
+  }
+);
+```
+
 
 ### Tips
 

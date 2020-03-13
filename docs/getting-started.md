@@ -18,7 +18,7 @@ You can use Data Provider with [React][react], or with any other view library. S
 
 Data Provider is __agnostic about data origins__, so it can be used to read data from a REST API, from localStorage, or from any other origin. Choose one of the available plugins depending of the type of the origin you want to read from, as [@data-provider/axios][data-provider-axios], or [@data-provider/browser-storage][data-provider-browser-storage].
 
-It has a __light weight__, 4.11KB gzipped _(you have to add the Redux weight to this)_, and addons usually are even lighter.
+It has a __light weight__, 4.2KB gzipped in UMD format _(you have to add the Redux weight to this)_, and addons usually are even lighter.
 
 ## Main features
 
