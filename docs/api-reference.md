@@ -14,6 +14,7 @@ About origin addons, methods described here are common to all of them, but some 
 * [providers](api-providers.md)
 * [storeManager](api-store-manager.md)
 * [eventNames](api-events.md)
+* [catchDependency](api-selector.md#as-a-catchdependency-execution)
 
 ## Providers and selectors methods
 
