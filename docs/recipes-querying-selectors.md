@@ -51,7 +51,7 @@ booksTitleIncluding.query({ including: "Cervantes", sort: "asc" }).read();
 // Returns results asc. sorted.
 ```
 
-> As we have mention in the previous example, the title of this example is not exactly true, as server side or client side does not concern to Data Provider. This is only true when we are using an origin that requests to the server. The important thing here to is understand how can we use the selector query to query dependencies.
+> As we have mention in the previous example, the title of this example is not exactly true, as server side or client side does not concern to Data Provider. This is only true when we are using an origin that requests to the server. The important thing here to is understand how can we pass the selector query to the dependencies.
 
 ## Filtering one dependency by the results of the previous one
 
