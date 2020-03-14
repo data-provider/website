@@ -293,7 +293,7 @@ export const booksWithAuthor = new Selector(
         <CodeExampleSection
           id="home-queryable"
           title="Queryable"
-          left={`Providers instances can be queried, which returns a new child instance with his own "query" value.
+          left={`Providers and selectors instances can be queried, which returns a new child instance with his own "query value".
 
 Each different child has a different cache, different state, etc.
 
