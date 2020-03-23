@@ -93,8 +93,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: "img/undraw_online.svg",
-  twitterImage: "img/undraw_tweetstorm.svg",
+  ogImage: "img/og_image.jpg",
+  twitterImage: "img/og_image.jpg",
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
@@ -102,6 +102,12 @@ const siteConfig = {
 
   gaTrackingId: "UA-158982048-1",
   gaGtag: true,
+
+  algolia: {
+    apiKey: "449d11b242930928dc2b89189eda6c5a",
+    indexName: "data-provider",
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
