@@ -132,7 +132,7 @@ class Index extends React.Component {
             {
               title: "Selectors inspired by Reselect",
               content: `Compute data derived from other Providers or Selectors with a [familiar and very powerful syntax](${docUrl(
-                "selectors-dependencies"
+                "api-selector"
               )}).`
             },
             {
