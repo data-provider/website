@@ -102,9 +102,58 @@ const books = new Axios("books-from-api", {
 providers.getById("books-from-api").cleanCache();
 ```
 
+### `onNewProvider(listener)`
+
+Executes the provided listener each time a new provider is created. Useful to add listeners or call to methods of providers that are not even created _(indispensable in a "lazy loading" scenario)_.
+
+#### Arguments
+
+* __`listener`__ _(Function)_: Listener function. It will receive the created provider as first argument.
+
+#### Returns
+
+_(Function)_ A function that unsubscribes the added listener.
+
+#### Example
+
+```javascript
+import { providers } from "@data-provider/core";
+
+providers.onNewProvider((provider) => {
+  console.log(`Added new provider with id: ${provider.id}`);
+});
+
+const books = new Axios("books-from-api", {
+  url: "/books"
+});
+
+// Added new provider with id: books-from-api"
+```
+
 ## `providers selection` Methods
 
 <hr/>
+
+### `onNewProvider(listener)`
+
+Same method than [described before](#onnewproviderlistener), but it can also be used scoped for an specific selection of providers.
+
+#### Example
+
+```javascript
+import { providers } from "@data-provider/core";
+
+providers.getByTag("api").onNewProvider((provider) => {
+  console.log(`Added new api provider with id: ${provider.id}`);
+});
+
+const books = new Axios("books-from-api", {
+  url: "/books",
+  tags: ["api"]
+});
+
+// Added new api provider with id: books-from-api
+```
 
 ### `config(configuration)`
 

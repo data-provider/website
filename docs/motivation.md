@@ -9,7 +9,7 @@ As a front-end developer and what some call an &quot;architect&quot;, I've worke
 
 For simple components this is a relativelly easy job, but, when pieces are connected to data origins or to a global state _(what I usually call a &quot;module&quot;)_, then the thing changes, but why?...
 
-In most cases, despite the fact of following recommended good practices and patterns very extended thanks to great tools and libraries like [React][react], [Redux][redux], [Reselect][reselect], etc. the pieces still were not 100% reusable. Some parts of its logic remained "coupled" to an upper level, which made almost impossible that ones could work without the others in a new and completely isolated environment.
+In most cases, despite the fact of following recommended good practices and patterns _(very extended thanks to great tools and libraries like [React][react], [Redux][redux], [Reselect][reselect], etc.)_ the pieces still were not 100% reusable. Some parts of its logic remained "coupled" to an upper level, which made almost impossible that ones could work without the others in a new and completely isolated environment.
 
 
 ## The causes
@@ -33,11 +33,11 @@ In this way, each piece has __well defined dependencies__, and you can move them
 As a summary, main targets of this project are:
 
 - Separate global state from data cache.
-- Force pieces to always request for the data they need, avoiding a negative performance impact.
+- Force pieces to always request for the data they need (but avoiding a negative performance impact due to usage of an internal cache).
 - Make dependencies with the data clearly identifiable and traceable.
-- Provide selectors allowing to combine data from different data origins or another selectors, keeping the same interface and principles.
+- Provide selectors allowing to combine data from different data origins or other selectors, keeping the same interface and principles.
 - Inform pieces when the cache of a provider is invalidated, so impacted pieces can request the data again.
-- Unify the interfaces of different data origins, in order to isolate the pieces about the knwoledge from where are the data being retrieved.
+- Unify the interfaces of different data origins, in order to isolate the pieces about the knowledge from where are the data being retrieved.
 - Provide simple methods to handle loading and error states.
 
 I hope that, __if this library does not result useful, at least these principles do, because this is the really important part of the project, more than the code itself.__ At the end, all patterns described here can be implemented using combinations of other tools. This project simply tries to facilitate the process.
