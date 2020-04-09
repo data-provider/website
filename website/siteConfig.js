@@ -39,7 +39,7 @@ const siteConfig = {
     { doc: "getting-started", label: "Get started" },
     { doc: "basics-intro", label: "Tutorial" },
     { doc: "api-reference", label: "API" },
-    { page: "help", label: "Help" }
+    { page: "help", label: "Help" },
   ],
 
   // If you have users set above, you add it here:
@@ -53,7 +53,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: "#28509a",
-    secondaryColor: "#6884b8"
+    secondaryColor: "#6884b8",
   },
 
   /* Custom fonts for website */
@@ -75,7 +75,7 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: "atom-one-dark"
+    theme: "atom-one-dark",
   },
 
   usePrism: ["js", "bash"],
@@ -84,7 +84,7 @@ const siteConfig = {
   scripts: [
     "https://buttons.github.io/buttons.js",
     "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
-    "/js/code-block-buttons.js"
+    "/js/code-block-buttons.js",
   ],
 
   // On page navigation for the current documentation page.
@@ -106,7 +106,7 @@ const siteConfig = {
   algolia: {
     apiKey: "449d11b242930928dc2b89189eda6c5a",
     indexName: "data-provider",
-    algoliaOptions: {} // Optional, if provided by Algolia
+    algoliaOptions: {}, // Optional, if provided by Algolia
   },
 
   // Show documentation's last contributor's name.
@@ -127,7 +127,7 @@ const siteConfig = {
   codeOfConductUrl: `${repoUrl}/blob/master/.github/CODE_OF_CONDUCT.md`,
   contributingUrl: `${repoUrl}/blob/master/.github/CONTRIBUTING.md`,
   contributorCovenanceUrl: "https://www.contributor-covenant.org/",
-  nextVersion: "v2.0.0"
+  nextVersion: "v2.0.0",
 };
 
 module.exports = siteConfig;

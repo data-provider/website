@@ -14,23 +14,23 @@ function Help(props) {
     githubProjectUrl,
     codeOfConductUrl,
     contributingUrl,
-    contributorCovenanceUrl
+    contributorCovenanceUrl,
   } = siteConfig;
   const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
   const langPart = `${language ? `${language}/` : ""}`;
-  const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+  const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
 
   const supportLinks = [
     {
       content: `Learn more about using the [documentation on this site.](${docUrl(
         "getting-started"
       )})`,
-      title: "Browse Docs"
+      title: "Browse Docs",
     },
     {
       content: `Find out what's new with this project in the [github project](${githubProjectUrl}).`,
-      title: "Stay up to date"
-    }
+      title: "Stay up to date",
+    },
   ];
 
   return (
@@ -68,7 +68,7 @@ function Help(props) {
 
 Help.propTypes = {
   config: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
 };
 
 module.exports = Help;
