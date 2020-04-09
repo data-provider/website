@@ -101,7 +101,7 @@ class Footer extends React.Component {
 
 Footer.propTypes = {
   config: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
 };
 
 module.exports = Footer;

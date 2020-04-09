@@ -46,7 +46,7 @@ CodeExampleSection.propTypes = {
   background: PropTypes.string,
   title: PropTypes.string,
   left: PropTypes.string,
-  right: PropTypes.string
+  right: PropTypes.string,
 };
 
 class HomeSplash extends React.Component {
@@ -55,9 +55,9 @@ class HomeSplash extends React.Component {
     const { baseUrl, docsUrl } = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
     const langPart = `${language ? `${language}/` : ""}`;
-    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
 
-    const SplashContainer = props => (
+    const SplashContainer = (props) => (
       <div className="homeContainer">
         <div className="homeSplashFade">
           <div className="wrapper homeWrapper">{props.children}</div>
@@ -82,7 +82,7 @@ class HomeSplash extends React.Component {
       </h3>
     );
 
-    const PromoSection = props => (
+    const PromoSection = (props) => (
       <div className="section promoSection">
         <div className="promoRow">
           <div className="pluginRowBlock">{props.children}</div>
@@ -90,7 +90,7 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const Button = props => (
+    const Button = (props) => (
       <div className="pluginWrapper buttonWrapper">
         <a className="button get-started" href={props.href} target={props.target}>
           {props.children}
@@ -114,7 +114,7 @@ class HomeSplash extends React.Component {
 
 HomeSplash.propTypes = {
   siteConfig: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
 };
 
 class Index extends React.Component {
@@ -123,7 +123,7 @@ class Index extends React.Component {
     const { baseUrl, docsUrl } = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
     const langPart = `${language ? `${language}/` : ""}`;
-    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
 
     const Features = () => (
       <Container id="home-features" background="light">
@@ -133,16 +133,16 @@ class Index extends React.Component {
               title: "Selectors inspired by Reselect",
               content: `Compute data derived from other Providers or Selectors with a [familiar and very powerful syntax](${docUrl(
                 "api-selector"
-              )}).`
+              )}).`,
             },
             {
               title: "Cache and memoization",
-              content: `Optimized. Don't care about how many times do you call simultaneously to read a provider.`
+              content: `Optimized. Don't care about how many times do you call simultaneously to read a provider.`,
             },
             {
               title: "Data, loading and error states",
-              content: `Handling asynchronies implies handling error and loading states. Data Provider makes this job for you.`
-            }
+              content: `Handling asynchronies implies handling error and loading states. Data Provider makes this job for you.`,
+            },
           ]}
           layout="fourColumn"
         />
@@ -382,18 +382,18 @@ authorProvider.onChild("*", eventName => {
     );
 
     const Showcase = () => {
-      const pinnedUsers = siteConfig.users ? siteConfig.users.filter(user => user.pinned) : [];
+      const pinnedUsers = siteConfig.users ? siteConfig.users.filter((user) => user.pinned) : [];
       if (pinnedUsers.length === 0) {
         return null;
       }
 
-      const showcase = pinnedUsers.map(user => (
+      const showcase = pinnedUsers.map((user) => (
         <a href={user.infoLink} key={user.infoLink}>
           <img src={user.image} alt={user.caption} title={user.caption} />
         </a>
       ));
 
-      const pageUrl = page => baseUrl + (language ? `${language}/` : "") + page;
+      const pageUrl = (page) => baseUrl + (language ? `${language}/` : "") + page;
 
       return (
         <div className="productShowcaseSection paddingBottom ">
@@ -430,7 +430,7 @@ authorProvider.onChild("*", eventName => {
 
 Index.propTypes = {
   config: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
 };
 
 module.exports = Index;

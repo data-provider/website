@@ -7,8 +7,8 @@ const users = [
     // if it is not '/', like: '/test-site/img/image.jpg'.
     image: "https://domapic.com/assets/domapic-logo.png",
     infoLink: "https://www.domapic.com",
-    pinned: false
-  }
+    pinned: false,
+  },
 ];
 
 module.exports = users;
