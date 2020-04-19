@@ -94,7 +94,7 @@ const siteConfig = {
 
   // Open Graph and Twitter card images.
   ogImage: "img/og_image.jpg",
-  twitterImage: "img/og_image.jpg",
+  twitterImage: "img/og_image_twitter.jpg",
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
