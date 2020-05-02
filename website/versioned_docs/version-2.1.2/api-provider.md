@@ -1,6 +1,7 @@
 ---
-id: api-provider
+id: version-2.1.2-api-provider
 title: Provider
+original_id: api-provider
 ---
 
 A Provider defines an specific resource of a data origin.
@@ -17,8 +18,6 @@ When we create a Provider, we'll get a provider instance that should be alive du
 
 2. __`options`__ _(Object)_: Options will differ depending of the type of origin. Here are described the properties in the options object that are common to all origins addons. For specific options of different origin addons, please refer to its own documentation.
 	* __`cache`__ _(Boolean)_: If `false`, will disable the cache, and the `readMethod` defined by the origin will be called always, which could result in a negative performance impact. It is `true` by default, and normally should not be disabled.
-	* __`cacheTime`__ _(Number)_: Miliseconds. After this time, the cache will be invalidated and the `readMethod` will be executed again when `read` is called. When the cache is invalidated it does not trigger a `cleanCache` event.
-	* __`cleanCacheInterval`__ _(Number)_: Miliseconds. The cache is automatically cleaned every defined interval. The `cleanCache` event is triggered each time the cache is cleaned. When the cache is cleaned by any other process, the interval counter is resetted to zero. Setting this option to `null` will remove previously defined interval.
 	* __`tags`__ _(Array of Strings)_: Defines tags for the provider instance, which can be used afterwards to manage groups of providers [using the `providers` object](api-providers.md). _Origin addons should usually automatically add his own tag to the beggining of the provided array, to allow configuring easily all providers of a same type._
 	* __`initialState`__ _(Object)_: Object containing `loading`, `error` and `data` properties, which will define the initial state of the provider, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then inmediatelly `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will save that extra render in the initialization)._
 
