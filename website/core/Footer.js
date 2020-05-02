@@ -46,16 +46,7 @@ class Footer extends React.Component {
             </a>
           </div>
           <div>
-            <h5>More</h5>
-            <a href={this.props.config.organizationUrl} target="_blank" rel="noreferrer noopener">
-              GitHub
-            </a>
-            <a href={this.props.config.npmUrl} target="_blank" rel="noreferrer noopener">
-              <img
-                src="https://img.shields.io/npm/dm/@data-provider/core.svg"
-                alt="NPM Downloads"
-              />
-            </a>
+            <h5>Social</h5>
             <a
               className="github-button"
               href={this.props.config.repoUrl}
@@ -65,7 +56,13 @@ class Footer extends React.Component {
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub"
             >
-              Star
+              Github stars
+            </a>
+            <a href={this.props.config.npmUrl} target="_blank" rel="noreferrer noopener">
+              <img
+                src="https://img.shields.io/npm/dm/@data-provider/core.svg"
+                alt="NPM Downloads"
+              />
             </a>
             {this.props.config.twitterUsername && (
               <div className="social">
