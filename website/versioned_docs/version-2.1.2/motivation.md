@@ -17,6 +17,8 @@ In most cases, despite the fact of following recommended good practices and patt
 
 I realized that usually it was due to the fact that these pieces, without even realizing it, were __delegating part of their responsibilities to another one__, normally at charge of making a preliminary initialization, recovering certain data and setting it into the "state" _(a very usual example of this is the case where the user data are retrieved during the login phase, then saved into the state, and then accessed afterwards by a lot of pieces which are presupposing that the data are always there, ready to be used)_
 
+![Wrong state usage](assets/schemas/wrong-state-usage.svg)
+
 Most of times this is made simply because we want to optimize, save resources avoiding multiple calls to the server and unnecessary extra computations, but, following this pattern, we are __making our pieces completely dependant__, in a dark way. Those pieces can not be instantiated without the other ones, and problably requiring an specific load order. Which is worse, the first piece is probably preparing or formatting the data in an specific way to which the rest of pieces can be highly coupled without ever knowing about. This "dark" dependencies can easily propagate by the entire system without having notice, and, if you are not very careful, all the system becomes an indivisible and "monolithic" great piece of software. You could end working in an scenario in which hundred of invisible dependencies make almost impossible to remove, modify, or replace some pieces _(guess which ones)_ without tons of pain, __that is the time when you can rename your project to "Domino blocks play".__
 
 At the heart of the matter, __the problem is to use the global state as a cache for the data__, and, as it is "global", an orchestrator is needed to be at charge about when to retrieve the data, when to invalidate caches and retrieve the data again, etc. If there is no a clear "orchestrator", we usually delegate this responsibilities to the piece that seems to be the responsible one _(as in the login example)_, but, doing this, __we are making dependant all the other pieces needing some part of the same data.__
@@ -24,6 +26,8 @@ At the heart of the matter, __the problem is to use the global state as a cache 
 ## The solution
 
 So, maybe the solution can be to __make every single piece responsible of requesting always the data it needs__ _(connecting always them to the providers they want to read)_, and doing it __in the most granular way possible__, requesting only the data they want, and in the format they expect _(using specific selectors)_.
+
+![Data Provider usage](assets/schemas/data-provider-usage.svg)
 
 This solution simply is at charge of providing cache and memoization in order to __avoid unnecesary resources comsumption__, and to abstract the pieces about the fact of from where are they reading the data. They don't need to know about the existance of an API, or an State, or localStorage, or whatever. They simply need the data, is the "data layer" which should be the one responsible of knowing about where the data is being retrieved or sended.
 
