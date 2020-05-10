@@ -33,6 +33,8 @@ As a summary, what Data Provider gives to you is:
 
 And, the most important thing... __promotes isolation from the data layer, and separates your data cache from your global state.__
 
+[![Data Provider architecture schema](assets/schemas/data-provider-architecture.jpg)](/img/architecture-scheme.png)
+
 ## Installation
 
 Data Provider is available as a package in the NPM registry:

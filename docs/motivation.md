@@ -32,6 +32,8 @@ This solution simply is at charge of providing cache and memoization in order to
 
 In this way, each piece has __well defined dependencies__, and you can move them from one project to another _(or from one part of your project to another)_ without problem. The data will be requested and processed only when necessary, and only once (until the data decides that one cache has to be cleaned, then all of the pieces connected to that data are informed about, so they can request it again).
 
+[![Data Provider usage example](assets/schemas/data-provider-usage-architecture.jpg)](/img/front-end-architecture.png)
+
 ## Concepts
 
 As a summary, main targets of this project are:
