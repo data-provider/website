@@ -37,7 +37,13 @@ class Footer extends React.Component {
           </div>
           <div>
             <h5>Community</h5>
-            <a href={this.pageUrl("users", this.props.language)}>User Showcase</a>
+            <a
+              href="https://opencollective.com/data-provider"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Become a backer
+            </a>
             <a href={this.props.config.contributingUrl} target="_blank" rel="noreferrer noopener">
               Contributors guidelines
             </a>

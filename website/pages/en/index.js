@@ -409,6 +409,22 @@ authorProvider.onChild("*", eventName => {
       );
     };
 
+    const Backer = () => (
+      <div
+        className="backersSection paddingBottom"
+        style={{ textAlign: "center" }}
+        id="become-a-backer"
+      >
+        <a
+          href="https://opencollective.com/data-provider"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="https://opencollective.com/data-provider/tiers/backer.svg?avatarHeight=100" />
+        </a>
+      </div>
+    );
+
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
@@ -422,6 +438,7 @@ authorProvider.onChild("*", eventName => {
           <Events />
           <Motivation />
           <Showcase />
+          <Backer />
         </div>
       </div>
     );
