@@ -6,7 +6,7 @@ original_id: getting-started
 
 ## Getting started with Data Provider
 
-Data Provider is a data provider _(surprise!)_ with states ands built-in cache for JavaScript apps.
+Data Provider is a data provider _(surprise!)_ with states and built-in cache for JavaScript apps.
 
 The main target of the library are front-end applications, but it could be used also in [Node.js][nodejs].
 
@@ -145,7 +145,7 @@ _NOTE: This is a very basic example of what @data-provider/react can do. In a re
 
 ## Next steps
 
-Previous examples don't show the real power of Data Provider, and how it should be used to isolate completely your components from the data layer, where a great part of the business rules should reside.
+Previous examples don't show the real power of Data Provider, and how it could be used to isolate completely your components from the data layer, where a great part of the business rules should reside.
 
 In next chapters we will try to show you how the cache of a "collection" can be cleaned automatically when a "model" is updated, how to use selectors dependencies to completely manage all your data using them, how to define "queries" for the origins _(as url parameters or query strings)_ can be delegated completely to the selectors, etc.
 
