@@ -4,6 +4,8 @@ title: Motivation
 original_id: motivation
 ---
 
+### Why you should not use your app state as a data cache
+
 ## The problem
 
 As a front-end developer and what some call an &quot;architect&quot;, I've worked in very big projects, so I spent lot of time of last years trying to achieve a fully modular system in which the different front-end teams could __reuse elements across many applications__.
