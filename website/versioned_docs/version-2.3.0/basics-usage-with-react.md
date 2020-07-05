@@ -1,6 +1,7 @@
 ---
-id: basics-usage-with-react
+id: version-2.3.0-basics-usage-with-react
 title: Usage with React
+original_id: basics-usage-with-react
 ---
 
 From the very beginning, we need to stress that Data Provider has no relation to React. You can use Data Provider with React, Angular, Vue, jQuery, or vanilla JavaScript.

@@ -1,6 +1,7 @@
 ---
-id: basics-actions
+id: version-2.3.0-basics-actions
 title: Actions
+original_id: basics-actions
 ---
 
 ## Defining actions for providers

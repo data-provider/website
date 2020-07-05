@@ -1,6 +1,7 @@
 ---
-id: api-store-manager
+id: version-2.3.0-api-store-manager
 title: storeManager
+original_id: api-store-manager
 ---
 
 ## Purpose
