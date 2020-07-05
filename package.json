@@ -1,7 +1,6 @@
 {
   "name": "data-provider-website",
   "description": "Data Provider documentation website",
-  "version": "2.0.0-alpha.4",
   "private": true,
   "author": "Javier Brea",
   "license": "MIT",

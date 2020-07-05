@@ -1,7 +1,8 @@
 ---
-id: basics-selectors
+id: version-2.3.0-basics-selectors
 title: Selectors
 sidebar_label: Selectors
+original_id: basics-selectors
 ---
 
 ## Defining selectors
