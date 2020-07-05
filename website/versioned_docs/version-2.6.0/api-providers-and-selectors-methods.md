@@ -1,7 +1,8 @@
 ---
-id: api-providers-and-selectors-methods
+id: version-2.6.0-api-providers-and-selectors-methods
 title: Providers and selectors methods
 sidebar_label: Methods
+original_id: api-providers-and-selectors-methods
 ---
 
 This chapter describes all methods common to providers and selectors. If you haven't done it already, we recommend you to first read the [Selector API](api-selector.md) and [Provider API](api-provider.md) to deeply learn what they are, and how to create them.
