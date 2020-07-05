@@ -12,6 +12,9 @@
       "basics-usage-with-react",
       "basics-example"
     ],
+    "Addons": [
+      "addons-creating-custom-origins"
+    ],
     "Recipes": [
       "recipes-index",
       "recipes-querying-selectors"

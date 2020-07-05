@@ -1,0 +1,36 @@
+{
+  "version-2.6.0-docs": {
+    "Welcome": ["version-2.6.0-about-docs"],
+    "Introduction": [
+      "version-2.6.0-getting-started",
+      "version-2.6.0-motivation",
+      "version-2.6.0-installation"
+    ],
+    "Basic Tutorial": [
+      "version-2.6.0-basics-intro",
+      "version-2.6.0-basics-providers",
+      "version-2.6.0-basics-selectors",
+      "version-2.6.0-basics-queries",
+      "version-2.6.0-basics-actions",
+      "version-2.6.0-basics-configuration",
+      "version-2.6.0-basics-usage-with-react",
+      "version-2.6.0-basics-example"
+    ],
+    "Addons": [
+      "version-2.6.0-addons-creating-custom-origins"
+    ],
+    "Recipes": [
+      "version-2.6.0-recipes-index",
+      "version-2.6.0-recipes-querying-selectors"
+    ],
+    "API Reference": [
+      "version-2.6.0-api-reference",
+      "version-2.6.0-api-provider",
+      "version-2.6.0-api-selector",
+      "version-2.6.0-api-providers",
+      "version-2.6.0-api-store-manager",
+      "version-2.6.0-api-providers-and-selectors-methods",
+      "version-2.6.0-api-events"
+    ]
+  }
+}
