@@ -147,6 +147,21 @@ books.read(); // Request to /books
 
 <hr/>
 
+### `cleanDependenciesCache()`
+
+Cleans the cache of all dependencies of a selector. If called on a provider, it only cleans de provider cache (it is equivalent to call to `cleanCache`).
+
+#### Example
+
+```javascript
+booksAndAuthors.read(); // Selector reading `books` and `authors` providers. Request to /books and /authors
+booksAndAuthors.read(); // Does not request, as Promise is cached.
+booksAndAuthors.cleanDependenciesCache();
+booksAndAuthors.read(); // As providers cache was cleaned, the selector is read again, and both providers requests are repeated.
+```
+
+<hr/>
+
 ### `resetState()`
 
 Resets the `data`, `loading`, `loaded` and `error` state properties to its original state (the ones defined in the `initialState` option, or the default ones `{ data:undefined, error: null }` if no `initialState` was defined).
