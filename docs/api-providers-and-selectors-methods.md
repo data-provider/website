@@ -44,7 +44,7 @@ When you use the `query` method of a provider or selector that also was created 
 
 #### Arguments
 
-* `queryValue` _(Object)_: Object to be set as `queryValue` in the returned provider or selector.
+* __`queryValue`__ _(Object)_: Object to be set as `queryValue` in the returned provider or selector.
 
 #### Returns
 
@@ -82,8 +82,8 @@ Origins addons normally require to receive the `queryValue` with an specific for
 
 #### Arguments
 
-* `name` _(String)_: Name of the new custom query method to be defined, which will be accesible as `provider.queries[name]`
-* `queryMaker` _(Function)_: Function receiving any value, and returning a  `queryValue` ready to be used by the `query` method of the provider or selector.
+* __`name`__ _(String)_: Name of the new custom query method to be defined, which will be accesible as `provider.queries[name]`
+* __`queryMaker`__ _(Function)_: Function receiving any value, and returning a  `queryValue` ready to be used by the `query` method of the provider or selector.
 
 #### Returns
 
@@ -116,7 +116,7 @@ There are some options that only have effect when they are defined in the initia
 
 #### Arguments
 
-* `options` _(Object)_: Object containing options. Read the [Provider api](api-provider.md) and [Selector api](api-selector.md) pages for further info.
+* __`options`__ _(Object)_: Object containing options. Read the [Provider api](api-provider.md) and [Selector api](api-selector.md) pages for further info.
 
 #### Example
 
@@ -147,9 +147,14 @@ books.read(); // Request to /books
 
 <hr/>
 
-### `cleanDependenciesCache()`
+### `cleanDependenciesCache(options)`
 
 Cleans the cache of all dependencies of a selector. If called on a provider, it only cleans de provider cache (it is equivalent to call to `cleanCache`).
+
+#### Arguments
+
+* __`options`__ _(Object)_: Object containing options.
+  * __`except`__ _(Array)_: Array of provider or selectors instances which cache should not be cleaned. Then, all dependencies cache will be cleaned except these.
 
 #### Example
 
@@ -158,6 +163,10 @@ booksAndAuthors.read(); // Selector reading `books` and `authors` providers. Req
 booksAndAuthors.read(); // Does not request, as Promise is cached.
 booksAndAuthors.cleanDependenciesCache();
 booksAndAuthors.read(); // As providers cache was cleaned, the selector is read again, and both providers requests are repeated.
+booksAndAuthors.cleanDependenciesCache({
+  except: [books] // Cleans all dependencies cache except the books one
+});
+booksAndAuthors.read(); // Now only authors provider is read. Books remains cached.
 ```
 
 <hr/>
@@ -213,8 +222,8 @@ Adds `listener` to the given `eventName` when it occurs in any of the provider o
 
 #### Arguments
 
-* `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched in any of the selector or provider "children".
+* __`eventName`__ _(String)_: Event name to subscribe to.
+* __`listener`__ _(Function)_: The callback to be invoked when the specific `eventName` is dispatched in any of the selector or provider "children".
 
 #### Returns
 
@@ -241,8 +250,8 @@ Adds `listener` to the given `eventName`. The `listener` will be automatically u
 
 #### Arguments
 
-* `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched.
+* __`eventName`__ _(String)_: Event name to subscribe to.
+* __`listener`__ _(Function)_: The callback to be invoked when the specific `eventName` is dispatched.
 
 #### Returns
 
@@ -269,8 +278,8 @@ Adds `listener` to the given `eventName` when it occurs in any of the provider o
 
 #### Arguments
 
-* `eventName` _(String)_: Event name to subscribe to.
-* `listener` _(Function)_: The callback to be invoked when the specific `eventName` is dispatched in any of the selector or provider "children".
+* __`eventName`__ _(String)_: Event name to subscribe to.
+* __`listener`__ _(Function)_: The callback to be invoked when the specific `eventName` is dispatched in any of the selector or provider "children".
 
 #### Returns
 
