@@ -1,6 +1,7 @@
 ---
-id: api-provider
+id: version-2.6.0-api-provider
 title: Provider
+original_id: api-provider
 ---
 
 A Provider defines an specific resource of a data origin.
@@ -99,3 +100,5 @@ This getter returns the result of the `initialState` option originally defined a
 ### `emit(eventName, data)`
 
 Addons can also emit its own events. Read the ["events"](api-events.md) chapter for further info.
+
+
