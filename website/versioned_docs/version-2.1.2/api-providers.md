@@ -131,6 +131,10 @@ const books = new Axios("books-from-api", {
 // Added new provider with id: books-from-api"
 ```
 
+### `clear()`
+
+Clears all registered providers, which will not be available any more for selecting them using previously mentioned `providers` methods. This method is intended to be used for testing and internal usage only.
+
 ## `providers selection` Methods
 
 <hr/>
