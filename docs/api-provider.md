@@ -7,7 +7,7 @@ A Provider defines an specific resource of a data origin.
 
 When we create a Provider, we'll get a provider instance that should be alive during the whole live of our application, as it is going to be at charge of the cache, avoiding unnecesary resources compsumption while the data origin has not changed.
 
-> The Provider class should not be used directly to create providers. It is the base from which specific origins implementations should extend (read the ["How to create custom origins addons"](addons-creating-custom-origins.md) chapter for further info). Here are described the arguments and options that are common to all origins addons. For specific options of each addon please read its own documentation.
+> The Provider class should not be used directly to create providers. It is the base from which specific origins implementations should extend (read the ["How to create origin addons"](addons-creating-origin-addons.md) chapter for further info). Here are described the arguments and options that are common to all origins addons. For specific options of each addon please read its own documentation.
 
 ## `Provider(id, [options])`
 
@@ -59,7 +59,7 @@ console.log(provider.state);
 
 ### Overwritable methods for creating addons
 
-In the Provider class there are some special methods and getters that can be overwritten when creating custom origins (read the ["How to create custom origins addons"](addons-creating-custom-origins.md) for further info):
+In the Provider class there are some special methods and getters that can be overwritten when creating custom origins (read the ["How to create origin addons"](addons-creating-origin-addons.md) for further info):
 
 ### `initialState`
 
