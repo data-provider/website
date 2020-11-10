@@ -17,7 +17,8 @@
       "version-2.6.0-basics-example"
     ],
     "Addons": [
-      "version-2.6.0-addons-creating-custom-origins"
+      "version-2.6.0-addons-intro",
+      "version-2.6.0-addons-creating-origin-addons"
     ],
     "Recipes": [
       "version-2.6.0-recipes-index",

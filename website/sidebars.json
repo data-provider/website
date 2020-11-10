@@ -13,7 +13,8 @@
       "basics-example"
     ],
     "Addons": [
-      "addons-creating-custom-origins"
+      "addons-intro",
+      "addons-creating-origin-addons"
     ],
     "Recipes": [
       "recipes-index",
