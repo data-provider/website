@@ -1,6 +1,7 @@
 ---
-id: api-selector
+id: version-2.7.0-api-selector
 title: Selector
+original_id: api-selector
 ---
 
 A Selector combines origins or other selectors (what we call __"dependencies"__), and returns a new result.
