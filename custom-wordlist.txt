@@ -19,6 +19,7 @@ devTools
 Docusaurus
 errored
 ESM
+eventNames
 flickerings
 getter
 getters

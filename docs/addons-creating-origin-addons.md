@@ -26,7 +26,7 @@ Our addon will accept a `baseUrl` option, which will be defined when instantiati
 
 It is a very simple scenario, but it will be useful to illustrate the example. If you want to use a more complex data-provider origin to connect an application to a REST API and handle a lot of possible complex scenarios take a look at the [Axios][axios] addon.
 
-Define a `configMethod` in the Class. It will receive the options when initialized and also when the `config` method is called, so the baseUrl could be also changed after initializing it.
+Define a `configMethod` in the Class. It will receive the options when initialized and also when the `config` method is called, so the `baseUrl` could be also changed after initializing it.
 Store the `baseUrl` option in an internal property of the class.
 
 ```js
