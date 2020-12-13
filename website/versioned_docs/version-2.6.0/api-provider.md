@@ -95,7 +95,7 @@ There are also other methods and getters intended to be used only internally by 
 
 ### `initialStateFromOptions`
 
-This getter returns the result of the `initialState` option originally defined as an option to the provider. It is useful when overwritting the `initialState` getter, because addons can consult the original option and act in consequence.
+This getter returns the result of the `initialState` option originally defined as an option to the provider. It is useful when overwriting the `initialState` getter, because addons can consult the original option and act in consequence.
 
 ### `emit(eventName, data)`
 
