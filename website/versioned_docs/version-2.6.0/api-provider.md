@@ -64,7 +64,7 @@ In the Provider class there are some special methods and getters that can be ove
 
 ### `initialState`
 
-Getter used to calculate the initial state of the provider when it is instantiated. It usually returns the `initialState` from options as defined above, but this getter can be overwritten by plugins in order to change this behavior. For example, you could retrieve the real value from the data origin in case it is synchronous and return it as "data" property of the "initialState", this is how the addon ["browser-storage"](https://github.com/data-provider/browser-storage) works, for example.
+Getter used to calculate the initial state of the provider when it is instantiated. It usually returns the `initialState` from options as defined above, but this getter can be overwritten by plugins in order to change this behavior. For example, you could retrieve the real value from the data origin in case it is synchronous and return it as "data" property of the `initialState`, this is how the addon ["browser-storage"](https://github.com/data-provider/browser-storage) works, for example.
 
 ### `configMethod(newOptions)`
 

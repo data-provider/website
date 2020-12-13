@@ -4,7 +4,7 @@ APIs
 addon
 addons
 async
-Axios
+axios
 bundler
 catched
 chainable
@@ -36,14 +36,15 @@ overwritable
 orchestrator
 presentational
 precompiled
+Prismic
 queryable
 README.md
-Redux
+redux
 reusability
 Reselect
 resetted
-Prismic
 Rollup
+storeManager
 theirself
 UI
 UMD

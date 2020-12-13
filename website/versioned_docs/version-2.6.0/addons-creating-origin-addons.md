@@ -5,7 +5,7 @@ sidebar_label: Creating origin addons
 original_id: addons-creating-origin-addons
 ---
 
-Data Provider is agnostic about data origins, so it can be used to read data from a REST API, from localStorage, or from any other origin. Custom addons are distributed for each different type of origin, and you can even create your owns.
+Data Provider is agnostic about data origins, so it can be used to read data from a REST API, from `localStorage`, or from any other origin. Custom addons are distributed for each different type of origin, and you can even create your owns.
 
 In this guide we'll walk through the process of creating a simple "fetch" Data Provider origin able to perform Ajax requests, allowing to connect an application to a REST Api. The complete source code of the guide is in our [repository of examples][examples], and all used methods are described in the [Provider API](api-provider.md).
 
