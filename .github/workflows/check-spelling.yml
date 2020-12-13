@@ -1,4 +1,4 @@
-name: build
+name: check-spelling
 on:
   push:
     branches:
