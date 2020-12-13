@@ -39,7 +39,7 @@ Creates a new child instance of the provider and returns it. The new instance wi
 
 Returned instance will maintain a relation with its "parent" in some way. Internally they are called "children", because when the cache of the "parent" resource is cleaned, all the children caches are cleaned too. _(For example, cleaning the cache of an API origin requesting to "/api/books", will also clean the cache of "/api/books?author=2")_
 
-Different Provider addons will use the current `queryValue` in different ways when consulting the specific data origin _(for example, [@data-provider/axios][data-provider-axios] will use the `queryValue` to define url params or query strings when requesting to the API, but [@data-provider/browser-storage][data-provider-browser-storage] will access to an specific key of the value saved in the browser storage)_.
+Different Provider addons will use the current `queryValue` in different ways when consulting the specific data origin _(for example, [@data-provider/axios][data-provider-axios] will use the `queryValue` to define url parameters or query strings when requesting to the API, but [@data-provider/browser-storage][data-provider-browser-storage] will access to an specific key of the value saved in the browser storage)_.
 
 When you use the `query` method of a provider or selector that also was created using `query`, the resultant `queryValue` will be the extension of the provided one and the previous one. In other words, queries are "chainable" and maintain the "scope". See the examples below for better understand.
 

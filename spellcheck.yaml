@@ -1,23 +1,4 @@
 matrix:
-- name: JavaScript
-  sources:
-  - '**/*.js'
-  expect_match: false
-  aspell:
-    lang: en
-  dictionary:
-    wordlists:
-    - wordlist.txt
-    output: wordlist.dic
-    encoding: utf-8
-  pipeline:
-  - pyspelling.filters.javascript:
-      jsdocs: true
-      line_comments: true
-      block_comments: true
-      group_comments: false
-      decode_escapes: true
-      strings: false
 - name: Markdown
   expect_match: false
   apsell:
