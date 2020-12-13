@@ -9,7 +9,7 @@ title: Motivation
 
 As a front-end developer and what some call an &quot;architect&quot;, I've worked in very big projects, so I spent lot of time of last years trying to achieve a fully modular system in which the different front-end teams could __reuse elements across many applications__.
 
-For simple components this is a relativelly easy job, but, when the elements are connected to data origins or to a global state _(what I usually call a &quot;module&quot;)_, then the thing changes, but why?...
+For simple components this is a relatively easy job, but, when the elements are connected to data origins or to a global state _(what I usually call a &quot;module&quot;)_, then the thing changes, but why?...
 
 In most cases, despite the fact of following recommended good practices and patterns _(very extended thanks to great tools and libraries like [React][react], [Redux][redux], [Reselect][reselect], etc.)_ the elements still were not 100% reusable. Some parts of its logic remained "coupled" to an upper level, which made almost impossible that ones could work without the others in a new and completely isolated environment.
 

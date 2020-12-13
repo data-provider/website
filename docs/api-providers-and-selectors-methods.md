@@ -154,7 +154,7 @@ books.read(); // Request to /books
 
 ### `cleanDependenciesCache(options)`
 
-Cleans the cache of all dependencies of a selector. If called on a provider, it only cleans de provider cache (it is equivalent to call to `cleanCache`).
+Cleans the cache of all dependencies of a selector. If called on a provider, it only cleans the provider cache (it is equivalent to call to `cleanCache`).
 
 #### Arguments
 

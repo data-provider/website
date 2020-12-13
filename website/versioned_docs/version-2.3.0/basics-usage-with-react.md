@@ -35,7 +35,7 @@ About what Redux docs call "Container Components", here we are going to call the
 
 ## Presentational components
 
-We also have to mention that __we are not going to worry about the performance of the example__. You'll see here some "React bad patterns" that should be avoided in a real app, as defining callbacks directly in the components props using arrow functions. But again, the purpose of this guide is not to learn about how to use React, so, we made this intentionally in favour of the examples simplicity.
+We also have to mention that __we are not going to worry about the performance of the example__. You'll see here some "React bad patterns" that should be avoided in a real app, as defining callbacks directly in the components props using arrow functions. But again, the purpose of this guide is not to learn about how to use React, so, we made this intentionally in favor of the examples simplicity.
 
 ### `components/Todo.js`
 

@@ -14,7 +14,7 @@ There are four methods available for adding listeners to providers or selectors:
 Their APIS are described in the [providers and selectors methods API page](api-providers-and-selectors-methods.md), and their names should be descriptive enough to fully understand the purpose of each one, but, anyway:
 
 * Methods prefixed with `once` automatically unsubscribe the provided listener after its first execution.
-* Methods suffixed with `Child` subscribe the listener to events happening on any [children (queried intances)](api-providers-and-selectors-methods.md#queryqueryvalue) of the provider or selector.
+* Methods suffixed with `Child` subscribe the listener to events happening on any [children (queried instances)](api-providers-and-selectors-methods.md#queryqueryvalue) of the provider or selector.
 
 ## Arguments
 

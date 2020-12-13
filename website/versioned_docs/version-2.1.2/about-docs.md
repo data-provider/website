@@ -17,7 +17,7 @@ The structure and style of this documentation is highly inspired by the [Redux d
 
 ## Apologies
 
-The main author of this docs is not a native english language speaker (he is far from being it), so we apologize for any misspelling or bad syntax. If you detect any of these errors, please [let us know][issues-url] or [contribute fixing it][repo-docs-url]. Thanks in advance.
+The main author of this docs is not a native English language speaker (he is far from being it), so we apologize for any misspelling or bad syntax. If you detect any of these errors, please [let us know][issues-url] or [contribute fixing it][repo-docs-url]. Thanks in advance.
 
 ## Something Missing?
 

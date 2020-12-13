@@ -191,7 +191,7 @@ This is only an example in which two API calls are executed when the Post compon
 ## Custom methods
 
 For the moment our addon only can perform GET requests to the API, so let's add some methods to it to allow updating a resource.
-Our method will send a PATCH request and will clean the cache of the resource when it receives a sucess response.
+Our method will send a PATCH request and will clean the cache of the resource when it receives a success response.
 
 ```js
 export class Fetcher extends Provider {
