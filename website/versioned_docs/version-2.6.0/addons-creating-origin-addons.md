@@ -23,11 +23,11 @@ export class Fetcher extends Provider {
 
 ## Options
 
-Our addon will accept a "baseUrl" option, which will be defined when instantiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
+Our addon will accept a `baseUrl` option, which will be defined when instantiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
 
 It is a very simple scenario, but it will be useful to illustrate the example. If you want to use a more complex data-provider origin to connect an application to a REST API and handle a lot of possible complex scenarios take a look at the [Axios][axios] addon.
 
-Define a "configMethod" in the Class. It will receive the options when initialized and also when the `config` method is called, so the baseUrl could be also changed after initializing it.
+Define a `configMethod` in the Class. It will receive the options when initialized and also when the `config` method is called, so the baseUrl could be also changed after initializing it.
 Store the `baseUrl` option in an internal property of the class.
 
 ```js
@@ -192,7 +192,7 @@ This is only an example in which two API calls are executed when the Post compon
 ## Custom methods
 
 For the moment our addon only can perform GET requests to the API, so let's add some methods to it to allow updating a resource.
-Our method will send a PATCH request and will clean the cache of the resource when it receives a sucess response.
+Our method will send a PATCH request and will clean the cache of the resource when it receives a success response.
 
 ```js
 export class Fetcher extends Provider {

@@ -31,7 +31,7 @@ So, maybe the solution can be to __make every single element responsible of requ
 
 ![Data Provider usage](assets/schemas/data-provider-usage.svg)
 
-This solution simply is at charge of providing cache and memoization in order to __avoid unnecessary resources comsumption__, and to abstract the elements about the fact of from where are they reading the data. They don't need to know about the existence of an "API", or a "State", or "localStorage", or whatever. They simply need the data, it is the "data layer" which should be the one responsible of knowing about where the data are being retrieved or sent.
+This solution simply is at charge of providing cache and memoization in order to __avoid unnecessary resources consumption__, and to abstract the elements about the fact of from where are they reading the data. They don't need to know about the existence of an "API", or a "State", or "localStorage", or whatever. They simply need the data, it is the "data layer" which should be the one responsible of knowing about where the data are being retrieved or sent.
 
 In this way, each element has __well defined dependencies__, and you can move them from one project to another _(or from one part of your project to another)_ without problem. The data will be requested and processed only when necessary, and only once (until the data decides that one cache has to be cleaned, then all of the elements connected to that data are informed about, so they can request it again).
 

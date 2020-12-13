@@ -29,7 +29,7 @@ As all mentioned methods require same arguments to be executed, we will use the 
 
 ## Event names
 
-> In this chapter are described the eventNames common to all providers. Addons can emit its own eventNames, which should be described in its own documentation.
+> In this chapter are described the `eventNames` common to all providers. Addons can emit its own `eventNames`, which should be described in its own documentation.
 
 ### `eventName`
 
