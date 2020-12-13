@@ -1,6 +1,7 @@
 ---
-id: api-providers
+id: version-2.8.0-api-providers
 title: providers
+original_id: api-providers
 ---
 
 ## Purpose

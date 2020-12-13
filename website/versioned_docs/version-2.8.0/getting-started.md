@@ -1,6 +1,7 @@
 ---
-id: getting-started
+id: version-2.8.0-getting-started
 title: Get started
+original_id: getting-started
 ---
 
 ## Getting started with Data Provider

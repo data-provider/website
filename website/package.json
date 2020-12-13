@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "prop-types": "15.7.2"
+  },
+  "engines": {
+    "node": "15.x"
   }
 }

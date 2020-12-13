@@ -78,7 +78,7 @@ class HomeSplash extends React.Component {
         <br />
         Agnostic about data origins
         <br />
-        Framework agnostic
+        Agnostic about UI Frameworks
       </h3>
     );
 
@@ -153,29 +153,35 @@ class Index extends React.Component {
       return (
         <CodeExampleSection
           id="home-react"
-          title="React hooks and HOCs"
-          left={`Data Provider is not concerned about the views, but UI binding addons are available.
+          title="UI binding addons"
+          left={`Data Provider is not concerned about the views, but [UI binding addons](${docUrl(
+            "addons-intro"
+          )}) are available.
 
-The [@data-provider/react](https://www.npmjs.com/package/@data-provider/react) package __gives you HOCs to connect providers to your components__, creating a wrapper component handling all the logic for you.
+The [@data-provider/react](https://www.npmjs.com/package/@data-provider/react) package __gives you hooks to easily retrieve and provide data__ and other data-provider states to React components.
 
-It also provides __hooks like "useData", "useLoading", etc.__
+It also provides __HOCs__ like "withData", "withLoading", etc.
 
 __Optimized__, it takes care of reading the data and re-renders the component only when your desired props have changed.`}
           right={`
 \`\`\` javascript
-import { withDataProvider } from "@data-provider/react";
+import { useData, useLoading, useError } from "@data-provider/react";
 
 import { booksProvider } from "data/books";
 import ErrorComponent from "components/error";
 
-const Books = ({ data, loading, error }) => {
+const Books = () => {
+  const error = useError(booksProvider);
+  const data = useData(booksProvider);
+  const loading = useLoading(booksProvider);
+
   if (error) {
     return <ErrorComponent error={error}/>
   }
   return <BooksList data={data} loading={loading} />;
 };
 
-export default withDataProvider(booksProvider)(Books);
+export default Books;
 \`\`\`
 `}
         />
@@ -221,9 +227,13 @@ export default RenderBooksTwice;
           id="home-agnostic"
           title="Agnostic about data origins"
           left={`
-The Provider class provides the cache, state handler, etc., but not the "read" method. The "read" behavior is implemented by __different Data Provider Origins addons__.
+The Provider class provides the cache, state handler, etc., but not the "read" method. The "read" behavior is implemented by different __[Data Provider Origins addons](${docUrl(
+            "addons-intro"
+          )})__.
 
-There are different origins available, such as __[Axios](https://www.npmjs.com/package/@data-provider/axios), [LocalStorage](https://www.npmjs.com/package/@data-provider/browser-storage), [Memory](https://www.npmjs.com/package/@data-provider/memory), etc.__ and building your own is so easy as extending the Provider class with a custom "readMethod".
+There are different origins available, such as __[Axios](https://www.npmjs.com/package/@data-provider/axios), [LocalStorage](https://www.npmjs.com/package/@data-provider/browser-storage), [Memory](https://www.npmjs.com/package/@data-provider/memory), etc.__ and building your own is easy. Read ["creating origin addons"](${docUrl(
+            "addons-creating-origin-addons"
+          )}) for further info.
 
 Sharing the same interface for all origins, and being able to build Selectors combining all of them implies that your logic will be __completely isolated about WHERE the data is being retrieved.__
 `}
@@ -297,7 +307,7 @@ export const booksWithAuthor = new Selector(
 
 Each different child has a different cache, different state, etc.
 
-Different origins can use the "query" value for different purposes (API origins will normally use it for adding different params or query strings to the provider url)
+Different origins can use the "query" value for different purposes (API origins will normally use it for adding different params or query strings to the provider url, for example)
 
 When the parent provider cache is clean, also the children is. _(For example, cleaning the cache of an API origin requesting to "/api/books", will also clean the cache for "/api/books?author=2")_
 `}
@@ -335,7 +345,7 @@ export default Book;
 
 If this is not enough, as Data Provider uses [Redux](https://redux.js.org/) to handle providers states, it also provides an [\`storeManager\`](${docUrl(
             "api-store-manager"
-          )}) that allows to __migrate it to your own store__ using  \`combineReducers\`.
+          )}) that allows to __migrate it to your own store__ using  \`combineReducers\` for debugging purposes, for example.
 
 Every single provider also has a method for accesing to his own "state" directly.
 `}

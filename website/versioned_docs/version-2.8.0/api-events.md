@@ -1,6 +1,7 @@
 ---
-id: api-events
+id: version-2.8.0-api-events
 title: Events
+original_id: api-events
 ---
 
 Data Provider includes an event emitter that allows to be continually informed about what is happening and react in consequence.
