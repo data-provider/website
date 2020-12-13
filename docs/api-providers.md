@@ -165,7 +165,7 @@ Calls to the `config` method of selected providers with provided configuration o
 
 #### Arguments
 
-* __`configuration`__ _(Object)_: An object containing configuration to be set into the providers.
+* __`configuration`__ _(Object)_: An object containing configuration to be set into the providers. _Read the [Provider api](api-provider.md) and [Selector api](api-selector.md)_ pages for further info about available options.
 
 #### Returns
 
@@ -181,9 +181,14 @@ providers.getByTag("axios").config({
 
 <hr/>
 
-### `cleanCache()`
+### `cleanCache(options)`
 
 Cleans the cache of selected providers and selectors.
+
+#### Arguments
+
+* __`options`__ _(Object)_: Object that can contain next properties:
+  * __`force`__ _(Boolean)_: If `true`, will force to clean the cache immediately, ignoring the `cleanCacheThrottle` option.
 
 #### Returns
 
@@ -197,8 +202,8 @@ providers.getByTag("axios").cleanCache();
 ```
 
 ```javascript
-providers.cleanCache();
-// clean cache of all providers and selectors
+providers.cleanCache({ force: true });
+// clean cache of all providers and selectors right now, ignoring the `cleanCacheThrottle` option
 ```
 
 <hr/>
@@ -352,6 +357,6 @@ providers.elements.forEach(provider => {
 ## Tips
 
 * Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable accross applications.
-* Use the addons automatic tags for configuring all providers of the same type at a time _(as using the "axios" tag to set the `baseUrl` of the API)_
+* Use the addons automatic tags for configuring all providers of the same type at a time _(for example, use the "axios" tag to set the `baseUrl` of the API if you are using the ["axios" addon][data-provider-axios])_
 
 [data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios

@@ -12,11 +12,11 @@ The main target of the library are front-end applications, but it could be used 
 It helps you __providing async data__ to your components informing them about __loading and error states__.
 It also provides a __cache layer__, so you don´t have to worry about when to read the data, and allows you to __combine the results of different data providers__ using a syntax very similar to the known [Reselect][reselect], recalculating them only when one of the dependencies cache is cleaned.
 
-As its states are managed with [Redux][redux], you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which [can be migrated to your own store](api-store-manager.md))._
+As its states are managed with [Redux][redux], you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which [can be migrated to your own store](api-store-manager.md) for debugging purposes, for example)._
 
-You can use Data Provider with [React][react], or with any other view library. Separated addons are available for that purpose, as [@data-provider/react][data-provider-react].
+You can use Data Provider with [React][react], or with any other view library. [Separated addons are available](addons-intro.md) for that purpose, as [@data-provider/react][data-provider-react].
 
-Data Provider is __agnostic about data origins__, so it can be used to read data from a REST API, from localStorage, or from any other origin. Choose one of the available plugins depending of the type of the origin you want to read from, as [@data-provider/axios][data-provider-axios], or [@data-provider/browser-storage][data-provider-browser-storage].
+Data Provider is __agnostic about data origins__, so it can be used to read data from a REST API, from localStorage, or from any other origin. Choose one of the [available addons](addons-intro.md) depending of the type of the origin you want to read from, as [@data-provider/axios][data-provider-axios], or [@data-provider/browser-storage][data-provider-browser-storage].
 
 It has a __light weight__, 4.2KB gzipped in UMD format _(you have to add the Redux weight to this)_, and addons usually are even lighter.
 
@@ -30,7 +30,7 @@ As a summary, what Data Provider gives to you is:
 * Selectors
 * Event emitter
 
-And, the most important thing... __promotes isolation from the data layer, and separates your data cache from your global state.__
+And, the most important thing... __promotes separation of concerns, isolating the data layer, and separating your data cache from your global state.__
 
 [![Data Provider architecture schema](assets/schemas/data-provider-architecture.jpg)](/img/architecture-scheme.png)
 

@@ -19,7 +19,7 @@ const webSiteRepoUrl = `${organizationUrl}/website`;
 
 const siteConfig = {
   title: "Data Provider", // Title for your website.
-  tagline: "Js Async Data Provider",
+  tagline: "JavaScript Async Data Provider",
   url: "https://www.data-provider.org", // Your website URL
   repoUrl,
   baseUrl, // Base URL for your project */

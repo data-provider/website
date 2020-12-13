@@ -130,11 +130,16 @@ books.config({
 
 <hr/>
 
-### `cleanCache()`
+### `cleanCache(options)`
 
 Cleans the cache of selector or provider, and also the cleans the cache of all its "children" _(queried instances obtained using its `query` method)_. _In a practical example, this means that cleaning the cache of an API origin requesting to "/api/books", will also clean the cache of "/api/books?author=2"_
 
 A `cleanCache` event will be triggered at the beggining. Read the [events API chapter](api-events.md) for further info.
+
+#### Arguments
+
+* __`options`__ _(Object)_: Object that can contain next properties:
+  * __`force`__ _(Boolean)_: If `true`, will force to clean the cache immediately, ignoring the `cleanCacheThrottle` option.
 
 #### Example
 
@@ -155,6 +160,7 @@ Cleans the cache of all dependencies of a selector. If called on a provider, it 
 
 * __`options`__ _(Object)_: Object containing options.
   * __`except`__ _(Array)_: Array of provider or selectors instances which cache should not be cleaned. Then, all dependencies cache will be cleaned except these.
+  * __`force`__ _(Boolean)_: If `true`, will force to clean the cache immediately, ignoring the `cleanCacheThrottle` option.
 
 #### Example
 

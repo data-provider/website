@@ -38,7 +38,7 @@ Available event names are:
 * `readStart`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) has not cache and internally calls to the addon `readMethod`. When the provider or selector result is cached, this event is not dispatched.
 * `readSuccess`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) is resolved succesfully. When the provider or selector result is cached, this event is not dispatched.
 * `readError`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) is rejected with an error.
-* `cleanCache`: Dispatched when the [`cleanCache` method](api-providers-and-selectors-methods.md#cleancache) is executed.
+* `cleanCache`: Dispatched when the provider cache is cleaned. Usually when the [`cleanCache` method](api-providers-and-selectors-methods.md#cleancache) is executed, but not every times necessarily, as the provider can have configured the _`cleanCacheThrottle`_ option, and this event will be dispatched only when the cache is cleaned really.
 * `init`: Dispatched when a new provider or selector instance is created.
 * `resetState`: Dispatched when the [`resetState` method](api-providers-and-selectors-methods.md#resetstate) is executed.
 
