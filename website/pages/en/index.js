@@ -160,7 +160,7 @@ class Index extends React.Component {
 
 The [@data-provider/react](https://www.npmjs.com/package/@data-provider/react) package __gives you hooks to easily retrieve and provide data__ and other data-provider states to React components.
 
-It also provides __HOCs__ like "withData", "withLoading", etc.
+It also provides __HOCs__ like \`withData\`, \`withLoading\`, etc.
 
 __Optimized__, it takes care of reading the data and re-renders the component only when your desired props have changed.`}
           right={`
@@ -227,7 +227,7 @@ export default RenderBooksTwice;
           id="home-agnostic"
           title="Agnostic about data origins"
           left={`
-The Provider class provides the cache, state handler, etc., but not the "read" method. The "read" behavior is implemented by different __[Data Provider Origins addons](${docUrl(
+The Provider class provides the cache, state handler, etc., but not the \`read\` method. The \`read\` behavior is implemented by different __[Data Provider Origins addons](${docUrl(
             "addons-intro"
           )})__.
 
@@ -243,7 +243,7 @@ import { Axios } from "@data-provider/axios";
 import { LocalStorage } from "@data-provider/browser-storage";
 
 export const books = new Axios("books", {
-  url: "/api/books"
+  url: \`/api/books\`
 });
 
 export const favoriteBooks = new LocalStorage("favorite-books", {
@@ -303,13 +303,13 @@ export const booksWithAuthor = new Selector(
         <CodeExampleSection
           id="home-queryable"
           title="Queryable"
-          left={`Providers and selectors instances can be queried, which returns a new child instance with his own "query value".
+          left={`Providers and selectors instances can be queried, which returns a new child instance with his own \`queryValue\`.
 
 Each different child has a different cache, different state, etc.
 
-Different origins can use the "query" value for different purposes (API origins will normally use it for adding different params or query strings to the provider url, for example)
+Different origins can use the \`queryValue\` for different purposes (API origins will normally use it for adding different params or query strings to the provider url, for example)
 
-When the parent provider cache is clean, also the children is. _(For example, cleaning the cache of an API origin requesting to "/api/books", will also clean the cache for "/api/books?author=2")_
+When the parent provider cache is clean, also the children is. _(For example, cleaning the cache of an API origin requesting to \`/api/books\`, will also clean the cache for \`/api/books?author=2\`)_
 `}
           right={`
 \`\`\`javascript
@@ -347,7 +347,7 @@ If this is not enough, as Data Provider uses [Redux](https://redux.js.org/) to h
             "api-store-manager"
           )}) that allows to __migrate it to your own store__ using  \`combineReducers\` for debugging purposes, for example.
 
-Every single provider also has a method for accesing to his own "state" directly.
+Every single provider also has a method for accesing to his own \`state\` directly.
 `}
           right={`
 \`\`\`javascript
