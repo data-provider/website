@@ -23,7 +23,7 @@ export class Fetcher extends Provider {
 
 ## Options
 
-Our addon will accept a "baseUrl" option, which will be defined when instatiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
+Our addon will accept a "baseUrl" option, which will be defined when instantiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
 
 It is a very simple scenario, but it will be useful to illustrate the example. If you want to use a more complex data-provider origin to connect an application to a REST API and handle a lot of possible complex scenarios take a look at the [Axios][axios] addon.
 

@@ -34,7 +34,7 @@ If you use a module bundler as Webpack, Rollup, etc, it will be at charge of rea
 
 ## Install specific origins
 
-Data Provider itself does not really retrieve data from any specific data origin, so you'll have to install the origins of your choice separatelly.
+Data Provider itself does not really retrieve data from any specific data origin, so you'll have to install the origins of your choice separately.
 
 For example, to retrieve data from a REST API you can use the [@data-provider/axios][data-provider-axios] addon:
 
