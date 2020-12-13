@@ -15,7 +15,7 @@ There are four methods available for adding listeners to providers or selectors:
 Their APIS are described in the [providers and selectors methods API page](api-providers-and-selectors-methods.md), and their names should be descriptive enough to fully understand the purpose of each one, but, anyway:
 
 * Methods prefixed with `once` automatically unsubscribe the provided listener after its first execution.
-* Methods suffixed with `Child` subscribe the listener to events happening on any [children (queried intances)](api-providers-and-selectors-methods.md#queryqueryvalue) of the provider or selector.
+* Methods suffixed with `Child` subscribe the listener to events happening on any [children (queried instances)](api-providers-and-selectors-methods.md#queryqueryvalue) of the provider or selector.
 
 ## Arguments
 
@@ -30,14 +30,14 @@ As all mentioned methods require same arguments to be executed, we will use the 
 
 ## Event names
 
-> In this chapter are described the eventNames common to all providers. Addons can emit its own eventNames, which should be described in its own documentation.
+> In this chapter are described the `eventNames` common to all providers. Addons can emit its own `eventNames`, which should be described in its own documentation.
 
 ### `eventName`
 
 Available event names are:
 
 * `readStart`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) has not cache and internally calls to the addon `readMethod`. When the provider or selector result is cached, this event is not dispatched.
-* `readSuccess`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) is resolved succesfully. When the provider or selector result is cached, this event is not dispatched.
+* `readSuccess`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) is resolved successfully. When the provider or selector result is cached, this event is not dispatched.
 * `readError`: Dispatched when the [`read` method](api-providers-and-selectors-methods.md#read) is rejected with an error.
 * `cleanCache`: Dispatched when the [`cleanCache` method](api-providers-and-selectors-methods.md#cleancache) is executed.
 * `init`: Dispatched when a new provider or selector instance is created.

@@ -16,7 +16,7 @@ The `providers` object gives to us some methods that could be usually wanted to 
 
 We can define `tags` for our providers when creating them, and later we can use those tags for configuring at a time all providers containing certain tag.
 
-Origin addons should usually automatically add his own tag to the beggining of the provided `tags` array when we create a provider. This is made to allow configuring easily all providers of a same type, as "axios", "localStorage", etc.
+Origin addons should usually automatically add his own tag to the beginning of the provided `tags` array when we create a provider. This is made to allow configuring easily all providers of a same type, as `axios`, "localStorage", etc.
 
 As a brief example for a better understand before describing the API:
 
@@ -33,7 +33,7 @@ const todos = new Axios("todos", {
 import { providers } from "@data-provider/core";
 
 // Set baseUrl option for all providers created by the Axios addon
-providers.getByTag("axios").config({
+providers.getByTag(`axios`).config({
   baseUrl: "http://localhost:3100"
 });
 
@@ -175,7 +175,7 @@ The `providers selection` object itself.
 #### Example
 
 ```javascript
-providers.getByTag("axios").config({
+providers.getByTag(`axios`).config({
   baseUrl: "http://localhost:3000"
 });
 ```
@@ -198,7 +198,7 @@ The `providers selection` object itself.
 #### Examples
 
 ```javascript
-providers.getByTag("axios").cleanCache();
+providers.getByTag(`axios`).cleanCache();
 // clean cache of Axios providers
 ```
 
@@ -220,7 +220,7 @@ The `providers selection` object itself.
 #### Examples
 
 ```javascript
-providers.getByTag("axios").resetState();
+providers.getByTag(`axios`).resetState();
 // reset state of all Axios providers
 ```
 
@@ -242,7 +242,7 @@ _(Function)_: A function that unsubscribes all added listeners.
 #### Examples
 
 ```javascript
-providers.getByTag("axios").on("readStart", () => {
+providers.getByTag(`axios`).on("readStart", () => {
   console.log("A provider is fetching from the API");
 });
 ```
@@ -260,7 +260,7 @@ _(Function)_: A function that unsubscribes all added listeners.
 #### Examples
 
 ```javascript
-providers.getByTag("axios").onChild("readStart", () => {
+providers.getByTag(`axios`).onChild("readStart", () => {
   console.log("A parametrized request to the API has started");
 });
 ```
@@ -278,7 +278,7 @@ _(Function)_: A function that unsubscribes all added listeners.
 #### Examples
 
 ```javascript
-providers.getByTag("axios").once("readStart", () => {
+providers.getByTag(`axios`).once("readStart", () => {
   console.log("A provider has started fetching from the API");
   console.log("This message will be shown only once");
 });
@@ -297,7 +297,7 @@ _(Function)_: A function that unsubscribes all added listeners.
 #### Examples
 
 ```javascript
-providers.getByTag("axios").onceChild("readStart", () => {
+providers.getByTag(`axios`).onceChild("readStart", () => {
   console.log("A parametrized request to the API has started");
   console.log("This message will be shown only once");
 });
@@ -336,7 +336,7 @@ _(Number)_: Total count of selected providers and selectors, including children 
 #### Example
 
 ```javascript
-const size = providers.getByTag("axios").size;
+const size = providers.getByTag(`axios`).size;
 console.log(`Currently there are ${size} axios providers`);
 console.log(`There are ${providers.size} providers and selectors in total`);
 ```
@@ -357,7 +357,7 @@ providers.elements.forEach(provider => {
 
 ## Tips
 
-* Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable accross applications.
-* Use the addons automatic tags for configuring all providers of the same type at a time _(for example, use the "axios" tag to set the `baseUrl` of the API if you are using the ["axios" addon][data-provider-axios])_
+* Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable across applications.
+* Use the addons automatic tags for configuring all providers of the same type at a time _(for example, use the `axios` tag to set the `baseUrl` of the API if you are using the [`axios` addon][data-provider-axios])_
 
 [data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios

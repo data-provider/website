@@ -33,7 +33,7 @@ About what Redux docs call "Container Components", here we are going to call the
 
 ## Presentational components
 
-We also have to mention that __we are not going to worry about the performance of the example__. You'll see here some "React bad patterns" that should be avoided in a real app, as defining callbacks directly in the components props using arrow functions. But again, the purpose of this guide is not to learn about how to use React, so, we made this intentionally in favour of the examples simplicity.
+We also have to mention that __we are not going to worry about the performance of the example__. You'll see here some "React bad patterns" that should be avoided in a real app, as defining callbacks directly in the components props using arrow functions. But again, the purpose of this guide is not to learn about how to use React, so, we made this intentionally in favor of the examples simplicity.
 
 ### `components/Todo.js`
 
@@ -195,7 +195,7 @@ export default AddTodo;
 
 ### `modules/FilteredTodoList.js`
 
-Here is where we are going to provide the `todos` data to the component at charge of rendering them. As input, this module will also receive the value of the current filter, so it can query the provider with the correspondant value.
+Here is where we are going to provide the `todos` data to the component at charge of rendering them. As input, this module will also receive the value of the current filter, so it can query the provider with the correspondent value.
 
 To connect the provider, we will use the `useData` and `useLoading` methods of the [@data-provider/react][data-provider-react] package. These hooks bind the provider state to the component, so, when any of the chosen properties changes (`data` and `loading` in this case), the component will be re-rendered. The hooks also will dispatch the `read` method of the provider the first time the component is rendered, and will dispatch it again every time its cache is cleaned, so the view will be maintained up to date with the latest data from the provider (and from the server, in this case).
 
@@ -222,7 +222,7 @@ const FilteredTodoList = ({ showCompleted }) => {
 export default FilteredTodoList;
 ```
 
-> Note the expression `(loading && !todos)` that we are using to handle the loading state. Data Provider inform to us when the `todos` are being loadded, but we don't want to show the "loading..." indicator every time data is loading. It will be shown only the first time the data is being loaded, while `todos` collection is empty. Rest of times, the current todos state will be shown until the `todos` are fetched again, and then replaced. In this way we __avoid unwanted flickerings__ in the UI.
+> Note the expression `(loading && !todos)` that we are using to handle the loading state. Data Provider inform to us when the `todos` are being loaded, but we don't want to show the "loading..." indicator every time data is loading. It will be shown only the first time the data is being loaded, while `todos` collection is empty. Rest of times, the current todos state will be shown until the `todos` are fetched again, and then replaced. In this way we __avoid unwanted flickerings__ in the UI.
 
 ### `modules/TodoList.js`
 

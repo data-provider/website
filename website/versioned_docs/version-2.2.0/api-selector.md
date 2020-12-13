@@ -18,7 +18,7 @@ Whenever a dependency cache is cleaned, the selector cache will also be cleaned,
 * __`selectorFunction`__ _(Function)_: A function receiving the dependencies results, and the query applied to the selector in case it is queried. Read the [selector function API in the chapter bellow](#selector-function).
 * __`options`__ _(Object)_: An object containing options for the selector, which properties can be:
 	* __`id`__ _(String)_: Id for the provider instance. It is used internally as namespace in the store. It is also useful for debugging purposes.
-	* __`initialState`__ _(Object)_: Object containing `loading`, `error` and `data` properties, which will define the initial state of the selector, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then inmediatelly `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will avoid that extra render in the initialization)._ A function can be also provided, then, it will receive the current `query` as argument, and the returned object will be used as `initialState`.
+	* __`initialState`__ _(Object)_: Object containing `loading`, `error` and `data` properties, which will define the initial state of the selector, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then immediately `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will avoid that extra render in the initialization)._ A function can be also provided, then, it will receive the current `query` as argument, and the returned object will be used as `initialState`.
 	* __`getChildQueryMethod(query, parentQuery)`__ _(Function)_: When defined, this method will be used to get the resultant query value when the `query` method is called. The default method extends the parent query value with the provided query value _(recursively querying a selector applies also parent queries)_. Use this method is you want to apply a deep extend instead of a simple extend, for example. `getChildQueryMethod: (query, parentQuery) => _.merge({}, query, parentQuery);`
 
 ### Returns
@@ -61,7 +61,7 @@ console.log(completedTasks.state);
 
 ### Tips
 
-* Use clear identificators in your selectors. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console. If you do not provide one, Data Provider will assign one `uuid` automatically.
+* Use clear identifiers in your selectors. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console. If you do not provide one, Data Provider will assign one `uuid` automatically.
 * When an `id` is duplicated, Data Provider will automatically append a suffix to it and will print a warning.
 * Define always the `initialState`, it will save you extra format checks in your views, and will avoid an initial extra render, as described in the [Arguments API](#arguments).
 
@@ -77,7 +77,7 @@ The provided function should follow the next API:
 
 ##### Arguments
 
-* __`dependenciesResults`__ _(arguments)_: Arguments containing the results of the selector dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received in an array in a single argument in the correspondant position.
+* __`dependenciesResults`__ _(arguments)_: Arguments containing the results of the selector dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received in an array in a single argument in the correspondent position.
 * __`query`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
 
 ##### Returns
@@ -137,7 +137,7 @@ The provided function should follow the next API:
 ##### Arguments
 
 1. __`query`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
-2. __`previousResults`__ _(Array)_: Array containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondant position.
+2. __`previousResults`__ _(Array)_: Array containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondent position.
 
 ##### Returns
 
@@ -171,7 +171,7 @@ The provided `catchMethod` function should follow the next API:
 
 1. __`error`__ _(Error)_: Error causing the rejection of the dependency read method.
 2. __`query`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
-3. __`previousResults`__ _(Array)_: Array containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondant position.
+3. __`previousResults`__ _(Array)_: Array containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondent position.
 
 ##### Returns
 

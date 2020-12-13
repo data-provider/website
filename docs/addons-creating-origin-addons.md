@@ -4,7 +4,7 @@ title: How to create origin addons
 sidebar_label: Creating origin addons
 ---
 
-Data Provider is agnostic about data origins, so it can be used to read data from a REST API, from localStorage, or from any other origin. Custom addons are distributed for each different type of origin, and you can even create your owns.
+Data Provider is agnostic about data origins, so it can be used to read data from a REST API, from `localStorage`, or from any other origin. Custom addons are distributed for each different type of origin, and you can even create your owns.
 
 In this guide we'll walk through the process of creating a simple "fetch" Data Provider origin able to perform Ajax requests, allowing to connect an application to a REST Api. The complete source code of the guide is in our [repository of examples][examples], and all used methods are described in the [Provider API](api-provider.md).
 
@@ -22,11 +22,11 @@ export class Fetcher extends Provider {
 
 ## Options
 
-Our addon will accept a "baseUrl" option, which will be defined when instatiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
+Our addon will accept a `baseUrl` option, which will be defined when instantiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
 
 It is a very simple scenario, but it will be useful to illustrate the example. If you want to use a more complex data-provider origin to connect an application to a REST API and handle a lot of possible complex scenarios take a look at the [Axios][axios] addon.
 
-Define a "configMethod" in the Class. It will receive the options when initialized and also when the `config` method is called, so the baseUrl could be also changed after initializing it.
+Define a `configMethod` in the Class. It will receive the options when initialized and also when the `config` method is called, so the `baseUrl` could be also changed after initializing it.
 Store the `baseUrl` option in an internal property of the class.
 
 ```js
@@ -191,7 +191,7 @@ This is only an example in which two API calls are executed when the Post compon
 ## Custom methods
 
 For the moment our addon only can perform GET requests to the API, so let's add some methods to it to allow updating a resource.
-Our method will send a PATCH request and will clean the cache of the resource when it receives a sucess response.
+Our method will send a PATCH request and will clean the cache of the resource when it receives a success response.
 
 ```js
 export class Fetcher extends Provider {

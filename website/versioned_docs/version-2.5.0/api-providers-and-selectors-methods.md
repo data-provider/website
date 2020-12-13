@@ -13,9 +13,9 @@ This chapter describes all methods common to providers and selectors. If you hav
 
 ### `read()`
 
-Dispatchs the read method. In the case of providers, it will dispatch the internal `readMethod` implemented by specific origin addons. In case of selectors, it will dispatch the `read` method of all needed dependencies and execute the `selector function` as described in the [Selector API](api-selector.md).
+Dispatches the read method. In the case of providers, it will dispatch the internal `readMethod` implemented by specific origin addons. In case of selectors, it will dispatch the `read` method of all needed dependencies and execute the `selector function` as described in the [Selector API](api-selector.md).
 
-When there is no cache for the resource, a `readStart` event will be triggered at the beggining, and a `readSuccess` event will be triggered at the end (or `readError` in case of error). Read the [events API chapter](api-events.md) for further info.
+When there is no cache for the resource, a `readStart` event will be triggered at the beginning, and a `readSuccess` event will be triggered at the end (or `readError` in case of error). Read the [events API chapter](api-events.md) for further info.
 
 #### Returns
 
@@ -39,7 +39,7 @@ Creates a new child instance of the provider and returns it. The new instance wi
 
 Returned instance will maintain a relation with its "parent" in some way. Internally they are called "children", because when the cache of the "parent" resource is cleaned, all the children caches are cleaned too. _(For example, cleaning the cache of an API origin requesting to "/api/books", will also clean the cache of "/api/books?author=2")_
 
-Different Provider addons will use the current `queryValue` in different ways when consulting the specific data origin _(for example, [@data-provider/axios][data-provider-axios] will use the `queryValue` to define url params or query strings when requesting to the API, but [@data-provider/browser-storage][data-provider-browser-storage] will access to an specific key of the value saved in the browser storage)_.
+Different Provider addons will use the current `queryValue` in different ways when consulting the specific data origin _(for example, [@data-provider/axios][data-provider-axios] will use the `queryValue` to define url parameters or query strings when requesting to the API, but [@data-provider/browser-storage][data-provider-browser-storage] will access to an specific key of the value saved in the browser storage)_.
 
 When you use the `query` method of a provider or selector that also was created using `query`, the resultant `queryValue` will be the extension of the provided one and the previous one. In other words, queries are "chainable" and maintain the "scope". See the examples below for better understand.
 
@@ -83,7 +83,7 @@ Origins addons normally require to receive the `queryValue` with an specific for
 
 #### Arguments
 
-* `name` _(String)_: Name of the new custom query method to be defined, which will be accesible as `provider.queries[name]`
+* `name` _(String)_: Name of the new custom query method to be defined, which will be accessible as `provider.queries[name]`
 * `queryMaker` _(Function)_: Function receiving any value, and returning a  `queryValue` ready to be used by the `query` method of the provider or selector.
 
 #### Returns
@@ -135,7 +135,7 @@ books.config({
 
 Cleans the cache of selector or provider, and also the cleans the cache of all its "children" _(queried instances obtained using its `query` method)_. _In a practical example, this means that cleaning the cache of an API origin requesting to "/api/books", will also clean the cache of "/api/books?author=2"_
 
-A `cleanCache` event will be triggered at the beggining. Read the [events API chapter](api-events.md) for further info.
+A `cleanCache` event will be triggered at the beginning. Read the [events API chapter](api-events.md) for further info.
 
 #### Example
 
@@ -150,7 +150,7 @@ books.read(); // Request to /books
 
 ### `cleanDependenciesCache()`
 
-Cleans the cache of all dependencies of a selector. If called on a provider, it only cleans de provider cache (it is equivalent to call to `cleanCache`).
+Cleans the cache of all dependencies of a selector. If called on a provider, it only cleans the provider cache (it is equivalent to call to `cleanCache`).
 
 #### Example
 
@@ -423,7 +423,7 @@ console.log(books.options);
 
 #### Returns
 
-_(Object)_: Object containing all custom query methods previously defined using the [`addQuery` method](#addqueryname-querymaker). The object will contain properties correspondant to each custom query "name", and the correspondant value will be the provided `queryMaker`. This object is exposed for making easier the proccess of testing custom query methods.
+_(Object)_: Object containing all custom query methods previously defined using the [`addQuery` method](#addqueryname-querymaker). The object will contain properties correspondent to each custom query "name", and the correspondent value will be the provided `queryMaker`. This object is exposed for making easier the process of testing custom query methods.
 
 #### Example
 

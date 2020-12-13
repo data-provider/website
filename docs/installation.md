@@ -19,7 +19,7 @@ The project is exported in CommonJS, ESM and UMD formats, that can be found insi
 
 The source code is written in ES2015 but both CommonJS and UMD builds are precompiled to ES5 so they work in any modern browser. You don't need to use Babel or a module bundler to get started.
 
-If you use a module bundler as Webpack, Rollup, etc, it will be at charge of reading the correspondant file automatically, if not, you can use directly the UMD file in the `dist` folder with a `<script>` tag in your HTML, loading it from unpkg, or from your own downloaded file. You only have to remember to first load [Redux][redux] and [isPromise][is-promise] dependencies with correspondant `<script>` tags. The UMD build makes Data Provider available as a `window.dataProvider` global variable.
+If you use a module bundler as Webpack, Rollup, etc, it will be at charge of reading the correspondent file automatically, if not, you can use directly the UMD file in the `dist` folder with a `<script>` tag in your HTML, loading it from `unpkg`, or from your own downloaded file. You only have to remember to first load [`Redux`][redux] and [`isPromise`][is-promise] dependencies with correspondent `<script>` tags. The UMD build makes Data Provider available as a `window.dataProvider` global variable.
 
 ### UMD load example
 
@@ -34,7 +34,7 @@ If you use a module bundler as Webpack, Rollup, etc, it will be at charge of rea
 
 ## Install specific origins
 
-Data Provider itself does not really retrieve data from any specific data origin, so you'll have to install the origins of your choice separatelly.
+Data Provider itself does not really retrieve data from any specific data origin, so you'll have to install the origins of your choice separately.
 
 For example, to retrieve data from a REST API you can use the [@data-provider/axios][data-provider-axios] addon:
 

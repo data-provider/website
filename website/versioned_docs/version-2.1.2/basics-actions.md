@@ -83,11 +83,11 @@ const deleteTodo = id => {
 
 There is no need to add anything to the "create" action, as `todos` cache is automatically cleaned when a new `todo` is added, and each independent `todo` is not affected when a new `todo` is added.
 
-> In our example we are going to use the [@data-provider/react addon][data-provider-react] for UI bindings, so cleaning the cache will be enough to automatically refresh the views. The addon is listening to "cleanCache" events, and when the cache of a provider is cleaned, it will automatically "read" the data again, so data will be requested again to the server, and only if any component related to that data is "alive" in that moment. These means that __you don't have to create a representation of the data from the server in client side and manually maintain it synchronized__, each portion of the data simply will be retrieved again each time it is needed, and only when it is being visualized.
+> In our example we are going to use the [@data-provider/react addon][data-provider-react] for UI bindings, so cleaning the cache will be enough to automatically refresh the views. The addon is listening to `cleanCache` events, and when the cache of a provider is cleaned, it will automatically "read" the data again, so data will be requested again to the server, and only if any component related to that data is "alive" in that moment. These means that __you don't have to create a representation of the data from the server in client side and manually maintain it synchronized__, each portion of the data simply will be retrieved again each time it is needed, and only when it is being visualized.
 
 ### Another way of cleaning caches
 
-We are cleaning the `todos` cache "manually" in our `todo` actions, but, what if our actions were not the unique method of updating or deleting a `todo`? Suposse one developer does not know about the existence of our actions, and uses directly the `todo.update` method from a view. Well, our `todos` collection will not be informed about a deletion, and that `todo` will be still visible in the `todos` list.
+We are cleaning the `todos` cache "manually" in our `todo` actions, but, what if our actions were not the unique method of updating or deleting a `todo`? Suppose one developer does not know about the existence of our actions, and uses directly the `todo.update` method from a view. Well, our `todos` collection will not be informed about a deletion, and that `todo` will be still visible in the `todos` list.
 
 We can also use the Data Provider `eventEmitter` to declare relations between providers:
 
@@ -99,7 +99,7 @@ todo.onChild("*", eventName => {
 });
 ```
 
-The `onChild` method refers to listening events of any "children" (queried instances) of our provider (read the [events API chapter for further info](api-events.md). The axios addon emits `updateSuccess` and `deleteSuccess` errors when each method finish successfully. Then, we are cleaning the cache of `todos` every time a `todo` is updated or deleted, no matter if it was made using our actions or not.
+The `onChild` method refers to listening events of any "children" (queried instances) of our provider (read the [events API chapter for further info](api-events.md). The Axios addon emits `updateSuccess` and `deleteSuccess` errors when each method finish successfully. Then, we are cleaning the cache of `todos` every time a `todo` is updated or deleted, no matter if it was made using our actions or not.
 
 In our example, as it is a very small project where things are very controlled, we are going to choose the first option, and we are going to manually clean the cache.
 
@@ -107,7 +107,7 @@ In our example, as it is a very small project where things are very controlled, 
 
 In a real project you'll probably prefer to separate your actions to different files from your providers and selectors, and that's right, but in this guide we are going to define them in the same file for simplicity.
 
-We have also defined a "cleanTodosCache" function to avoid code duplication in `updateTodo` and `deleteTodo` actions.
+We have also defined a `cleanTodosCache` function to avoid code duplication in `updateTodo` and `deleteTodo` actions.
 
 ### `data/todos.js`
 

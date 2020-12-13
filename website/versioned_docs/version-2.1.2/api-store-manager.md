@@ -19,7 +19,7 @@ Sets a new Redux store to be used by Data Provider instead of the default one.
 #### Arguments
 
 * __`store`__ _(Redux store)_: Redux store to be used by Data Provider.
-* __`namespace`__ _(String)_: Namespace of the store where Data Provider will keep states of providers and selectors. By default its value is "dataProvider".
+* __`namespace`__ _(String)_: Namespace of the store where Data Provider will keep states of providers and selectors. By default its value is `dataProvider`.
 
 ## Getters
 

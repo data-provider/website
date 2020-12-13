@@ -17,7 +17,7 @@ As its states are managed with [Redux][redux], you can take advantage of his lar
 
 You can use Data Provider with [React][react], or with any other view library. [Separated addons are available](addons-intro.md) for that purpose, as [@data-provider/react][data-provider-react].
 
-Data Provider is __agnostic about data origins__, so it can be used to read data from a REST API, from localStorage, or from any other origin. Choose one of the [available addons](addons-intro.md) depending of the type of the origin you want to read from, as [@data-provider/axios][data-provider-axios], or [@data-provider/browser-storage][data-provider-browser-storage].
+Data Provider is __agnostic about data origins__, so it can be used to read data from a REST API, from `localStorage`, or from any other origin. Choose one of the [available addons](addons-intro.md) depending of the type of the origin you want to read from, as [@data-provider/axios][data-provider-axios], or [@data-provider/browser-storage][data-provider-browser-storage].
 
 It has a __light weight__, 4.2KB gzipped in UMD format _(you have to add the Redux weight to this)_, and addons usually are even lighter.
 

@@ -7,7 +7,7 @@ title: Configuration
 
 You'll have noticed that our providers `url` option only contains the url fragment, not the full url. This was made intentionally. We are delegating the configuration of the API `baseUrl` to another piece, normally closer to the application, which is able to read some configuration, as environment variables, etc.
 
-Doing it in this way also allows to better reuse our providers, so we could even publish them to independent packages and reuse them accross many applications, acting as "api clients".
+Doing it in this way also allows to better reuse our providers, so we could even publish them to independent packages and reuse them across many applications, acting as "api clients".
 
 ### Using the `providers` object.
 
