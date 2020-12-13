@@ -13,9 +13,9 @@ This chapter describes all methods common to providers and selectors. If you hav
 
 ### `read()`
 
-Dispatchs the read method. In the case of providers, it will dispatch the internal `readMethod` implemented by specific origin addons. In case of selectors, it will dispatch the `read` method of all needed dependencies and execute the `selector function` as described in the [Selector API](api-selector.md).
+Dispatches the read method. In the case of providers, it will dispatch the internal `readMethod` implemented by specific origin addons. In case of selectors, it will dispatch the `read` method of all needed dependencies and execute the `selector function` as described in the [Selector API](api-selector.md).
 
-When there is no cache for the resource, a `readStart` event will be triggered at the beggining, and a `readSuccess` event will be triggered at the end (or `readError` in case of error). Read the [events API chapter](api-events.md) for further info.
+When there is no cache for the resource, a `readStart` event will be triggered at the beginning, and a `readSuccess` event will be triggered at the end (or `readError` in case of error). Read the [events API chapter](api-events.md) for further info.
 
 #### Returns
 
@@ -83,7 +83,7 @@ Origins addons normally require to receive the `queryValue` with an specific for
 
 #### Arguments
 
-* `name` _(String)_: Name of the new custom query method to be defined, which will be accesible as `provider.queries[name]`
+* `name` _(String)_: Name of the new custom query method to be defined, which will be accessible as `provider.queries[name]`
 * `queryMaker` _(Function)_: Function receiving any value, and returning a  `queryValue` ready to be used by the `query` method of the provider or selector.
 
 #### Returns
@@ -135,7 +135,7 @@ books.config({
 
 Cleans the cache of selector or provider, and also the cleans the cache of all its "children" _(queried instances obtained using its `query` method)_. _In a practical example, this means that cleaning the cache of an API origin requesting to "/api/books", will also clean the cache of "/api/books?author=2"_
 
-A `cleanCache` event will be triggered at the beggining. Read the [events API chapter](api-events.md) for further info.
+A `cleanCache` event will be triggered at the beginning. Read the [events API chapter](api-events.md) for further info.
 
 #### Example
 
@@ -408,7 +408,7 @@ console.log(books.options);
 
 #### Returns
 
-_(Object)_: Object containing all custom query methods previously defined using the [`addQuery` method](#addqueryname-querymaker). The object will contain properties correspondant to each custom query "name", and the correspondant value will be the provided `queryMaker`. This object is exposed for making easier the proccess of testing custom query methods.
+_(Object)_: Object containing all custom query methods previously defined using the [`addQuery` method](#addqueryname-querymaker). The object will contain properties correspondent to each custom query "name", and the correspondent value will be the provided `queryMaker`. This object is exposed for making easier the proccess of testing custom query methods.
 
 #### Example
 

@@ -1,0 +1,6 @@
+addon
+addons
+getters
+namespace
+resetted
+theirself

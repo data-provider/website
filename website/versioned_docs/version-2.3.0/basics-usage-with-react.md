@@ -188,7 +188,7 @@ export default AddTodo;
 
 ### `modules/FilteredTodoList.js`
 
-Here is where we are going to provide the `todos` data to the component at charge of rendering them. As input, this module will also receive the value of the current filter, so it can query the provider with the correspondant value.
+Here is where we are going to provide the `todos` data to the component at charge of rendering them. As input, this module will also receive the value of the current filter, so it can query the provider with the correspondent value.
 
 To connect the provider, we will use the `useData` and `useLoaded` methods of the [@data-provider/react][data-provider-react] package. These hooks bind the provider state to the component, so, when any of the chosen properties changes (`data` and `loaded` in this case), the component will be re-rendered. The hooks also will dispatch the `read` method of the provider the first time the component is rendered, and will dispatch it again every time its cache is cleaned, so the view will be maintained up to date with the latest data from the provider (and from the server, in this case).
 
@@ -214,7 +214,7 @@ const FilteredTodoList = ({ showCompleted }) => {
 export default FilteredTodoList;
 ```
 
-> Note that we are using the `loaded` property from the state to handle the loading state, not the `loading` one. This is beacuse we don't want to show the "loading..." indicator every time data is loading. It will be shown only the first time the data is being loaded, while `todos` collection is empty. Rest of times, the current todos state will be shown until the `todos` are fetched again, and then replaced. In this way we __avoid unwanted flickerings__ in the UI.
+> Note that we are using the `loaded` property from the state to handle the loading state, not the `loading` one. This is because we don't want to show the "loading..." indicator every time data is loading. It will be shown only the first time the data is being loaded, while `todos` collection is empty. Rest of times, the current todos state will be shown until the `todos` are fetched again, and then replaced. In this way we __avoid unwanted flickerings__ in the UI.
 
 ### `modules/TodoList.js`
 

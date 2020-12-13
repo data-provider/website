@@ -15,7 +15,7 @@ The `providers` object gives to us some methods that could be usually wanted to 
 
 We can define `tags` for our providers when creating them, and later we can use those tags for configuring at a time all providers containing certain tag.
 
-Origin addons should usually automatically add his own tag to the beggining of the provided `tags` array when we create a provider. This is made to allow configuring easily all providers of a same type, as "axios", "localStorage", etc.
+Origin addons should usually automatically add his own tag to the beginning of the provided `tags` array when we create a provider. This is made to allow configuring easily all providers of a same type, as "axios", "localStorage", etc.
 
 As a brief example for a better understand before describing the API:
 
@@ -356,7 +356,7 @@ providers.elements.forEach(provider => {
 
 ## Tips
 
-* Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable accross applications.
+* Use the `providers` object only for configuring options that should not be coupled to the initialization of the provider itself. This can help to make your providers reusable across applications.
 * Use the addons automatic tags for configuring all providers of the same type at a time _(for example, use the "axios" tag to set the `baseUrl` of the API if you are using the ["axios" addon][data-provider-axios])_
 
 [data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios

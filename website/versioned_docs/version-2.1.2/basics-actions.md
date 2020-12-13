@@ -87,7 +87,7 @@ There is no need to add anything to the "create" action, as `todos` cache is aut
 
 ### Another way of cleaning caches
 
-We are cleaning the `todos` cache "manually" in our `todo` actions, but, what if our actions were not the unique method of updating or deleting a `todo`? Suposse one developer does not know about the existence of our actions, and uses directly the `todo.update` method from a view. Well, our `todos` collection will not be informed about a deletion, and that `todo` will be still visible in the `todos` list.
+We are cleaning the `todos` cache "manually" in our `todo` actions, but, what if our actions were not the unique method of updating or deleting a `todo`? Suppose one developer does not know about the existence of our actions, and uses directly the `todo.update` method from a view. Well, our `todos` collection will not be informed about a deletion, and that `todo` will be still visible in the `todos` list.
 
 We can also use the Data Provider `eventEmitter` to declare relations between providers:
 

@@ -195,7 +195,7 @@ export default AddTodo;
 
 ### `modules/FilteredTodoList.js`
 
-Here is where we are going to provide the `todos` data to the component at charge of rendering them. As input, this module will also receive the value of the current filter, so it can query the provider with the correspondant value.
+Here is where we are going to provide the `todos` data to the component at charge of rendering them. As input, this module will also receive the value of the current filter, so it can query the provider with the correspondent value.
 
 To connect the provider, we will use the `useData` and `useLoading` methods of the [@data-provider/react][data-provider-react] package. These hooks bind the provider state to the component, so, when any of the chosen properties changes (`data` and `loading` in this case), the component will be re-rendered. The hooks also will dispatch the `read` method of the provider the first time the component is rendered, and will dispatch it again every time its cache is cleaned, so the view will be maintained up to date with the latest data from the provider (and from the server, in this case).
 
