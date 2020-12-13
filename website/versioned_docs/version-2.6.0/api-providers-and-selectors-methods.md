@@ -432,7 +432,7 @@ console.log(books.options);
 
 #### Returns
 
-_(Object)_: Object containing all custom query methods previously defined using the [`addQuery` method](#addqueryname-querymaker). The object will contain properties correspondent to each custom query "name", and the correspondent value will be the provided `queryMaker`. This object is exposed for making easier the proccess of testing custom query methods.
+_(Object)_: Object containing all custom query methods previously defined using the [`addQuery` method](#addqueryname-querymaker). The object will contain properties correspondent to each custom query "name", and the correspondent value will be the provided `queryMaker`. This object is exposed for making easier the process of testing custom query methods.
 
 #### Example
 

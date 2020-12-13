@@ -107,7 +107,7 @@ In our example, as it is a very small project where things are very controlled, 
 
 In a real project you'll probably prefer to separate your actions to different files from your providers and selectors, and that's right, but in this guide we are going to define them in the same file for simplicity.
 
-We have also defined a "cleanTodosCache" function to avoid code duplication in `updateTodo` and `deleteTodo` actions.
+We have also defined a `cleanTodosCache` function to avoid code duplication in `updateTodo` and `deleteTodo` actions.
 
 ### `data/todos.js`
 

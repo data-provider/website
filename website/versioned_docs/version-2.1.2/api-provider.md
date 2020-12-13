@@ -52,6 +52,6 @@ console.log(provider.state);
 
 ### Tips
 
-* Use clear identificators in your providers. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console.
+* Use clear identifiers in your providers. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console.
 * When an `id` is duplicated, Data Provider will automatically append a suffix to it and will print a warning.
 * Define always the `initialState`, it will save you extra format checks in your views, and will save an initial extra render, as described in the Arguments API.

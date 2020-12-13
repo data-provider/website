@@ -61,7 +61,7 @@ console.log(completedTasks.state);
 
 ### Tips
 
-* Use clear identificators in your selectors. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console. If you do not provide one, Data Provider will assign one `uuid` automatically.
+* Use clear identifiers in your selectors. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console. If you do not provide one, Data Provider will assign one `uuid` automatically.
 * When an `id` is duplicated, Data Provider will automatically append a suffix to it and will print a warning.
 * Define always the `initialState`, it will save you extra format checks in your views, and will avoid an initial extra render, as described in the [Arguments API](#arguments).
 
