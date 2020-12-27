@@ -15,8 +15,15 @@ The `providers` object gives to us some methods that could be usually wanted to 
 
 We can define `tags` for our providers when creating them, and later we can use those tags for configuring at a time all providers containing certain tag.
 
-Origin addons should usually automatically add his own tag to the beginning of the provided `tags` array when we create a provider. This is made to allow configuring easily all providers of a same type, as "axios", "localStorage", etc.
 
+### Origins tags
+Origin addons should usually automatically add its own tags to the provided `tags` array when we create a provider. This is made to allow configuring easily all providers of a same type, as "axios", "localStorage", etc. Read the documentation of each addon to know which tags are automatically added by it.
+
+### Selectors tags
+Tags can be added also to selectors using the `tags` option, but all of them include automatically the `selector` tag, that may be useful to handle all selectors together.
+
+
+## Example
 As a brief example for a better understand before describing the API:
 
 ```javascript
@@ -31,17 +38,28 @@ const todos = new Axios("todos", {
 ```javascript
 import { providers } from "@data-provider/core";
 
-// Set baseUrl option for all providers created by the Axios addon
+/*
+Set baseUrl option for all providers created by the Axios addon,
+which automatically adds the "axios" tag to all instances.
+*/
 providers.getByTag("axios").config({
   baseUrl: "http://localhost:3100"
 });
 
-// Set auth headers for all providers containing tag "need-auth"
+/*
+Set auth headers for all providers containing tag "need-auth",
+which has been added using options to each desired instance
+*/
 providers.getByTag("need-auth").config({
   headers: {
     "Authorization": "Bearer foo-token"
   }
 });
+
+/*
+Clean the cache of all selectors
+*/
+providers.getByTag("selector").cleanDependenciesCache();
 ```
 
 ## `providers` Methods
@@ -204,6 +222,32 @@ providers.getByTag("axios").cleanCache();
 ```javascript
 providers.cleanCache({ force: true });
 // clean cache of all providers and selectors right now, ignoring the `cleanCacheThrottle` option
+```
+
+### `cleanDependenciesCache(options)`
+
+Cleans the cache of all dependencies of selected selectors.
+
+#### Arguments
+
+* __`options`__ _(Object)_: Object that can contain next properties:
+  * __`force`__ _(Boolean)_: If `true`, will force to clean the cache immediately, ignoring the `cleanCacheThrottle` option.
+  * __`except`__ _(Array)_: Array of providers which cache shouldn't be cleaned.
+
+#### Returns
+
+The `providers selection` object itself.
+
+#### Examples
+
+```javascript
+providers.getByTag("selector").cleanDependenciesCache();
+// clean cache of all selectors
+```
+
+```javascript
+providers.getByTag("selector").cleanDepedenciesCache({ force: true });
+// clean cache of all selectors right now, ignoring the `cleanCacheThrottle` option
 ```
 
 <hr/>

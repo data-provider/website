@@ -22,9 +22,9 @@ export class Fetcher extends Provider {
 
 ## Options
 
-Our addon will accept a `baseUrl` option, which will be defined when instantiating the Provider, and the rest of the url will be defined as a "query" parameter. So, every different "queried" instance (every different url) will have its own cache, but it will be possible to clean all caches simply calling to the "parent" instance method.
+Our addon will accept a `baseUrl` option, which will be defined when instantiating the Provider, and the rest of the url will be defined as a `query` parameter. So, every different "queried" instance (every different url) will have its own cache, (it will still be possible to clean all caches calling to the `parent` instance `cleanCache` method).
 
-It is a very simple scenario, but it will be useful to illustrate the example. If you want to use a more complex data-provider origin to connect an application to a REST API and handle a lot of possible complex scenarios take a look at the [Axios][axios] addon.
+It is a very simple scenario, but it will be useful to illustrate the example. If you want to use a more complex `data-provider` origin to connect an application to a REST API and handle a lot of possible complex scenarios take a look at the [Axios addon][axios].
 
 Define a `configMethod` in the Class. It will receive the options when initialized and also when the `config` method is called, so the `baseUrl` could be also changed after initializing it.
 Store the `baseUrl` option in an internal property of the class.
@@ -35,6 +35,24 @@ import { Provider } from "@data-provider/core";
 export class Fetcher extends Provider {
   configMethod(options) {
     this._baseUrl = options.baseUrl;
+  }
+}
+```
+
+## Tags
+
+In order to allow users to select all instances of our new addon at the same time using the [`providers` handler](api-providers.md), we will add a base tag to it. Users will still be able to add its own tags to the addon instances using options, but all of them will have the base tags too. For this purpose we will add a `baseTags` getter returning the tag/tags.
+
+```js
+import { Provider } from "@data-provider/core";
+
+export class Fetcher extends Provider {
+  configMethod(options) {
+    this._baseUrl = options.baseUrl;
+  }
+
+  get baseTags() {
+    return ["api", "fetcher"];
   }
 }
 ```
@@ -52,6 +70,10 @@ import fetch from "cross-fetch";
 export default class Fetcher extends Provider {
   configMethod(options) {
     this._baseUrl = options.baseUrl;
+  }
+
+  get baseTags() {
+    return ["api", "fetcher"];
   }
 
   readMethod() {

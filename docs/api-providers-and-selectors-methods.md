@@ -112,7 +112,7 @@ book.read(); // Fetch to /books/2
 
 Defines options. Will overwrite those properties already defined in the `options` object when the provider or selector was instantiated _(read [Provider api](api-provider.md) and [Selector api](api-selector.md))_. The resultant configuration will be the extension of the initial `options` object and all options previously defined using this method.
 
-There are some options that only have effect when they are defined in the initial `options` method, as `tags`, `initialState`and `id` in the case of Selectors. For specific options of addons, please read its own documentation, as each one can define its own `configMethod`.
+There are some options that only have effect when they are defined in the initial `options` method, as `tags`, `initialState` and `id` in the case of Selectors. For specific options of addons, please read its own documentation, as each one can define its own `configMethod`.
 
 #### Arguments
 
@@ -340,6 +340,26 @@ books = new Axios("books-from-api", {
 
 console.log(books.id);
 // books-from-api
+```
+
+<hr/>
+
+### `tags`
+
+#### Returns
+
+_(Array)_: Array of provider tags.
+
+#### Example
+
+```javascript
+books = new Axios("books-from-api", {
+  url: "/books",
+  tags: ["api", "public"]
+});
+
+console.log(books.tags);
+// ["axios", "api", "public"]
 ```
 
 <hr/>

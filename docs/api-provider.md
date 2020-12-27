@@ -20,7 +20,7 @@ When we create a Provider, we'll get a provider instance that should be alive du
 	* __`cacheTime`__ _(Number)_: Milliseconds. After this time, the cache will be invalidated and the `readMethod` will be executed again when `read` is called. When the cache is invalidated it does not trigger a `cleanCache` event. Setting it to zero or null makes the cache never being invalidated. __This option can be changed also using the `config` method of the provider instance__.
 	* __`cleanCacheInterval`__ _(Number)_: Milliseconds. The cache is automatically cleaned every defined interval. The `cleanCache` event is triggered each time the cache is cleaned. When the cache is cleaned by any other process, the interval counter is resetted to zero. Setting this option to `null` will remove previously defined interval. __This option can be changed also using the `config` method of the provider instance__.
 	* __`cleanCacheThrottle`__ _(Number)_: Milliseconds. Avoids cleaning the cache more than once during this period of time. If the `cleanCache` method is called one or multiple times while it is "throttled", it will clean the cache again when the period expires. This option will be ignored if clean cache methods are called with the option `{ force: true}`. Setting this option to null will remove previously defined value. __This option can be changed also using the config method of the provider instance.__
-	* __`tags`__ _(Array of Strings)_: Defines tags for the provider instance, which can be used afterwards to manage groups of providers [using the `providers` object](api-providers.md). _Origin addons should usually automatically add his own tag to the beginning of the provided array, to allow configuring easily all providers of a same type._
+	* __`tags`__ _(Array of Strings)_: Defines tags for the provider instance, which can be used afterwards to manage groups of providers [using the `providers` object](api-providers.md).
 	* __`initialState`__ _(Object|Function)_: Object containing `loading`, `loaded`, `error` and `data` properties, which will define the initial state of the provider, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then immediately `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will save that extra render in the initialization)._ A function can be also provided, then, it will receive the current `query` as argument, and the returned object will be used as `initialState`.
 
 ### Returns
@@ -72,8 +72,13 @@ This method is called when the instance is created and every time the `config` m
 
 ### `readMethod(...args)`
 
-This is the method called to calculate the provider data, so __it is the most important one when creating addons__. It should return a promise when the origin is asynchronous, so the resolved result will be saved in the data state. It can also simply return a value when the origin is synchronous. If the method throws an error or the returned promise is rejected, the provider will fill the error state, trigger the error event and clean the cache.
+This is the method called to calculate the provider data, so __it is the most important one when creating addons__. __It must return a promise when the origin is asynchronous__, so the resolved result will be saved in the data state. It can also simply return a value when the origin is synchronous. If the method throws an error or the returned promise is rejected, the provider will fill the error state, trigger the error event and clean the cache.
 Remember that you can use the `this.queryValue` and other getters to get the current query value, etc. The arguments of the method are open, so this method will receive the same ones that are passed to the provider `read` method when it is called (addons can define its own custom options for the read method)
+
+### `get baseTags()`
+
+Tags returned by this getter will be added to all addon instances (apart of the defined in the `tags` option). Addons should always add this getter to allow users to select all instances of the same addon using the [`providers.getByTag` method](api-providers.md).
+The getter must return string, or an array of strings.
 
 ### `getChildQueryMethod(newQuery)`
 
