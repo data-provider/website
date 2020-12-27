@@ -1,6 +1,7 @@
 ---
-id: api-provider
+id: version-2.9.0-api-provider
 title: Provider
+original_id: api-provider
 ---
 
 A Provider defines an specific resource of a data origin.

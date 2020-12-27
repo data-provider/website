@@ -128,7 +128,7 @@ const siteConfig = {
   codeOfConductUrl: `${repoUrl}/blob/master/.github/CODE_OF_CONDUCT.md`,
   contributingUrl: `${repoUrl}/blob/master/.github/CONTRIBUTING.md`,
   contributorCovenanceUrl: "https://www.contributor-covenant.org/",
-  nextVersion: "v2.0.0",
+  nextVersion: "v2.9.0",
 };
 
 module.exports = siteConfig;
