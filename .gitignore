@@ -20,9 +20,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-v1-website/translated_docs
-v1-website/build/
-v1-website/yarn.lock
-v1-website/node_modules
-v1-website/i18n/*
