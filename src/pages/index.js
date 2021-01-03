@@ -372,7 +372,7 @@ function EventEmitter({ reverse, background }) {
 function Motivation({ background }) {
   return (
     <Section className="Motivation" background={background}>
-      <div className="content">
+      <div className="OneColumn content">
         <TextColumn title="Motivation" text={useContent("motivation")} />
       </div>
     </Section>
