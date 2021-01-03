@@ -406,17 +406,6 @@ function Star() {
           </>
         }
       />
-      {/* <div className="content">
-        <Heading text="Give it a star on GitHub" />
-        <GitHubStarButton />
-        <a
-          href="https://opencollective.com/data-provider"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://opencollective.com/data-provider/tiers/backer.svg?avatarHeight=100" />
-        </a>
-      </div> */}
     </Section>
   );
 }
@@ -429,11 +418,11 @@ const Index = () => {
         <title>{siteConfig.title}</title>
         <meta
           name="description"
-          content="Node.js mock server. Responses can be defined in json, JavaScript plain objects or Express middlewares. Supports defining different responses for the same route, and group them into different behaviors. Includes multiple interfaces, as an interactive CLI and a REST API."
+          content="JavaScript async data provider. Provides cache and memoization. Data, loading and error states. Selectors inspired by Reselect. Agnostic about data origins. Not concerned about the views, but works easily with frameworks using UI binding addons"
         />
         <meta
           name="keywords"
-          content="Node.js, mock server, simulated api, interactive, command line interface, api client, http, simulated response, REST API, api behaviors, developer friendly, hot reloading, testing, plugins, pluggable, Cypress"
+          content="data provider, data layer, JavaScript, Node.js, cache, async, state, api, localStorage, memory, redux, react, selector, memoization, events, eventEmitter, reducer, arquitecture, modular, front-end"
         />
       </Head>
       <HeaderHero />
