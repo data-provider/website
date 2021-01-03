@@ -6,9 +6,15 @@
   --ifm-color-primary-light: #2C58A9;
   --ifm-color-primary-lighter: #2E5CB1;
   --ifm-color-primary-lightest: #3468C8;
+  --ifm-link-color: #285caf;
+  --ifm-link-color-lighter: #3171d1;
   --dark: #282c34;
   --deepdark: #20232a;
-  --brand: #5492a6;
+  --brand: #2b63bc;
+}
+
+.navbar--dark {
+  --ifm-navbar-link-hover-color: #3171d1;
 }
 
 .navbar__brand:hover {
@@ -31,3 +37,16 @@
     opacity: 0.5;
   }
 }
+
+.footer__logo {
+  max-width: 6rem;
+}
+
+html[data-theme="dark"] article a, html[data-theme="dark"] .Section a {
+  color: var(--ifm-link-color-lighter);
+}
+
+html[data-theme="dark"] .Section .ActionButton.primary {
+  color: var(--dark);
+}
+

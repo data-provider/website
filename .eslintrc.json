@@ -18,7 +18,7 @@
     ],
     "no-undef": "error",
     "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
-    "react/prop-types": 2,
+    "react/prop-types": 0,
     "react/no-deprecated": "error",
     "react/no-access-state-in-setstate": "error",
     "react/no-did-mount-set-state": [2],

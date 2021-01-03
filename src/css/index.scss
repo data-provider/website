@@ -54,40 +54,19 @@
 
 /* Upcoming */
 
-.Upcoming .content {
+.Motivation .content {
   max-width: 900px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
-@media only screen and (max-width: 480px) {
-  .Upcoming .Heading {
-    width: 100%;
-    padding: 0 1rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 481px) and (max-width: 960px) {
-  .Upcoming .Heading {
-    width: 100%;
-    padding: 0 4rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 961px) {
-  .Upcoming .column.first {
-    border-right: 1px solid var(--ifm-table-border-color);
-  }
+.Motivation .Heading {
+  margin: auto;
+  margin-bottom: 1.5rem;
 }
 
 /* Get Started */
-
-.Star .github-button {
-  margin: auto;
-}
 
 .Star,
 .Star p {
@@ -106,18 +85,13 @@
   flex-direction: column;
 }
 
-@media screen and (max-width: 760px) {
-  .GetStarted .content {
-    width: 80%;
-  }
+.StarLinkContainer {
+  display: flex;
+  justify-content: center;
+}
 
-  .GetStarted .steps li {
-    margin-left: -1rem;
-  }
-
-  .GetStarted .terminal {
-    width: 100%;
-  }
+.StarLinkContainer .github-button {
+  padding: 20px 0;
 }
 
 /* Header Hero */
@@ -206,27 +180,6 @@
   font-size: 20px;
 }
 
-/* Friendly */
-
-.Friendly .cliImageContainer {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.Friendly img {
-  max-width: none;
-}
-
-@media only screen and (max-width: 960px) {
-  .Friendly .cliImageContainer {
-    margin-top: 20px;
-  }
-
-  .Friendly img {
-    max-width: 100%;
-  }
-}
-
 /* Easy To use */
 .codeExample .prism-code {
   border-radius: 4px;
@@ -280,14 +233,6 @@
 
 .Section.dark {
   background-color: var(--dark);
-}
-
-.Section p a {
-  @extend %link-style;
-}
-
-html[data-theme="dark"] .Section p a {
-  @extend %link-style-dark;
 }
 
 /* Two columns */
