@@ -1,0 +1,112 @@
+/* your custom css */
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
+
+.homeContainer {
+  background-color: #282c34;
+  background-image: url("/img/home-background.svg");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
+@media (max-width: 900px) {
+  .homeContainer {
+    background-image: none;
+  }
+}
+
+.projectTitle .title {
+  color: #fff;
+}
+
+.projectTitle .tagline {
+  color: #c3cee3;
+}
+
+.homeContainer .button {
+  color: #fff;
+  background-color: #28509a;
+  border: 0px;
+}
+
+.homeContainer .button:hover {
+  background-color: #395ea2;
+}
+
+.projectPromo {
+  font-size: 18px;
+  line-height: 1.3em;
+  font-weight: 1;
+  color: #fff;
+}
+
+.home.mainContainer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.home.mainContainer .container {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+#home-features {
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+#home-features h2 {
+  font-size: 20px;
+  font-weight: 1;
+  text-align: left;
+}
+
+#home-motivation {
+  background-color: #f7f7f7;
+}
+
+.code-example {
+  font-size: 14px;
+  padding-top:36px;
+}
+
+.openSourceInitiativeLogo {
+  display: block;
+  margin: auto;
+  width: 75px;
+}
+
+.nav-footer section.sitemap {
+  margin-bottom:0.5em;
+}
+
+.nav-footer .copyright-statements {
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  font-size:12px;
+}
+
+.post img {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.backersSection {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+

@@ -1,0 +1,118 @@
+{
+  "version-2.1.2/docs": [
+    {
+      "type": "category",
+      "label": "Welcome",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.1.2/about-docs"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Introduction",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.1.2/getting-started"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/motivation"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/installation"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Basic Tutorial",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-intro"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-providers"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-selectors"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-queries"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-actions"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-configuration"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-usage-with-react"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/basics-example"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Recipes",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.1.2/recipes-index"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/recipes-querying-selectors"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API Reference",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-reference"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-provider"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-selector"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-providers"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-store-manager"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-providers-and-selectors-methods"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.1.2/api-events"
+        }
+      ]
+    }
+  ]
+}

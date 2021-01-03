@@ -1,12 +1,28 @@
 .DS_Store
 
-node_modules
+# dependencies
+/node_modules
 
-lib/core/metadata.js
-lib/core/MetadataBlog.js
+# production
+/build
 
-website/translated_docs
-website/build/
-website/yarn.lock
-website/node_modules
-website/i18n/*
+# generated files
+.docusaurus
+.cache-loader
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+v1-website/translated_docs
+v1-website/build/
+v1-website/yarn.lock
+v1-website/node_modules
+v1-website/i18n/*
