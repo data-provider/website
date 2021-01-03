@@ -6,7 +6,7 @@ Deployed at [https://www.data-provider.org][website-url]
 
 ## How to
 
-This website was created with [Docusaurus][docusaurus-url]. Read the [website/README.md file][docusaurus-readme] for further info.
+This website was created with [Docusaurus][docusaurus-url].
 
 ## Scripts
 
