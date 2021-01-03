@@ -1,35 +1,58 @@
 {
   "name": "data-provider-website",
-  "description": "Data Provider documentation website",
   "private": true,
-  "author": "Javier Brea",
-  "license": "MIT",
-  "repository": "https://github.com/data-provider/website",
   "scripts": {
-    "lint": "eslint website",
+    "lint": "eslint src *.js",
     "lint-staged": "lint-staged",
-    "start": "cd website && npm run start"
+    "examples": "docusaurus-examples",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "publish-gh-pages": "docusaurus-publish",
+    "write-translations": "docusaurus-write-translations",
+    "version": "docusaurus-version",
+    "rename-version": "docusaurus-rename-version",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "docusaurus": "docusaurus"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-alpha.69",
+    "@docusaurus/preset-classic": "2.0.0-alpha.69",
     "babel-eslint": "10.1.0",
+    "clsx": "1.1.1",
+    "docusaurus-plugin-sass": "0.1.11",
     "eslint": "7.15.0",
     "eslint-config-prettier": "7.0.0",
     "eslint-plugin-prettier": "3.2.0",
     "eslint-plugin-react": "7.21.5",
     "husky": "4.3.5",
     "lint-staged": "10.5.3",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "prop-types": "15.7.2",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "react-github-btn": "1.2.0"
   },
   "lint-staged": {
-    "website/pages/**/*.js": "eslint",
-    "website/core/**/*.js": "eslint",
-    "website/i18n/**/*.js": "eslint",
-    "website/static/**/*.js": "eslint",
-    "website/*.js": "eslint"
+    "src/**/*.js": "eslint",
+    "*.js": "eslint"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint-staged"
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

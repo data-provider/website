@@ -130,7 +130,7 @@ runExample();
 
 And you can use it in a React project using the `react` addon, for example:
 
-```js
+```jsx
 import { jsonPlaceHolderApi } from "./providers";
 import { useData } from "@data-provider/react";
 
@@ -153,7 +153,7 @@ export const Posts = () => {
 
 ## Using the addon with Selectors
 
-Every data-provider origin addon can be used as a dependency of [data-provider Selectors](api-selector.md), so you can combine the results of two different queries, for example, or combine two different origin instances, or two different addons, etc. You can read the [Selectors recipes chapter]() to get a reference about the power of using Selectors.
+Every data-provider origin addon can be used as a dependency of [data-provider Selectors](api-selector.md), so you can combine the results of two different queries, for example, or combine two different origin instances, or two different addons, etc. You can read the [Selectors recipes chapter](recipes-querying-selectors.md) to get a reference about the power of using Selectors.
 
 Create one selector that will return one post, including the name and email of the user who created it. As query parameter the selector will receive the id of the post.
 
@@ -180,7 +180,7 @@ export const postWithUserData = new Selector(
 
 Now you can use the selector directly, and it will fetch all needed data:
 
-```js
+```jsx
 import { postWithUserData } from "./selectors";
 import { useData, useLoaded } from "@data-provider/react";
 

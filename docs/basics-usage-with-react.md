@@ -38,7 +38,7 @@ We also have to mention that __we are not going to worry about the performance o
 
 ### `components/Todo.js`
 
-```javascript
+```jsx
 import PropTypes from "prop-types";
 
 const Todo = ({ onClick, id, completed, text }) => (
@@ -63,7 +63,7 @@ export default Todo;
 
 ### `components/TodoList.js`
 
-```javascript
+```jsx
 import PropTypes from "prop-types";
 import Todo from "./Todo";
 
@@ -93,7 +93,7 @@ export default TodoList;
 
 ### `components/Button.js`
 
-```javascript
+```jsx
 import PropTypes from "prop-types";
 
 const Button = ({ active, children, onClick }) => {
@@ -118,7 +118,7 @@ export default Button;
 
 ### `components/Filters.js`
 
-```javascript
+```jsx
 import Button from "./Button";
 
 const Filters = ({ onClick, showCompleted }) => (
@@ -136,7 +136,7 @@ export default Filters;
 
 ### `components/AddTodo.js`
 
-```javascript
+```jsx
 const AddTodo = ({ onSubmit }) => {
   let input;
 
@@ -174,7 +174,7 @@ In the "modules" is where we are going to bind the presentational components to 
 
 Here, we simply render the `AddTodo.js` component, defining the `onSubmit` callback, which in our case will call to the `createTodo` action.
 
-```javascript
+```jsx
 import { createTodo } from '../data/todos';
 import AddTodoComponent from "../components/AddTodo";
 
@@ -191,7 +191,7 @@ Here is where we are going to provide the `todos` data to the component at charg
 
 To connect the provider, we will use the `useData` and `useLoaded` methods of the [@data-provider/react][data-provider-react] package. These hooks bind the provider state to the component, so, when any of the chosen properties changes (`data` and `loaded` in this case), the component will be re-rendered. The hooks also will dispatch the `read` method of the provider the first time the component is rendered, and will dispatch it again every time its cache is cleaned, so the view will be maintained up to date with the latest data from the provider (and from the server, in this case).
 
-```javascript
+```jsx
 import { useData, useLoaded } from "@data-provider/react";
 
 import { todosFiltered, updateTodo } from "../data/todos";
@@ -219,7 +219,7 @@ export default FilteredTodoList;
 
 In this component we are going to handle the state of the `completed` filter and render both filter and filtered list modules.
 
-```javascript
+```jsx
 import { useState } from "react";
 
 import Filters from "../components/Filters";
@@ -248,7 +248,7 @@ We are going to create a separated folder for the "app", which will contain the 
 
 ### `app/App.js`
 
-```javascript
+```jsx
 import AddTodo from "../modules/AddTodo";
 import TodoList from "../modules/TodoList";
 
@@ -275,7 +275,7 @@ We define a namespace for the Data Provider store, and use Redux `combineReducer
 
 ### `index.js`
 
-```javascript
+```jsx
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
