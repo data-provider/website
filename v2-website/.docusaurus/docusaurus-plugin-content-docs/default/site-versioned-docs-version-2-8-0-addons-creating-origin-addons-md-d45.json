@@ -1,0 +1,23 @@
+{
+  "unversionedId": "addons-creating-origin-addons",
+  "id": "version-2.8.0/addons-creating-origin-addons",
+  "isDocsHomePage": false,
+  "title": "How to create origin addons",
+  "description": "Data Provider is agnostic about data origins, so it can be used to read data from a REST API, from localStorage, or from any other origin. Custom addons are distributed for each different type of origin, and you can even create your owns.",
+  "source": "@site/versioned_docs/version-2.8.0/addons-creating-origin-addons.md",
+  "slug": "/addons-creating-origin-addons",
+  "permalink": "/docs/2.8.0/addons-creating-origin-addons",
+  "version": "2.8.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Creating origin addons",
+  "sidebar": "version-2.8.0/docs",
+  "previous": {
+    "title": "Addons",
+    "permalink": "/docs/2.8.0/addons-intro"
+  },
+  "next": {
+    "title": "Recipes",
+    "permalink": "/docs/2.8.0/recipes-index"
+  }
+}

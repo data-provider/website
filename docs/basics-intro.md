@@ -1,7 +1,7 @@
 ---
 id: basics-intro
 title: Intro
-sidebar_label: Basic Tutorial: Intro
+sidebar_label: "Basic Tutorial: Intro"
 ---
 
 In this guide we'll walk through the process of creating a simple Todo app connected to a REST Api.

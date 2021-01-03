@@ -1,0 +1,22 @@
+{
+  "unversionedId": "basics-example",
+  "id": "version-2.2.0/basics-example",
+  "isDocsHomePage": false,
+  "title": "Running the example",
+  "description": "Now that we have all the code of our tiny todo app, we are going to create the \"server\" to which the application will request the todos.",
+  "source": "@site/versioned_docs/version-2.2.0/basics-example.md",
+  "slug": "/basics-example",
+  "permalink": "/docs/2.2.0/basics-example",
+  "version": "2.2.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.2.0/docs",
+  "previous": {
+    "title": "Usage with React",
+    "permalink": "/docs/2.2.0/basics-usage-with-react"
+  },
+  "next": {
+    "title": "Recipes",
+    "permalink": "/docs/2.2.0/recipes-index"
+  }
+}

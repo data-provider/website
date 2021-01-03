@@ -1,0 +1,23 @@
+{
+  "unversionedId": "basics-providers",
+  "id": "version-2.7.0/basics-providers",
+  "isDocsHomePage": false,
+  "title": "Providers",
+  "description": "Defining providers",
+  "source": "@site/versioned_docs/version-2.7.0/basics-providers.md",
+  "slug": "/basics-providers",
+  "permalink": "/docs/2.7.0/basics-providers",
+  "version": "2.7.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Providers",
+  "sidebar": "version-2.7.0/docs",
+  "previous": {
+    "title": "Intro",
+    "permalink": "/docs/2.7.0/basics-intro"
+  },
+  "next": {
+    "title": "Selectors",
+    "permalink": "/docs/2.7.0/basics-selectors"
+  }
+}

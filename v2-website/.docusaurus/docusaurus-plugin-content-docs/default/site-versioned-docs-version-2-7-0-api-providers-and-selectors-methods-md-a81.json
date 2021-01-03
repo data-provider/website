@@ -1,0 +1,23 @@
+{
+  "unversionedId": "api-providers-and-selectors-methods",
+  "id": "version-2.7.0/api-providers-and-selectors-methods",
+  "isDocsHomePage": false,
+  "title": "Providers and selectors methods",
+  "description": "This chapter describes all methods common to providers and selectors. If you haven't done it already, we recommend you to first read the Selector API and Provider API to deeply learn what they are, and how to create them.",
+  "source": "@site/versioned_docs/version-2.7.0/api-providers-and-selectors-methods.md",
+  "slug": "/api-providers-and-selectors-methods",
+  "permalink": "/docs/2.7.0/api-providers-and-selectors-methods",
+  "version": "2.7.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Methods",
+  "sidebar": "version-2.7.0/docs",
+  "previous": {
+    "title": "storeManager",
+    "permalink": "/docs/2.7.0/api-store-manager"
+  },
+  "next": {
+    "title": "Events",
+    "permalink": "/docs/2.7.0/api-events"
+  }
+}

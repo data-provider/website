@@ -1,0 +1,22 @@
+{
+  "unversionedId": "installation",
+  "id": "version-2.7.0/installation",
+  "isDocsHomePage": false,
+  "title": "Installation",
+  "description": "NPM Installation",
+  "source": "@site/versioned_docs/version-2.7.0/installation.md",
+  "slug": "/installation",
+  "permalink": "/docs/2.7.0/installation",
+  "version": "2.7.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.7.0/docs",
+  "previous": {
+    "title": "Motivation",
+    "permalink": "/docs/2.7.0/motivation"
+  },
+  "next": {
+    "title": "Intro",
+    "permalink": "/docs/2.7.0/basics-intro"
+  }
+}

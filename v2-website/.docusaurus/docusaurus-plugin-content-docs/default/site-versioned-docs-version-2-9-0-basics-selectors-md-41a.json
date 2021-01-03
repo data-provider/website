@@ -1,0 +1,23 @@
+{
+  "unversionedId": "basics-selectors",
+  "id": "version-2.9.0/basics-selectors",
+  "isDocsHomePage": false,
+  "title": "Selectors",
+  "description": "Defining selectors",
+  "source": "@site/versioned_docs/version-2.9.0/basics-selectors.md",
+  "slug": "/basics-selectors",
+  "permalink": "/docs/basics-selectors",
+  "version": "2.9.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Selectors",
+  "sidebar": "version-2.9.0/docs",
+  "previous": {
+    "title": "Providers",
+    "permalink": "/docs/basics-providers"
+  },
+  "next": {
+    "title": "Queries",
+    "permalink": "/docs/basics-queries"
+  }
+}

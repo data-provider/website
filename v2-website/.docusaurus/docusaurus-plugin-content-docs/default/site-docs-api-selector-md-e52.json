@@ -1,0 +1,22 @@
+{
+  "unversionedId": "api-selector",
+  "id": "api-selector",
+  "isDocsHomePage": false,
+  "title": "Selector",
+  "description": "A Selector combines origins or other selectors (what we call \"dependencies\"), and returns a new result.",
+  "source": "@site/../docs/api-selector.md",
+  "slug": "/api-selector",
+  "permalink": "/docs/next/api-selector",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Provider",
+    "permalink": "/docs/next/api-provider"
+  },
+  "next": {
+    "title": "providers",
+    "permalink": "/docs/next/api-providers"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "basics-intro",
+  "id": "basics-intro",
+  "isDocsHomePage": false,
+  "title": "Intro",
+  "description": "In this guide we'll walk through the process of creating a simple Todo app connected to a REST Api.",
+  "source": "@site/../docs/basics-intro.md",
+  "slug": "/basics-intro",
+  "permalink": "/docs/next/basics-intro",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Basic Tutorial: Intro",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/docs/next/installation"
+  },
+  "next": {
+    "title": "Providers",
+    "permalink": "/docs/next/basics-providers"
+  }
+}

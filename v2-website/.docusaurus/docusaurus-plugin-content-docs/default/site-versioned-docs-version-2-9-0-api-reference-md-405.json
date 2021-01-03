@@ -1,0 +1,22 @@
+{
+  "unversionedId": "api-reference",
+  "id": "version-2.9.0/api-reference",
+  "isDocsHomePage": false,
+  "title": "Api Reference",
+  "description": "This section documents the complete Data Provider API. Keep in mind that Data Provider is not concerned about the views or about specific data origins. You'll also want to use UI bindings like @data-provider/react and origins like @data-provider/axios.",
+  "source": "@site/versioned_docs/version-2.9.0/api-reference.md",
+  "slug": "/api-reference",
+  "permalink": "/docs/api-reference",
+  "version": "2.9.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.9.0/docs",
+  "previous": {
+    "title": "Querying selectors",
+    "permalink": "/docs/recipes-querying-selectors"
+  },
+  "next": {
+    "title": "Provider",
+    "permalink": "/docs/api-provider"
+  }
+}

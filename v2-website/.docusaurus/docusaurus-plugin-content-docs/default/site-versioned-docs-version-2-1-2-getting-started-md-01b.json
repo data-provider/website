@@ -1,0 +1,22 @@
+{
+  "unversionedId": "getting-started",
+  "id": "version-2.1.2/getting-started",
+  "isDocsHomePage": true,
+  "title": "Get started",
+  "description": "Getting started with Data Provider",
+  "source": "@site/versioned_docs/version-2.1.2/getting-started.md",
+  "slug": "/",
+  "permalink": "/docs/2.1.2/",
+  "version": "2.1.2",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.1.2/docs",
+  "previous": {
+    "title": "About this documentation",
+    "permalink": "/docs/2.1.2/about-docs"
+  },
+  "next": {
+    "title": "Motivation",
+    "permalink": "/docs/2.1.2/motivation"
+  }
+}

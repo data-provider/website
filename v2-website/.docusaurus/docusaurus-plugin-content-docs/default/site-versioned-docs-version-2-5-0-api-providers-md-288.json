@@ -1,0 +1,22 @@
+{
+  "unversionedId": "api-providers",
+  "id": "version-2.5.0/api-providers",
+  "isDocsHomePage": false,
+  "title": "providers",
+  "description": "Purpose",
+  "source": "@site/versioned_docs/version-2.5.0/api-providers.md",
+  "slug": "/api-providers",
+  "permalink": "/docs/2.5.0/api-providers",
+  "version": "2.5.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.5.0/docs",
+  "previous": {
+    "title": "Selector",
+    "permalink": "/docs/2.5.0/api-selector"
+  },
+  "next": {
+    "title": "storeManager",
+    "permalink": "/docs/2.5.0/api-store-manager"
+  }
+}

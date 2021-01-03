@@ -1,0 +1,23 @@
+{
+  "unversionedId": "recipes-index",
+  "id": "version-2.2.0/recipes-index",
+  "isDocsHomePage": false,
+  "title": "Recipes",
+  "description": "These are some use cases and code snippets to get you started with Data Provider in a real app. They assume assume you understand the topics in basic tutorial and you have read the API section.",
+  "source": "@site/versioned_docs/version-2.2.0/recipes-index.md",
+  "slug": "/recipes-index",
+  "permalink": "/docs/2.2.0/recipes-index",
+  "version": "2.2.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "Recipes: Index",
+  "sidebar": "version-2.2.0/docs",
+  "previous": {
+    "title": "Running the example",
+    "permalink": "/docs/2.2.0/basics-example"
+  },
+  "next": {
+    "title": "Querying selectors",
+    "permalink": "/docs/2.2.0/recipes-querying-selectors"
+  }
+}

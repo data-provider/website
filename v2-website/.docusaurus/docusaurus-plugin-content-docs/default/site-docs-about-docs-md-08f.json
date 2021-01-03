@@ -1,0 +1,19 @@
+{
+  "unversionedId": "about-docs",
+  "id": "about-docs",
+  "isDocsHomePage": false,
+  "title": "About this documentation",
+  "description": "Welcome to the Data Provider documentation!",
+  "source": "@site/../docs/about-docs.md",
+  "slug": "/about-docs",
+  "permalink": "/docs/next/about-docs",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar_label": "About this docs",
+  "sidebar": "docs",
+  "next": {
+    "title": "Get started",
+    "permalink": "/docs/next/"
+  }
+}

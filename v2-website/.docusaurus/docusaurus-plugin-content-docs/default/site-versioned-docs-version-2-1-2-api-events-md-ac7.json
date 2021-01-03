@@ -1,0 +1,18 @@
+{
+  "unversionedId": "api-events",
+  "id": "version-2.1.2/api-events",
+  "isDocsHomePage": false,
+  "title": "Events",
+  "description": "Data Provider includes an event emitter that allows to be continually informed about what is happening and react in consequence.",
+  "source": "@site/versioned_docs/version-2.1.2/api-events.md",
+  "slug": "/api-events",
+  "permalink": "/docs/2.1.2/api-events",
+  "version": "2.1.2",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.1.2/docs",
+  "previous": {
+    "title": "Providers and selectors methods",
+    "permalink": "/docs/2.1.2/api-providers-and-selectors-methods"
+  }
+}

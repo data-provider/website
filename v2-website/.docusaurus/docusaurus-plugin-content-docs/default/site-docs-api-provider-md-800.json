@@ -1,0 +1,22 @@
+{
+  "unversionedId": "api-provider",
+  "id": "api-provider",
+  "isDocsHomePage": false,
+  "title": "Provider",
+  "description": "A Provider defines an specific resource of a data origin.",
+  "source": "@site/../docs/api-provider.md",
+  "slug": "/api-provider",
+  "permalink": "/docs/next/api-provider",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "docs",
+  "previous": {
+    "title": "Api Reference",
+    "permalink": "/docs/next/api-reference"
+  },
+  "next": {
+    "title": "Selector",
+    "permalink": "/docs/next/api-selector"
+  }
+}

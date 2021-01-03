@@ -1,0 +1,22 @@
+{
+  "unversionedId": "basics-actions",
+  "id": "version-2.9.0/basics-actions",
+  "isDocsHomePage": false,
+  "title": "Actions",
+  "description": "Defining actions for providers",
+  "source": "@site/versioned_docs/version-2.9.0/basics-actions.md",
+  "slug": "/basics-actions",
+  "permalink": "/docs/basics-actions",
+  "version": "2.9.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.9.0/docs",
+  "previous": {
+    "title": "Queries",
+    "permalink": "/docs/basics-queries"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/docs/basics-configuration"
+  }
+}

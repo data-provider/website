@@ -1,0 +1,22 @@
+{
+  "unversionedId": "motivation",
+  "id": "version-2.7.0/motivation",
+  "isDocsHomePage": false,
+  "title": "Motivation",
+  "description": "Why you should not use your app state as a data cache",
+  "source": "@site/versioned_docs/version-2.7.0/motivation.md",
+  "slug": "/motivation",
+  "permalink": "/docs/2.7.0/motivation",
+  "version": "2.7.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.7.0/docs",
+  "previous": {
+    "title": "Get started",
+    "permalink": "/docs/2.7.0/"
+  },
+  "next": {
+    "title": "Installation",
+    "permalink": "/docs/2.7.0/installation"
+  }
+}

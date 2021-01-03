@@ -1,0 +1,22 @@
+{
+  "unversionedId": "basics-queries",
+  "id": "version-2.9.0/basics-queries",
+  "isDocsHomePage": false,
+  "title": "Queries",
+  "description": "Querying providers and selectors",
+  "source": "@site/versioned_docs/version-2.9.0/basics-queries.md",
+  "slug": "/basics-queries",
+  "permalink": "/docs/basics-queries",
+  "version": "2.9.0",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "sidebar": "version-2.9.0/docs",
+  "previous": {
+    "title": "Selectors",
+    "permalink": "/docs/basics-selectors"
+  },
+  "next": {
+    "title": "Actions",
+    "permalink": "/docs/basics-actions"
+  }
+}
