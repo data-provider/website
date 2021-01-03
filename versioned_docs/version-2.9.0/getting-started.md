@@ -120,7 +120,7 @@ runExample();
 
 Take advantage of the [@data-provider/react][data-provider-react] addon, and use hooks to retrieve the data automatically from a React component:
 
-```javascript
+```jsx
 import React from "react";
 import { useData, useLoading } from "@data-provider/react";
 

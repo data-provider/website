@@ -131,7 +131,7 @@ runExample();
 
 And you can use it in a React project using the `react` addon, for example:
 
-```js
+```jsx
 import { jsonPlaceHolderApi } from "./providers";
 import { useData } from "@data-provider/react";
 
@@ -181,7 +181,7 @@ export const postWithUserData = new Selector(
 
 Now you can use the selector directly, and it will fetch all needed data:
 
-```js
+```jsx
 import { postWithUserData } from "./selectors";
 import { useData, useLoaded } from "@data-provider/react";
 
