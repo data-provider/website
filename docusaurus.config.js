@@ -5,22 +5,11 @@ module.exports = {
   baseUrl: "/",
   organizationName: "data-provider",
   projectName: "data-provider",
-  scripts: [
-    "https://buttons.github.io/buttons.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js",
-    "/js/code-block-buttons.js",
-  ],
+  scripts: ["https://buttons.github.io/buttons.js"],
   favicon: "img/favicon.ico",
   customFields: {
     repoUrl: "https://github.com/data-provider/core",
-    users: [
-      {
-        caption: "Domapic",
-        image: "https://domapic.com/assets/domapic-logo.png",
-        infoLink: "https://www.domapic.com",
-        pinned: false,
-      },
-    ],
+    users: [],
     gaGtag: true,
     organizationUrl: "https://github.com/data-provider",
     webSiteRepoUrl: "https://github.com/data-provider/website",
@@ -32,125 +21,142 @@ module.exports = {
       "https://github.com/data-provider/core/blob/master/.github/CODE_OF_CONDUCT.md",
     contributingUrl: "https://github.com/data-provider/core/blob/master/.github/CONTRIBUTING.md",
     contributorCovenanceUrl: "https://www.contributor-covenant.org/",
-    nextVersion: "v2.9.0",
   },
-  onBrokenLinks: "log",
-  onBrokenMarkdownLinks: "log",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   presets: [
     [
       "@docusaurus/preset-classic",
       {
         docs: {
-          homePageId: "getting-started",
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: false,
+          editUrl: "https://github.com/data-provider/website/edit/master/docs/",
           path: "./docs",
-          sidebarPath: "../website/sidebars.json",
+          sidebarPath: require.resolve("./sidebars.json"),
         },
-        blog: {},
         theme: {
-          customCss: "../src/css/customTheme.css",
+          customCss: [
+            require.resolve("./src/css/custom.scss"),
+            require.resolve("./src/css/index.scss"),
+          ],
         },
       },
     ],
   ],
-  plugins: [],
+  plugins: ["docusaurus-plugin-sass"],
   themeConfig: {
+    prism: {
+      defaultLanguage: "javascript",
+      additionalLanguages: ["bash", "json"],
+    },
     navbar: {
+      hideOnScroll: true,
+      style: "dark",
       title: "Data Provider",
       logo: {
         src: "img/logo_64_white.png",
       },
       items: [
         {
-          to: "docs/",
+          to: "docs/getting-started",
           label: "Get started",
-          position: "left",
+          position: "right",
         },
         {
           to: "docs/basics-intro",
           label: "Tutorial",
-          position: "left",
+          position: "right",
         },
         {
           to: "docs/api-reference",
           label: "API",
-          position: "left",
-        },
-        {
-          to: "/help",
-          label: "Help",
-          position: "left",
-        },
-        {
-          label: "Version",
-          to: "docs",
           position: "right",
-          items: [
-            {
-              label: "2.9.0",
-              to: "docs/",
-              activeBaseRegex: "docs/(?!2.1.2|2.2.0|2.3.0|2.5.0|2.6.0|2.7.0|2.8.0|2.9.0|next)",
-            },
-            {
-              label: "2.8.0",
-              to: "docs/2.8.0/",
-            },
-            {
-              label: "2.7.0",
-              to: "docs/2.7.0/",
-            },
-            {
-              label: "2.6.0",
-              to: "docs/2.6.0/",
-            },
-            {
-              label: "2.5.0",
-              to: "docs/2.5.0/",
-            },
-            {
-              label: "2.3.0",
-              to: "docs/2.3.0/",
-            },
-            {
-              label: "2.2.0",
-              to: "docs/2.2.0/",
-            },
-            {
-              label: "2.1.2",
-              to: "docs/2.1.2/",
-            },
-            {
-              label: "Master/Unreleased",
-              to: "docs/next/",
-              activeBaseRegex: "docs/next/(?!support|team|resources)",
-            },
-          ],
+        },
+        {
+          href: "https://github.com/data-provider/core",
+          "aria-label": "GitHub repository",
+          position: "right",
+          className: "navbar-github-link",
+        },
+        {
+          type: "docsVersionDropdown",
+          position: "left",
+          dropdownActiveClassDisabled: true,
         },
       ],
     },
     image: "img/og_image.jpg",
     footer: {
+      style: "dark",
       links: [
+        {
+          title: "Docs",
+          items: [
+            {
+              label: "Getting Started",
+              to: "docs/getting-started",
+            },
+            {
+              to: "docs/basics-intro",
+              label: "Tutorial",
+            },
+            {
+              to: "docs/api-reference",
+              label: "API",
+            },
+            {
+              label: "Addons",
+              to: "docs/addons-intro",
+            },
+          ],
+        },
         {
           title: "Community",
           items: [
             {
+              label: "Contributors guidelines",
+              to: "https://github.com/data-provider/core/blob/master/.github/CONTRIBUTING.md",
+            },
+            {
+              label: "Code of conduct",
+              to: "https://github.com/data-provider/core/blob/master/.github/CODE_OF_CONDUCT.md",
+            },
+            {
+              label: "Github project",
+              to: "https://github.com/orgs/data-provider/projects/1",
+            },
+            {
+              label: "Issues",
+              to: "https://github.com/data-provider/core/issues",
+            },
+          ],
+        },
+        {
+          title: "Find us",
+          items: [
+            {
               label: "Twitter",
               to: "https://twitter.com/dataprovider2",
+            },
+            {
+              label: "Github",
+              to: "https://github.com/data-provider",
             },
           ],
         },
       ],
       copyright: "Copyright © 2021 Javier Brea",
       logo: {
+        alt: "Data Provider logo",
         src: "img/logo_white.svg",
+        href: "https://www.data-provider.org",
       },
     },
     algolia: {
       apiKey: "449d11b242930928dc2b89189eda6c5a",
       indexName: "data-provider",
-      algoliaOptions: {},
+      contextualSearch: true,
     },
     gtag: {
       trackingID: "UA-158982048-1",
