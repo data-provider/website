@@ -124,11 +124,11 @@ export const todo = new Axios("todo", {
 
 export const todosFiltered = new Selector(
   todos,
-  (todosResults, query) => {
-    if (query.completed === null) {
+  (queryValue, todosResults) => {
+    if (queryValue.completed === null) {
       return todosResults;
     }
-    return todosResults.filter(todo => todo.completed === query.completed)
+    return todosResults.filter(todo => todo.completed === queryValue.completed)
   },
   {
     id: "todos-filtered"

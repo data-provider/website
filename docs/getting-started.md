@@ -74,7 +74,7 @@ previously defined origins.
 export const booksWithAuthor = new Selector(
   authors,
   books,
-  (authorsResults, booksResults) => {
+  (queryValue, authorsResults, booksResults) => {
     return booksResults.map(book => ({
       ...book,
       author: authorsResults.find(author => author.id === book.author)

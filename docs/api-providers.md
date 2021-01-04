@@ -246,7 +246,7 @@ providers.getByTag("selector").cleanDependenciesCache();
 ```
 
 ```javascript
-providers.getByTag("selector").cleanDepedenciesCache({ force: true });
+providers.getByTag("selector").cleanDependenciesCache({ force: true });
 // clean cache of all selectors right now, ignoring the `cleanCacheThrottle` option
 ```
 
