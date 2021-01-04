@@ -96,14 +96,14 @@ export const booksWithAuthor = new Selector(
 );
   `,
   agnostic: `
-    The Provider class provides the cache, state handler, etc., but not the <code>read</code method.
+    The Provider class provides the cache, state handler, etc., but not the <code>read</code> method.
     The <code>read</code> behavior is implemented by different <b>[Data Provider Origins addons](docs/addons-intro)</b>.
     <br/><br/>
     There are different origins available, such as <b>[Axios](https://www.npmjs.com/package/@data-provider/axios),
     <a href="https://github.com/data-provider/browser-storage" rel="noopener noreferrer">LocalStorage</a>,
-    <a href="https://github.com/data-provider/memory" rel="noopener noreferrer">Memory</a>, etc.</b> and building your own is easy. Read ["creating origin addons"](docs/addons-creating-origin-addons) for further info.
+    <a href="https://github.com/data-provider/memory" rel="noopener noreferrer">Memory</a></b>, etc. and creating your own is easy. Read ["creating origin addons"](docs/addons-creating-origin-addons) for further info.
     <br/><br/>
-    Sharing the same interface for all origins, and being able to build Selectors combining all of them implies that your logic will be <b>completely isolated about WHERE the data is being retrieved.</b>
+    Sharing the same interface for all origins, and being able to build Selectors combining all of them implies that your logic will be <b>completely isolated about from WHERE the data is being retrieved.</b>
   `,
   agnosticCode: `
 import { Axios } from "@data-provider/axios";
@@ -120,11 +120,11 @@ export const favoriteBooks = new LocalStorage("favorite-books", {
 });
   `,
   queryable: `
-    Providers and selectors instances can be queried, which returns a new child instance with his own <code>queryValue</code>. Each different child has a different cache, different state, etc.
+    Providers and selectors instances can be queried, which returns a new child instance with its own <code>queryValue</code>. Each different child has a different cache, different state, etc.
     <br/><br/>
     Different origins can use the <code>queryValue</code> for different purposes (API origins will normally use it for adding different params or query strings to the provider url, for example)
     <br/><br/>
-    When the parent provider cache is clean, also the children is. <i>(For example, cleaning the cache of an API origin requesting to <code>/api/books</code>, will also clean the cache for <code>/api/books?author=2</code>)</i>
+    When the parent provider cache is cleaned, also the children are. <i>(For example, cleaning the cache of an API origin requesting to <code>/api/books</code>, will also clean the cache for <code>/api/books?author=2</code>)</i>
   `,
   queryableCode: `
 import { useData, useLoading } from "@data-provider/react";
@@ -428,9 +428,9 @@ const Index = () => {
       <HeaderHero />
       <Benefits />
       <UIBindings background="tint" />
-      <Cache reverse />
-      <Selectors background="tint" />
       <Agnostic reverse />
+      <Selectors background="tint" />
+      <Cache reverse />
       <Queryable background="tint" />
       <EventEmitter reverse />
       <Motivation background="tint" />
