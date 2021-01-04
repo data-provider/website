@@ -30,7 +30,7 @@ As a summary, what Data Provider gives to you is:
 * Selectors
 * Event emitter
 
-And, the most important thing... __promotes separation of concerns, isolating the data layer, and separating your data cache from your global state.__
+And, the most important thing... __it promotes separation of concerns, isolating the data layer, and separating your data cache from your global state.__
 
 [![Data Provider architecture schema](assets/schemas/data-provider-architecture.jpg)](/img/architecture-scheme.png)
 
@@ -140,15 +140,15 @@ const Books = () => {
 export default Books;
 ```
 
-_NOTE: This is a very basic example of what @data-provider/react can do. In a real application, this could be solved even easier using one of the HOCs that the library provides._ Check the [@data-provider/react][data-provider-react] docs for further info.
+_NOTE: This is a very basic example of what @data-provider/react can do._ Check the [@data-provider/react][data-provider-react] docs for further info.
 
 ## Next steps
 
 Previous examples don't show the real power of Data Provider, and how it could be used to isolate completely your components from the data layer, where a great part of the business rules should reside.
 
-In next chapters we will try to show you how the cache of a "collection" can be cleaned automatically when a "model" is updated, how to use selectors dependencies to completely manage all your data using them, how to define "queries" for the origins _(as url parameters or query strings)_ can be delegated completely to the selectors, etc.
+In next chapters we will try to show you how the cache of a "collection" can be cleaned automatically when a "model" is updated, how to use selectors dependencies to completely manage all your data using them, how defining "queries" for the origins _(as url parameters or query strings)_ can be delegated completely to the selectors, etc.
 
-But first, you should [read the "motivation" page](motivation.md) to really understand why this library exists, what problems can solve, or, at least, what bad patterns can help to prevent.
+But first, you should [read the "motivation" page](motivation.md) to really understand why this library exists, what problems it can solve, or, at least, what bad patterns it can help to prevent.
 
 [nodejs]: https://nodejs.org/en/
 [redux]: https://redux.js.org/
