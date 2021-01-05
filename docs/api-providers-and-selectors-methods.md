@@ -12,7 +12,7 @@ This chapter describes all methods common to providers and selectors. If you hav
 
 ### `read()`
 
-Dispatches the read method. In the case of providers, it will dispatch the internal `readMethod` implemented by specific origin addons. In case of selectors, it will dispatch the `read` method of all needed dependencies and execute the `selector function` as described in the [Selector API](api-selector.md).
+Dispatches the read method. In the case of providers, it will dispatch the internal `readMethod` implemented by specific origin addons. In case of selectors, it will dispatch the `read` method of all needed dependencies as described in the [Selector API](api-selector.md).
 
 When there is no cache for the resource, a `readStart` event will be triggered at the beginning, and a `readSuccess` event will be triggered at the end (or `readError` in case of error). Read the [events API chapter](api-events.md) for further info.
 

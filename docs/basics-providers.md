@@ -6,9 +6,9 @@ sidebar_label: Providers
 
 ## Defining providers
 
-A Provider defines an specific resource in data origin.
+A Provider defines a specific resource in a data origin.
 
-When we define a Provider, we'll get a provider instance that should be alive during the whole live of our application, as it is going to be at charge of the cache, avoiding unnecessary resource consumptions while the data origin has not changed.
+When we instantiate a Provider, we'll get a provider instance that will be alive during the whole life of our application, as it is going to be at charge of the cache, avoiding unnecessary resource consumptions while the data origin has not changed.
 
 Remember that providers are queryable, so you don't need to create a provider for each specific model, the approach is defining a provider for each different resource in the data origin. In the case of an API example, you should define a provider for each different API url.
 
@@ -21,8 +21,9 @@ First of all, install it:
 ```bash
 npm i @data-provider/axios
 ```
-
-> Keep in mind that this guide will talk only about the REST Api origin provided by [@data-provider/axios][data-provider-axios], but the concepts can be applied to any type of origin, as Data Provider is origin agnostic.
+:::info
+Keep in mind that this guide will talk only about the REST Api origin provided by [@data-provider/axios][data-provider-axios], but the concepts can be applied to any type of origin, as Data Provider is origin agnostic.
+:::
 
 ### Fetch todos from the API
 

@@ -1,18 +1,22 @@
 ---
-id: recipes-querying-selectors
+id: guides-querying-selectors
 title: Querying selectors
 ---
 
 Next examples assume assume you understand the topics in [basic tutorial](basics-intro.md) and you have read the [API section](api-reference.md). They also assume that you are familiarized with the syntax used when querying a provider created with the addon [@data-provider/axios][data-provider-axios].
 
+:::info
+Still using v2? The you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
+:::
+
 ## Filtering results in client side
 
-When querying a selector, the `query` value is received the selector function, so, we can use it to filter the results of the selector dependencies:
+When querying a selector, the `queryValue` is received in the selector dependencies, so, we can use it to filter the results:
 
 ```javascript
 const booksTitleIncluding = new Selector(
   books,
-  (booksResults, query) => booksResults.filter(book => book.title.includes(query.including))
+  (queryValue, booksResults) => booksResults.filter(book => book.title.includes(queryValue.including))
 );
 
 booksTitleIncluding.query({ including: "Cervantes" }).read();
@@ -23,24 +27,23 @@ booksTitleIncluding.query({ including: "Cervantes" }).read();
 
 ## Filtering results in server side
 
-The `query` value can be used to query the selector dependencies, so we can also do:
+The `queryValue` can be used to query the selector dependencies, so we can also do:
 
 ```javascript
 const booksTitleIncluding = new Selector(
-  query => books.query({ queryString: { "title-including": query.including }}),
-  booksResults => booksResults
+  queryValue => books.query({ queryString: { "title-including": queryValue.including }})
 );
 
 booksTitleIncluding.query({ including: "Cervantes" }).read();
 // Fetch to "/books?title-including=Cervantes", then returns result
 ```
 
-But, why not to use the query method of the provider directly? We are not doing really nothing in the selector. This example makes sense when we add another property to the query:
+But, why not to use the query method of the provider directly? This example makes more sense when we add another property to the query:
 
 ```javascript
 const booksTitleIncluding = new Selector(
-  query => books.query({ queryString: { "title-including": query.including }}),
-  (booksResults, query) => sortBooksResults(booksResults, query.sort)
+  queryValue => books.query({ queryString: { "title-including": queryValue.including }}),
+  (queryValue, booksResults) => sortBooksResults(booksResults, queryValue.sort)
 );
 
 booksTitleIncluding.query({ including: "Cervantes", sort: "desc" }).read();
@@ -51,27 +54,32 @@ booksTitleIncluding.query({ including: "Cervantes", sort: "asc" }).read();
 // Returns results asc. sorted.
 ```
 
-> As we have mention in the previous example, the title of this example is not exactly true, as server side or client side does not concern to Data Provider. This is only true when we are using an origin that requests to the server. The important thing here to is understand how can we pass the selector query to the dependencies.
+> As we have mention in the previous example, the title of this example is not exactly true, as server side or client side does not concern to Data Provider. This is only true when we are using an origin that requests to the server. The important thing here to is understand how can we pass the selector `queryValue` to the dependencies.
 
 ## Filtering one dependency by the results of the previous one
 
-When we define a selector dependency as a function, it will receive the value of the selector query, and the results of previous dependencies _(as described in the [Selector API page](api-selector.md))_.
+When we define a selector dependency as a function, it will receive the value of the current query, and the results of previous dependencies _(as described in the [Selector API page](api-selector.md))_.
 
-Let's see how can we use that behavior in a real app:
+Let's see how we can use this behavior in a real app:
 
 ```javascript
 const booksTitleIncludingAuthorName = new Selector(
-  query => author.query({ urlParams: { id: query.id }}),
-  (query, previousResults) => books.query({
-    queryString: { "title-including": previousResults[0].name }
+  queryValue => author.query({ urlParams: { id: queryValue.id }}),
+  (queryValue, authorResult) => books.query({
+    queryString: { "title-including": authorResult.name }
   }),
-  booksResults => booksResults
+  (queryValue, authorResult, booksResults) => {
+    return booksResults.map(book => ({
+      ...book,
+      authorName: authorResult.name,
+    }));
+  }
 );
 
 booksTitleIncludingAuthorName.query({ id: 1 }).read();
 // Supossing that author with id 1 returns { name: "Cervantes" }:
 // Fetch to "/authors/1", then to "books/?title-including=Cervantes"
-// Return books result
+// Return books results adding the author name to all of them
 ```
 
 [data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios

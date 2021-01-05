@@ -3,32 +3,34 @@ id: api-selector
 title: Selector
 ---
 
-A Selector combines origins or other selectors (what we call __"dependencies"__), and returns a new result.
+A Selector combines providers or other selectors (what we call __"dependencies"__), and returns a new result.
 
-Selectors have the same interface than providers, so views don't need to know if they are using a provider or a selector. Selectors can also be queried, and you can use the query value for querying the selector dependencies, or in your `selector` function.
+Selectors have the same interface than providers, so views don't need to know if they are using a provider or a selector. Selectors can also be queried, and you can use the query value inside the selector dependencies.
 
 Whenever a dependency cache is cleaned, the selector cache will also be cleaned, and will be recalculated when it is read again.
 
-## `Selector(...dependencies, selectorFunction, [options])`
+:::info
+Still using v2? The you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
+:::
+
+## `Selector(...dependencies, [options])`
 
 ### Arguments
 
-* __`...dependencies`__ _(arguments)_: Dependencies can be defined in different ways. They can be providers, other selectors instances, functions returning other dependencies, an array of dependencies, or even `dependency objects`, which are objects with specific properties that allows to catch dependencies errors, etc. The full [dependencies API is described in the chapter bellow](#selector-dependencies).
-* __`selectorFunction`__ _(Function)_: A function receiving the dependencies results, and the query applied to the selector in case it is queried. Read the [selector function API in the chapter bellow](#selector-function).
-* __`options`__ _(Object)_: An object containing options for the selector, which properties can be:
+* __`...dependencies`__ _(arguments)_: Dependencies can be defined in different ways. They can be providers, other selectors instances, functions returning other dependencies, promises, an array of dependencies, a `catchDependency` method, which are special methods that allows to catch dependencies errors, etc. The full [dependencies API is described in the chapter bellow](#selector-dependencies).
+* __`options`__ _(Object)_: An object containing options for the selector, whose properties can be:
 	* __`id`__ _(String)_: Id for the provider instance. It is used internally as namespace in the store. It is also useful for debugging purposes.
-	* __`initialState`__ _(Object)_: Object containing `loading`, `loaded`, `error` and `data` properties, which will define the initial state of the selector, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then immediately `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will avoid that extra render in the initialization)._ A function can be also provided, then, it will receive the current `query` as argument, and the returned object will be used as `initialState`.
+	* __`initialState`__ _(Object)_: Object containing `loading`, `loaded`, `error` and `data` properties, which will define the initial state of the selector, before its `read` method is executed for the first time. This is useful to give a default value for the data, so you don't have to make extra format checks in your views _(`data && data.map`)_. It is also useful to define the initial loading state, which can be defined as true, which will save extra renders _(as the read method is executed normally by the views theirself, the first time a selector is read it should have `loading` state as false, then immediately `true`, then `false` when data is retrieved. Setting `initialState.loading` property to `true` will avoid that extra render in the initialization)._ A function can be also provided, then, it will receive the current `queryValue` as argument, and the returned object will be used as `initialState`.
   * __`cleanCacheThrottle`__ _(Number)_: Milliseconds. Avoids cleaning the cache more than once during this period of time. If the `cleanCache` or `cleanDependenciesCache` methods are called one or multiple times while they are "throttled", it will clean the cache again when the period expires. This option will be ignored if clean cache methods are called with the option `{ force: true}`. Setting this option to null will remove previously defined value. This option can be changed also using the config method of the selector instance.
-  * __`reReadDependenciesMaxTime`__ _(Number)_: Milliseconds. The default behavior of the Selectors is to reread again a dependency if its cache is cleaned while the Selector is still reading another dependencies in order to provide always the last data available and not to lose any data update. This may produce a Selector never being resolved if a dependency cache is cleaned with a high frequency and dependencies take much time to be resolved. By default, Selectors will stop rereading dependencies after 5000ms. in order to avoid this possible issue. This time can be changed using this option.
+  * __`readAgainMaxTime`__ _(Number)_: Milliseconds. The default behavior of the Selectors is to read again a dependency if its cache is cleaned while the Selector is still reading another dependencies in order to provide always the last data available and not to lose any data update. This may produce a Selector never being resolved if a dependency cache is cleaned with a high frequency and dependencies take much time to be resolved. By default, Selectors will stop rereading dependencies after 5000ms. in order to avoid this possible issue. This time can be changed using this option.
 
 ### Returns
 
 A `selector` instance, which methods are described in the [providers and selectors methods](api-providers-and-selectors-methods.md) page of these docs.
 
-Apart of the common methods, selectors have also next getters:
+Apart of the common methods, selectors have also next getter:
 
 * __`dependencies`__ _(Array)_ - Getter returning an array with the selector dependencies. Useful for testing purposes.
-* __`selector`__ _(Function)_ - Getter returning the selector function, useful for testing purposes.
 
 ### Example
 
@@ -38,8 +40,8 @@ import { Selector } from "@data-provider/core";
 import { tasks } from "./providers"
 
 export const completedTasks = new Selector(
-  tasks, // dependency as provider instance
-  tasksResults => tasksResults.filter(task => task.completed === false), // selector function
+  tasks, // dependency as a provider instance
+  (queryValue, tasksResults) => tasksResults.filter(task => task.completed === false), // dependency as a function
   { // options
     id: "completed-tasks",
     initialState: {
@@ -67,44 +69,6 @@ console.log(completedTasks.state);
 
 <hr/>
 
-## Selector function
-
-The selector function receives the results of all provided dependencies, and the value of the selector query _(undefined if it is not queried)_. It is executed only the first time for each different query while the cache is valid.
-
-The provided function should follow the next API:
-
-#### `selectorFunction(...dependenciesResults, [query])`
-
-##### Arguments
-
-* __`dependenciesResults`__ _(arguments)_: Arguments containing the results of the selector dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received in an array in a single argument in the correspondent position.
-* __`query`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
-
-##### Returns
-
-Can return any value, which with the `read` method will be resolved, and it will also be set in the `data` property of the selector state.
-
-__It can also return another dependency__, defined in any of the formats described bellow. Then, the selector will be resolved with the value returned by the returned dependency.
-
-> When a selector returns another dependency in its `selectorFunction`, its cache will also be cleaned when the cache of the returned dependency is cleaned.
-
-```javascript
-const tasksWithUserData = new Selector(
-  // dependencies
-  tasks,
-  users,
-  // selectorFunction
-  (tasksResults, usersResults) => tasksResults.map(
-    task => ({
-      ...task,
-      user: usersResults.find(user.id === task.user )
-    })
-  )
-);
-```
-
-<hr/>
-
 ## Selector dependencies
 
 Dependencies of selectors can be defined:
@@ -117,7 +81,7 @@ Use directly other selectors or providers as dependencies of your selector. You 
 const tasksWithUserData = new Selector(
   tasks.query({ queryString: { completed: false }}), // dependency as queried provider instance
   users, // dependency as provider instance
-  (tasksResults, usersResults) => tasksResults.map(
+  (queryValue, tasksResults, usersResults) => tasksResults.map(
     task => ({
       ...task,
       user: usersResults.find(user.id === task.user )
@@ -132,29 +96,29 @@ You can define a dependency as a function returning another dependency in any of
 
 The provided function should follow the next API:
 
-#### `dependency(query, previousResults)`
+#### `dependency(queryValue, [...previousDependenciesResults])`
 
 ##### Arguments
 
-1. __`query`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
-2. __`previousResults`__ _(Array)_: Array containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondent position.
+1. __`queryValue`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
+2. __`previousDependenciesResults`__ _(Arguments)_: Arguments containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondent position.
 
 ##### Returns
 
-Can return a dependency in any of the formats described in this chapter.
+Can return a dependency in any of the formats described in this chapter, or a plain value.
 
 ```javascript
 const booksWithAuthorNameInTheTitle = new Selector(
-  query => authors.query({ urlParam: { id: query.author }}),
-  (query, previousResults) => books.query({ queryString: { title_contains: previousResults[0].name }}),
-  (authorData, booksContainingAuthorNameInTheTitle) => booksContainingAuthorNameInTheTitle
+  queryValue => authors.query({ urlParam: { id: queryValue.author }}),
+  (queryValue, authorData) => books.query({ queryString: { title_contains: authorData.name }}),
+  (queryValue, authorData, booksContainingAuthorNameInTheTitle) => booksContainingAuthorNameInTheTitle
 );
 
 booksWithAuthorNameInTheTitle.query({ author: 5 }).read();
 // Will fetch /authors/5, then /books?title-contains=shakespeare, then return list of books
 ```
 
-### As a `catchDependency` execution
+### As a `catchDependency` method
 
 You can define selector dependencies using the method `catchDependency` exported by the library. When used, dependencies errors will be catched and the provided `catch` method result will be returned instead.
 
@@ -165,17 +129,17 @@ You can define selector dependencies using the method `catchDependency` exported
 
 The provided `catchMethod` function should follow the next API:
 
-#### `catchMethod(error, query, previousResults)`
+#### `catchMethod(error, queryValue, [...previousDependenciesResults])`
 
 ##### Arguments
 
 1. __`error`__ _(Error)_: Error causing the rejection of the dependency read method.
-2. __`query`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
-3. __`previousResults`__ _(Array)_: Array containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondent position.
+2. __`queryValue`__ _(Object)_: Object containing the value of the query applied to the selector _(`undefined` when it is not queried)_.
+3. __`previousDependenciesResults`__ _(Arguments)_: Arguments containing the results of the previous dependencies, in the same order they were read. When dependencies are defined as an array, their results will be received also as an array in the correspondent position.
 
 ##### Returns
 
-Can return any other dependency defined in any of the formats allowed. The returned dependency will be read, and the returned value by the failed one will be the value of this new one.
+Can return any other dependency defined in any of the formats described in this chapter.
 
 If you throw an error inside the catch function, or return a rejected Promise, then the dependency will be considered as errored, but with your error instead of with the original one.
 
@@ -184,8 +148,8 @@ import { catchDependency } from "@data-provider/core";
 
 const selector = new Selector(
   catchDependency(tasks, () => []), // returns an empty array when dependency tasks fail
-  catchDependency(users, () => anotherUsersOrigin),// retrieve books from other origin when books fail
-  (tasksResults, usersResults) => tasksResults
+  catchDependency(users, () => anotherUsersOrigin),// retrieve users from other origin when users fails
+  (queryValue, tasksResults, usersResults) => tasksResults
 );
 ```
 
@@ -199,7 +163,7 @@ const selector = new Selector(
     tasks,
     users
   ],
-  ([tasksResults, usersResults]) => tasksResults.map(
+  (queryValue, [tasksResults, usersResults]) => tasksResults.map(
     task => ({
       ...task,
       user: usersResults.find(user.id === task.user )
@@ -215,9 +179,9 @@ const selector = new Selector(
   books, // First read books
   [ // Then read tasks and authors in parallel
     tasks,
-    query => authors.query(query)
+    queryValue => authors.query(queryValue)
   ],
-  (booksResults, [tasksResults, usersResults]) => {
+  (queryValue, booksResults, [tasksResults, usersResults]) => {
     // Do your stuff here
   }
 );
@@ -235,9 +199,27 @@ const selector = new Selector(
     }, 3000);
   }), // Will wait 3 seconds before reading tasks
   tasks,
-  (promiseResult, tasksResults) => {
+  (queryValue, promiseResult, tasksResults) => {
     console.log(promiseResult);
     // foo
+  }
+);
+```
+
+### As a Promise returning a dependency
+
+Promises can also return another dependency. Then, the received result will be the result returned by the dependency, and, in this case, if the dependency is a provider, the selector cache will also be cleaned when the dependency cache is cleaned.
+
+```javascript
+const selector = new Selector(
+  (queryValue) => {
+    return somePromise(queryValue)
+      .then(() => tasksProvider.query({ resolved: true }))
+      .catch(() => tasksProvider.query({ resolved: false }))
+  },
+  (queryValue, tasksResults) => {
+    console.log(tasksResults);
+    return tasksResults;
   }
 );
 ```
@@ -246,18 +228,16 @@ const selector = new Selector(
 
 Any value? Yes, if you provide any other value, as a `String`, `Number`, `null`, `undefined`... the "dependency" will be resolved with that value.
 
-This could seem an strange behavior, but in some scenarios you could want to "stop" the dependencies flow depending of the result of a previous dependency. In that case, you could use a dependency defined as a function, and decide to return another dependency, or directly some value, for example:
-
 ```javascript
 const selector = new Selector(
   books,
-  (query, previosResults) => {
-    if (!previosResults.length) {
+  (queryValue, booksResults) => {
+    if (!booksResults.length) {
       return []; // There are no books, I don't mind the authors, return empty array.
     }
     return authors; // There are books. Let's read the "authors" provider.
   },
-  (booksResults, authorsResults) => {
+  (queryValue, booksResults, authorsResults) => {
     return booksResults.map(book => {
       return {
         ...book,
@@ -274,5 +254,5 @@ const selector = new Selector(
 * You can combine all described formats of dependencies as you want.
 * The power of the dependencies API should allow you to retrieve all data you need using a single selector, but a better approach is to create one different selector for each level of granularity, so they can be used separately when needed. As they are composable, you can combine those selectors into another one, and so on... So, __better use selectors composition instead of defining lots of dependencies in a single selector__.
 
-> You have more examples available about how to use selector dependencies in the [recipes page](recipes-index.md).
+> You have more examples available about how to use selector dependencies in the [guides page](guides-index.md).
 
