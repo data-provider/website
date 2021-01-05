@@ -11,7 +11,7 @@ Data Provider v3.0.0 introduced some [breaking changes](https://github.com/data-
 
 ### Why it was changed
 
-In Data Provider v2 there was a clear differenciation between selector dependencies, and the last function provided to the selector, which was called the `selector` method itself, and it was required always when creating a Selector. It was the function receiving all the results of the dependencies, so you could parse, modify or combine its data and return the result.
+In Data Provider v2 there was a clear differentiation between selector dependencies, and the last function provided to the selector, which was called the `selector` method itself, and it was required always when creating a Selector. It was the function receiving all the results of the dependencies, so you could parse, modify or combine its data and return the result.
 
 So, this method was receiving the results of the dependencies as different arguments, in the same order than the dependencies were declared, and as last argument, it was receiving the `queryValue`, just in case you wanted to use it. On the contrary, the dependencies were receiving the `queryValue` as first argument, and the results of the previous dependencies inside an array in the second argument.
 
@@ -87,7 +87,7 @@ const booksOfAuthor = new Selector(
 
 #### `reReadDependenciesMaxTime` option
 
-The `reReadDependenciesMaxTime` option in v2 was renamed to `readAgainMaxTime` in v3 for better comprehesion.
+The `reReadDependenciesMaxTime` option in v2 was renamed to `readAgainMaxTime` in v3 for better comprehension.
 
 #### v2 example
 
@@ -130,7 +130,7 @@ providers.getByTag("selector").config({
 });
 ```
 
-### Use SelectorV3
+### Use new Selector
 
 Now you can use the new exported `SelectorV3` class in those selectors you want to start migrating:
 

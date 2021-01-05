@@ -8,7 +8,7 @@ sidebar_label: Providers
 
 A Provider defines a specific resource in a data origin.
 
-When we instatiate a Provider, we'll get a provider instance that will be alive during the whole life of our application, as it is going to be at charge of the cache, avoiding unnecessary resource consumptions while the data origin has not changed.
+When we instantiate a Provider, we'll get a provider instance that will be alive during the whole life of our application, as it is going to be at charge of the cache, avoiding unnecessary resource consumptions while the data origin has not changed.
 
 Remember that providers are queryable, so you don't need to create a provider for each specific model, the approach is defining a provider for each different resource in the data origin. In the case of an API example, you should define a provider for each different API url.
 
