@@ -153,7 +153,7 @@ export const Posts = () => {
 
 ## Using the addon with Selectors
 
-Every data-provider origin addon can be used as a dependency of [data-provider Selectors](api-selector.md), so you can combine the results of two different queries, for example, or combine the results of two different origin instances, or the results of providers created with different addons, etc. You can read the [Selectors recipes chapter](recipes-querying-selectors.md) to get a reference about the power of using Selectors.
+Every data-provider origin addon can be used as a dependency of [data-provider Selectors](api-selector.md), so you can combine the results of two different queries, for example, or combine the results of two different origin instances, or the results of providers created with different addons, etc. You can read the [querying selectors guide](guides-querying-selectors.md) to get a reference about the power of using Selectors.
 
 Create one selector that will return one post, including the name and email of the user who created it. As query parameter the selector will receive the id of the post. The selector will retrieve the post, then the related user, and then will combine both results.
 

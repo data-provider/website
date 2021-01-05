@@ -1,9 +1,13 @@
 ---
-id: recipes-querying-selectors
+id: guides-querying-selectors
 title: Querying selectors
 ---
 
 Next examples assume assume you understand the topics in [basic tutorial](basics-intro.md) and you have read the [API section](api-reference.md). They also assume that you are familiarized with the syntax used when querying a provider created with the addon [@data-provider/axios][data-provider-axios].
+
+:::info
+Still using v2? The you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
+:::
 
 ## Filtering results in client side
 
@@ -54,7 +58,7 @@ booksTitleIncluding.query({ including: "Cervantes", sort: "asc" }).read();
 
 ## Filtering one dependency by the results of the previous one
 
-When we define a selector dependency as a function, it will receive the value of the selector query, and the results of previous dependencies _(as described in the [Selector API page](api-selector.md))_.
+When we define a selector dependency as a function, it will receive the value of the current query, and the results of previous dependencies _(as described in the [Selector API page](api-selector.md))_.
 
 Let's see how we can use this behavior in a real app:
 

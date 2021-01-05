@@ -12,7 +12,7 @@ The main target of the library are front-end applications, but it could be used 
 It helps you __providing async data__ to your components informing them about __loading and error states__.
 It also provides a __cache layer__, so you don´t have to worry about when to read the data, and allows you to __combine the results of different data providers__ using a syntax very similar to the known [Reselect][reselect], recalculating them only when one of the dependencies cache is cleaned.
 
-As its states are managed with [Redux][redux], you can take advantage of his large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which [can be migrated to your own store](api-store-manager.md) for debugging purposes, for example)._
+As its states are managed with [Redux][redux], you can take advantage of its large ecosystem of addons, which will improve the developer experience. _(You don't need to use Redux directly in your application if you don't want, the library includes its own internal store for that purpose, which [can be migrated to your own store](api-store-manager.md) for debugging purposes, for example)._
 
 You can use Data Provider with [React][react], or with any other view library. [Separated addons are available](addons-intro.md) for that purpose, as [@data-provider/react][data-provider-react].
 

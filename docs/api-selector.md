@@ -9,6 +9,10 @@ Selectors have the same interface than providers, so views don't need to know if
 
 Whenever a dependency cache is cleaned, the selector cache will also be cleaned, and will be recalculated when it is read again.
 
+:::info
+Still using v2? The you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
+:::
+
 ## `Selector(...dependencies, [options])`
 
 ### Arguments
@@ -144,7 +148,7 @@ import { catchDependency } from "@data-provider/core";
 
 const selector = new Selector(
   catchDependency(tasks, () => []), // returns an empty array when dependency tasks fail
-  catchDependency(users, () => anotherUsersOrigin),// retrieve books from other origin when books fail
+  catchDependency(users, () => anotherUsersOrigin),// retrieve users from other origin when users fails
   (queryValue, tasksResults, usersResults) => tasksResults
 );
 ```
@@ -250,5 +254,5 @@ const selector = new Selector(
 * You can combine all described formats of dependencies as you want.
 * The power of the dependencies API should allow you to retrieve all data you need using a single selector, but a better approach is to create one different selector for each level of granularity, so they can be used separately when needed. As they are composable, you can combine those selectors into another one, and so on... So, __better use selectors composition instead of defining lots of dependencies in a single selector__.
 
-> You have more examples available about how to use selector dependencies in the [recipes page](recipes-index.md).
+> You have more examples available about how to use selector dependencies in the [guides page](guides-index.md).
 

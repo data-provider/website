@@ -42,7 +42,7 @@ todosFiltered.query({ completed: false }).read(); // Returns not completed todos
 todosFiltered.query({ completed: true }).read(); // Returns completed todos
 ```
 
-In this example, we have decided to filter todos in the client side. The filter is executed by the selector dependency itself. In some scenarios in real projects you'll probably want to delegate the filtration to the server side. It can be easily done using a selector too, because the `queryValue` is also received in selector dependencies when they are defined as functions, so you could pass the selector `queryValue` to a query for the provider, which will change the `url` of the request. We will keep this guide as simple as possible for the moment. If you want to see more complex examples please visit the [querying selectors recipes page](recipes-querying-selectors.md).
+In this example, we have decided to filter todos in the client side. The filter is executed by the selector dependency itself. In some scenarios in real projects you'll probably want to delegate the filtration to the server side. It can be easily done using a selector too, because the `queryValue` is also received in selector dependencies when they are defined as functions, so you could pass the selector `queryValue` to a query for the provider, which will change the `url` of the request. We will keep this guide as simple as possible for the moment. If you want to see more complex examples please visit the [querying selectors guide page](guides-querying-selectors.md).
 
 ## Source code
 
