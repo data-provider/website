@@ -114,11 +114,13 @@ We have also defined a `cleanTodosCache` function to avoid code duplication in `
 import { Axios } from "@data-provider/axios";
 import { Selector } from "@data-provider/core";
 
-export const todos = new Axios("todos", {
+export const todos = new Axios({
+  id: "todos",
   url: "/todos"
 });
 
-export const todo = new Axios("todo", {
+export const todo = new Axios({
+  id: "todo",
   url: "/todos/:id"
 });
 

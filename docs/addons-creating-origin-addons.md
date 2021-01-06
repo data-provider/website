@@ -99,7 +99,8 @@ Define also the `baseUrl` option, and an empty array as initial state, so it wil
 ```js
 import Fetcher from "./Fetcher";
 
-export const jsonPlaceHolderApi = new Fetcher("json-placeholder-api", {
+export const jsonPlaceHolderApi = new Fetcher({
+  id: "json-placeholder-api",
   baseUrl: "https://jsonplaceholder.typicode.com/",
   initialState: {
     data: [],
@@ -252,7 +253,7 @@ const runExample = async () => {
 runExample();
 ```
 
-As we have cleaned the cache of the provider after the request, the read method will execute a new request when it is called again, and it will also emit an event, so, if you are using the "react" addon, for example, all of the connected views to the `jsonPlaceHolderApi.query("posts/1")` resource will be refreshed automatically with the new data from the server.
+As we have cleaned the cache of the provider after the request, the read method will execute a new request when it is called again, and it will also emit an event, so, if you are using the `react` addon, for example, all of the connected views to the `jsonPlaceHolderApi.query("posts/1")` resource will be refreshed automatically with the new data from the server.
 
 ## Go further
 
@@ -268,7 +269,7 @@ If you are going to publish your addon to NPM, you should follow some tips:
 {
   //...
   "peerDependencies": {
-    "@data-provider/core": "2.x"
+    "@data-provider/core": "3.x"
   }
 }
 ```
@@ -280,8 +281,8 @@ If you are going to publish your addon to NPM, you should follow some tips:
   //...
   "keywords": [
     "data-provider",
-    "addon",
-    "origin"
+    "data-provider-addon",
+    "data-provider-origin"
   ]
 }
 ```

@@ -36,14 +36,14 @@ _Why to add two different providers, one for the collection an one for the model
 
 Arguments accepted by the `Axios` Class are:
 
-* id - All Provider addons should receive an `id` as first argument _(useful for debugging purposes and for [configuring providers](basics-configuration.md))_.
-* options - An options object is provided as second argument. Options will differ depending of the type of origin. In this case, we will define the `url` of the API. We do not define now the `baseUrl`, [this configuration](basics-configuration.md) is delegated to the main file of the application, avoiding coupling the providers to it, which improves its reusability.
+* options - An options object is provided as first argument. Options will differ depending of the type of origin. In this case, we will define the `url` of the API. We do not define now the `baseUrl`, [this configuration](basics-configuration.md) is delegated to the main file of the application, avoiding coupling the providers to it, which improves its reusability. There are [options that are common to all origin addons](api-provider.md), as the `id` one.
 
 
 ```javascript
 import { Axios } from "@data-provider/axios";
 
-export const todos = new Axios("todos", {
+export const todos = new Axios({
+  id: "todos",
   url: "/todos"
 });
 ```
@@ -51,7 +51,8 @@ export const todos = new Axios("todos", {
 Now define another provider for retrieving specific todos. In this case, the `url` includes a parameter. The value of the parameter will be defined by the query value that we will pass to the provider when using it:
 
 ```javascript
-export const todo = new Axios("todo", {
+export const todo = new Axios({
+  id: "todo",
   url: "/todos/:id"
 });
 ```
@@ -67,11 +68,13 @@ We will maintain our data sources separated from the views, this is why this fil
 ```javascript
 import { Axios } from "@data-provider/axios";
 
-export const todos = new Axios("todos", {
+export const todos = new Axios({
+  id: "todos",
   url: "/todos"
 });
 
-export const todo = new Axios("todo", {
+export const todo = new Axios({
+  id: "todo",
   url: "/todos/:id"
 });
 ```

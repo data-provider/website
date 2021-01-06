@@ -60,10 +60,12 @@ Define two new providers of type Axios, passing the specific options required
 by this origin type (url). The first argument defines an id for the provider, which
 will used as namespace in the store, and is also useful for debugging purposes.
 */
-export const books = new Axios("books-api", {
+export const books = new Axios({
+  id: "books-api",
   url: "/api/books"
 });
-export const authors = new Axios("authors-api", {
+export const authors = new Axios({
+  id: "authors-api",
   url: "/api/authors"
 });
 
