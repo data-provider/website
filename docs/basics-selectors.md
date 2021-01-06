@@ -43,11 +43,13 @@ We will keep both providers and selectors in the same file for better comprehens
 import { Axios } from "@data-provider/axios";
 import { Selector } from "@data-provider/core";
 
-export const todos = new Axios("todos", {
+export const todos = new Axios({
+  id: "todos",
   url: "/todos"
 });
 
-export const todo = new Axios("todo", {
+export const todo = new Axios({
+  id: "todo",
   url: "/todos/:id"
 });
 

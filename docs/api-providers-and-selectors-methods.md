@@ -334,7 +334,8 @@ _(String)_: Id of the provider or selector.
 #### Example
 
 ```javascript
-books = new Axios("books-from-api", {
+books = new Axios({
+  id: "books-from-api",
   url: "/books"
 });
 
@@ -353,7 +354,8 @@ _(Array)_: Array of provider tags.
 #### Example
 
 ```javascript
-books = new Axios("books-from-api", {
+books = new Axios({
+  id: "books-from-api",
   url: "/books",
   tags: ["api", "public"]
 });
@@ -441,7 +443,8 @@ _(Object)_: Current options, read the [`config` method](#configoptions) api for 
 _Note: next example is based on a provider created with the [@data-provider/axios][data-provider-axios] addon._
 
 ```javascript
-books = new Axios("books-from-api", {
+books = new Axios({
+  id: "books-from-api",
   url: "/books"
 });
 

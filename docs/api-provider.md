@@ -9,13 +9,12 @@ When we create a Provider, we'll get a provider instance that should be alive du
 
 > The Provider class should not be used directly to create providers. It is the base from which specific origins implementations should extend (read the ["How to create origin addons"](addons-creating-origin-addons.md) chapter for further info). Here are described the arguments and options that are common to all origins addons. For specific options of each addon please read its own documentation.
 
-## `Provider(id, [options])`
+## `Provider([options])`
 
 ### Arguments
 
-1. __`id`__ _(String)_: Id for the provider instance. It is used internally as namespace in the store. It is also useful for debugging purposes, and can be used for configuring the provider instance [using the `providers` object](api-providers.md).
-
-2. __`options`__ _(Object)_: Options will differ depending of the type of origin. Here are described the properties in the options object that are common to all origins addons. For specific options of different origin addons, please refer to its own documentation.
+1. __`options`__ _(Object)_: Options will differ depending of the type of origin. Here are described the properties in the options object that are common to all origins addons. For specific options of different origin addons, please refer to its own documentation.
+	* __`id`__ _(String)_: Id for the provider instance. It is used internally as namespace in the store. It is also useful for debugging purposes, and can be used for configuring the provider instance [using the `providers` object](api-providers.md).
 	* __`cache`__ _(Boolean)_: If `false`, it will disable the cache, and the `readMethod` defined by the origin will be called always, which could result in a negative performance impact. It is `true` by default, and normally it should not be disabled. __This option can be changed also using the `config` method of the provider instance__.
 	* __`cacheTime`__ _(Number)_: Milliseconds. After this time, the cache will be invalidated and the `readMethod` will be executed again when `read` is called. When the cache is invalidated it does not trigger a `cleanCache` event. Setting it to zero or null makes the cache never being invalidated. __This option can be changed also using the `config` method of the provider instance__.
 	* __`cleanCacheInterval`__ _(Number)_: Milliseconds. The cache is automatically cleaned every defined interval. The `cleanCache` event is triggered each time the cache is cleaned. When the cache is cleaned by any other process, the interval counter is resetted to zero. Setting this option to `null` will remove previously defined interval. __This option can be changed also using the `config` method of the provider instance__.
@@ -32,7 +31,7 @@ A `provider` instance, which common methods are described in the [providers and 
 ```javascript
 import { Axios } from "@data-provider/axios";
 
-const provider = new Axios("example", {
+const provider = new Axios({
   url: "/foo-url",
   tags: ["foo-tag"],
   initialState: {
@@ -40,9 +39,6 @@ const provider = new Axios("example", {
     data: []
   }
 });
-
-console.log(provider.id);
-// example
 
 console.log(provider.options);
 // { cache: true, tags: ["axios", "foo-tag"], url: "/foo-url" }
@@ -54,7 +50,7 @@ console.log(provider.state);
 
 ### Tips
 
-* Use clear identifiers in your providers. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console.
+* Use the `id` option to clearly identify your providers. It will improve the development experience, as Data Provider and addons usually use them when printing messages into the console.
 * When an `id` is duplicated, Data Provider will automatically append a suffix to it and will print a warning.
 * Define always the `initialState`, it will save you extra format checks in your views, and will save an initial extra render, as described in the Arguments API.
 
@@ -90,7 +86,7 @@ const queried = provider.query({ foo: "foo"}).query({ "var": "var" });
 console.log(queried.queryValue) // {foo, "foo", var: "var"}
 ```
 
-### `createChildMethod`
+### `createChildMethod(options, queryValue)`
 
 This method is used to return a new instance when the `query` method is executed. It normally returns a new instance using the same constructor. This method rarely has to be overwritten, it is used internally by Selectors because they do not accomplish with the Provider arguments described in this chapter, so they need to transform the options when they are created.
 

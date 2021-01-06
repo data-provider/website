@@ -105,19 +105,44 @@ selector.config({
 });
 ```
 
+## Provider arguments
+
+A Provider class (or an origin addon class) in v1 was receiving next arguments:
+
+```javascript
+new Provider("provider-id", { fooOption: "foo-value" })
+```
+
+In v2 a Provider receives the id as a property in the options object, that now has to be passed as first argument.
+
+```javascript
+new Provider({ id: "provider-id", fooOption: "foo-value" })
+```
+
+This was made because the `id` is optional when creating providers.
+
+> For those maintaining an origin addon, they have to take into account that also the `createChildMethod` has changed its arguments and it also receives only the `(options, queryValue)` arguments in v3, while in v2 version it was receiving `(id, options, queryValue)`. Read more about [how to make an addon compatible with v2 and v3](#how-to-make-an-addon-compatible-with-v2-and-v3)
+
 ## How to migrate progressively
 
 ### Install v2.10.0 version
 
-The `@data-provider/core@2.10.0` version exposes both versions of the Selector class, so you can use the old API in some parts of your project while progressively migrate other parts to the new API.
+The `@data-provider/core@2.10.0` version exposes both versions of the `Selector` class, so you can use the old API in some parts of your project while progressively migrate other parts to the new API.
 
 ```bash
 npm i --save @data-provider/core@2.10.0
 ```
 
-:::info
-When you use the `Selector` class in this version you'll see a deprecation warning in the console, so you'll know you are ready to update to v3 when you stop receiving the warning.
-:::
+### Install addons compatible versions
+
+The `Provider` class in this version also accepts defining the `id` as first argument or as second argument, but note that you usually don't use the `Provider` class directly, but origin addons classes. So, you'll have also to install the addons versions that are compatible with v2 and v3 to be able to migrate progressively.
+
+Next addons versions are compatible with v2 and v3:
+
+* `@data-provider/memory@2.1.0`
+* `@data-provider/browser-storage@2.3.0`
+* `@data-provider/axios@2.2.0`
+* `@data-provider/prismic@2.1.0`
 
 ### Configure renamed option
 
@@ -150,6 +175,10 @@ Both selectors can be used as dependency of the other selector version, so they 
 
 ### Install v3.x version
 
+:::info
+When you use the `Selector` class in the 2.10.0 version you'll see a deprecation warning in the console. You'll also receive warnings when using old `Provider` arguments. So you'll know you are ready to update to v3 when you stop receiving this type of warnings.
+:::
+
 Once you have migrated all your Selectors and you are not using any more the Selector v2, you could simply update your dependency to v3:
 
 ```bash
@@ -161,3 +190,101 @@ And change your `SelectorV3` imports to `Selector` again:
 ```javascript
 import { Selector } from "@data-provider/core";
 ```
+
+## How to make an addon compatible with v2 and v3
+
+This section is __intended only for those maintaining Data Provider origin addons__. Here is explained how to publish a version compatible with v2 and v3, allowing users to migrate progressively as described in the previous section.
+
+:::info
+You will only have to change something if you are defining your own `constructor` or `createChildMethod` in your addon. If not, you don't have to do anything.
+:::
+
+### Update dependencies
+
+The `@data-provider/core@2.10.0` version exposes a helper to facilitate addons to accept arguments in v2 or v3 format. First of all, you should change you `peerDependencies` to only accept this version, and your `devDependencies` to use it in your tests:
+
+```json
+{
+  "peerDependencies": {
+    "@data-provider/core": ">=2.10.0"
+  },
+  "devDependencies": {
+    "@data-provider/core": "2.10.0"
+  }
+}
+```
+
+### Modify constructor
+
+Then, you have to use the mentioned helper to allow users to pass arguments in v2 or v3 formats.
+
+If your addon `constructor` looked like:
+
+```javascript
+import { Provider } from "@data-provider/core";
+
+export class MyAddon extends Provider {
+  constructor(id, options, queryValue) {
+    console.log(`The id is ${id}`);
+    super(id, options, queryValue);
+  }
+}
+```
+
+Then it should look like:
+
+```javascript
+import { Provider, providerArgsV3 } from "@data-provider/core";
+
+export class MyAddon extends Provider {
+  constructor(...args) {
+    const [id, options, queryValue] = providerArgsV3(args);
+    console.log(`The id is ${id}`);
+    super(id, options, queryValue);
+  }
+}
+```
+
+This will make your addon compatible with v2 and v3. It is recommended that you publish a minor version with these changes before completely migrate it to v3.
+
+### Migrate to v3
+
+Once you have published your compatible minor version allowing users to perform a progressive migration, you can now update your dependencies to v3:
+
+```json
+{
+  "peerDependencies": {
+    "@data-provider/core": "3.x"
+  },
+  "devDependencies": {
+    "@data-provider/core": "3.0.0"
+  }
+}
+```
+
+Modify your `constructor` to use the new v3 arguments:
+
+```javascript
+import { Provider } from "@data-provider/core";
+
+export class MyAddon extends Provider {
+  constructor(options, queryValue) {
+    console.log(`The id is ${options.id}`);
+    super(options, queryValue);
+  }
+}
+```
+
+Modify your `createChildMethod` in case you have it defined:
+
+```javascript
+import { Provider } from "@data-provider/core";
+
+export class MyAddon extends Provider {
+  createChildMethod(options, queryValue) {
+    console.log(`Creating a child with id ${options.id}`);
+    return this.constructor(options, queryValue);
+  }
+}
+```
+

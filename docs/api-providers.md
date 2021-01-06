@@ -29,7 +29,8 @@ As a brief example for a better understand before describing the API:
 ```javascript
 import { Axios } from "@data-provider/axios";
 
-const todos = new Axios("todos", {
+const todos = new Axios({
+  id: "todos",
   url: "/todos",
   tags: ["need-auth"]
 });
@@ -85,7 +86,8 @@ A group of providers containing the provided tag. The returned "selection" has i
 ```javascript
 import { providers } from "@data-provider/core";
 
-const books = new Axios("books-from-api", {
+const books = new Axios({
+  id: "books-from-api",
   url: "/books",
   tags: ["api"]
 });
@@ -112,7 +114,8 @@ A selection of providers with the provided id (normally only one). The returned 
 ```javascript
 import { providers } from "@data-provider/core";
 
-const books = new Axios("books-from-api", {
+const books = new Axios({
+  id: "books-from-api",
   url: "/books",
   tags: ["api"]
 });
@@ -141,7 +144,8 @@ providers.onNewProvider((provider) => {
   console.log(`Added new provider with id: ${provider.id}`);
 });
 
-const books = new Axios("books-from-api", {
+const books = new Axios({
+  id: "books-from-api",
   url: "/books"
 });
 
@@ -169,7 +173,8 @@ providers.getByTag("api").onNewProvider((provider) => {
   console.log(`Added new api provider with id: ${provider.id}`);
 });
 
-const books = new Axios("books-from-api", {
+const books = new Axios({
+  id: "books-from-api",
   url: "/books",
   tags: ["api"]
 });
