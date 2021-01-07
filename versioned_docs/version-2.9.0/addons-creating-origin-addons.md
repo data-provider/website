@@ -9,6 +9,10 @@ Data Provider is agnostic about data origins, so it can be used to read data fro
 
 In this guide we'll walk through the process of creating a simple "fetch" Data Provider origin able to perform Ajax requests, allowing to connect an application to a REST Api. The complete source code of the guide is in our [repository of examples][examples], and all used methods are described in the [Provider API](api-provider.md).
 
+:::caution
+Before writing an addon, you should read the next version of the documentation and the [migrating from v2 to v3 guide](/docs/next/guides-migrating-from-v2-to-v3), as the Selector dependencies API is going to change in `@data-provider/core@v3.x`, which is close to be released.
+:::
+
 ## Extending the Provider Class
 
 To create a new origin type, you'll have to extend the [`Provider` Class](api-provider.md), which is the one providing all data-provider common features and methods.

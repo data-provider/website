@@ -10,7 +10,7 @@ Selectors have the same interface than providers, so views don't need to know if
 Whenever a dependency cache is cleaned, the selector cache will also be cleaned, and will be recalculated when it is read again.
 
 :::info
-Still using v2? The you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
+Still using v2? Then you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
 :::
 
 ## `Selector(...dependencies, [options])`
