@@ -240,7 +240,7 @@ export class MyAddon extends Provider {
   constructor(...args) {
     const [id, options, queryValue] = providerArgsV3(args);
     console.log(`The id is ${id}`);
-    super(id, options, queryValue);
+    super({ id, ...options }, queryValue);
   }
 }
 ```

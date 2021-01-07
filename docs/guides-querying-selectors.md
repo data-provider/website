@@ -6,7 +6,7 @@ title: Querying selectors
 Next examples assume assume you understand the topics in [basic tutorial](basics-intro.md) and you have read the [API section](api-reference.md). They also assume that you are familiarized with the syntax used when querying a provider created with the addon [@data-provider/axios][data-provider-axios].
 
 :::info
-Still using v2? The you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
+Still using v2? Then you should read the [migrating from v2 to v3 guide](guides-migrating-from-v2-to-v3.md), as the Selector dependencies API was changed in v3.
 :::
 
 ## Filtering results in client side
