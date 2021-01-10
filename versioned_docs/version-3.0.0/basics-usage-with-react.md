@@ -168,7 +168,7 @@ export default AddTodo;
 
 ## Modules
 
-In the "modules" is where we are going to bind the presentational components to the data providers and actions. Note how these pieces could be reused easily in any other application, as they have clearly defined his dependency with the provider they are using.
+In the "modules" is where we are going to bind the presentational components to the data providers and actions. Note how these pieces could be reused easily in any other application, as they have clearly defined its dependency with the provider they are using.
 
 ### `modules/AddTodo.js`
 
@@ -217,19 +217,21 @@ export default FilteredTodoList;
 
 ### `modules/TodoList.js`
 
-In this component we are going to handle the state of the `completed` filter and render both filter and filtered list modules.
+In this component we are going to handle the state of the `completed` filter and render both filter and filtered list modules. We will also display a title for the list.
 
 ```jsx
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import Filters from "../components/Filters";
 import FilteredTodoList from "./FilteredTodoList";
 
-const TodoList = ({ showCompletedByDefault }) => {
+const TodoList = ({ showCompletedByDefault, title }) => {
   const [showCompleted, setShowCompleted] = useState(showCompletedByDefault);
 
   return (
     <div>
+      <h2>{title}</h2>
       <FilteredTodoList showCompleted={showCompleted} />
       <Filters
         onClick={show => setShowCompleted(show)}
@@ -238,6 +240,10 @@ const TodoList = ({ showCompletedByDefault }) => {
     </div>
   );
 };
+
+TodoList.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
 export default TodoList;
 ```
@@ -256,8 +262,8 @@ const App = () => {
   return (
     <div>
       <AddTodo />
-      <TodoList showCompletedByDefault={false} />
-      <TodoList showCompletedByDefault={true} />
+      <TodoList showCompletedByDefault={false} title="Filtered todos 1"/>
+      <TodoList showCompletedByDefault={true} title="Filtered todos 2"/>
     </div>
   );
 };
