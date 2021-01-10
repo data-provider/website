@@ -11,7 +11,7 @@ Queried instances are __still related to parents__ in some way. Internally they 
 
 ## Turning "uncompletedTodos" into a queryable selector
 
-In the previous page, we created a selector called `uncompletedTodos`, but, what if you want to show also completed todos separately? Should you create a new selector for each different filter? Well, you could, but it is not the better approach. In this cases, the better approach can be to use the `query` method, as the function used to filter the results is the same for both cases, only changing the value of the `completed` property.
+In the previous page, we created a selector called `uncompletedTodos`, but, what if you want to show also completed todos separately? Should you create a new selector for each different filter? Well, you could, but it is not the better approach. In this cases, the better approach can be to use the `query` method, as the function used to filter the results is the same for both cases, but changing the value of the `completed` property.
 
 When we use the `query` method of a selector, we must provide an object as first argument. The value of the object will be received in the `selector` dependencies as first argument. Read the [Selector API page](api-selector.md) for further info.
 
@@ -23,13 +23,16 @@ So, let's change the selector:
 export const todosFiltered = new Selector(
   todos,
   (queryValue, todosResults) => {
-    if (!queryValue) {
+    if (queryValue.completed === null) {
       return todosResults;
     }
     return todosResults.filter(todo => todo.completed === query.completed)
   },
   {
-    id: "todos-filtered"
+    id: "todos-filtered",
+    initialState: {
+      data: []
+    },
   }
 );
 ```
@@ -65,13 +68,16 @@ export const todo = new Axios({
 export const todosFiltered = new Selector(
   todos,
   (queryValue, todosResults) => {
-    if (!queryValue) {
+    if (queryValue.completed === null) {
       return todosResults;
     }
     return todosResults.filter(todo => todo.completed === query.completed)
   },
   {
-    id: "todos-filtered"
+    id: "todos-filtered",
+    initialState: {
+      data: []
+    },
   }
 );
 ```

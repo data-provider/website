@@ -133,7 +133,10 @@ export const todosFiltered = new Selector(
     return todosResults.filter(todo => todo.completed === queryValue.completed)
   },
   {
-    id: "todos-filtered"
+    id: "todos-filtered",
+    initialState: {
+      data: []
+    },
   }
 );
 
