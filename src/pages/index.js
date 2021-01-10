@@ -22,8 +22,9 @@ const textContents = {
   uiBindings: `
     Data Provider is not concerned about the views, but [UI binding addons](docs/addons-intro) are available.
     <br/><br/>
-    The <a href="https://github.com/data-provider/react" rel="noopener noreferrer">@data-provider/react package</a> <b>gives you hooks to easily retrieve and provide data</b> and other data-provider states to React components.
-    It also provides <b>HOCs</b> like <code>withData</code>, <code>withLoading</code>, etc.
+    The <a href="https://github.com/data-provider/react" rel="noopener noreferrer">@data-provider/react package</a> <b>gives you hooks to easily retrieve and provide data</b> and other data-provider states to React components:
+    <code>useData</code>, <code>useError</code>, <code>useLoading</code>, <code>useLoaded</code>,...
+    <br/> It also provides <b>HOCs</b> like <code>withData</code>, <code>withLoading</code>, etc.
     <br/><br/>
     <b>Optimized</b>, it takes care of reading the data and re-renders the component only when your desired props have changed.
   `,
@@ -85,7 +86,7 @@ import { authorsProvider } from "data/authors";
 export const booksWithAuthor = new Selector(
   booksProvider,
   authorsProvider,
-  (books, authors) => {
+  (queryValue, books, authors) => {
     return books.map(book => ({
       ...book,
       author: authors.find(
@@ -109,14 +110,13 @@ export const booksWithAuthor = new Selector(
 import { Axios } from "@data-provider/axios";
 import { LocalStorage } from "@data-provider/browser-storage";
 
-export const books = new Axios("books", {
-  url: \`/api/books\`
+export const books = new Axios({
+  id: "books",
+  url: "/api/books"
 });
 
-export const favoriteBooks = new LocalStorage("favorite-books", {
-  initialState: {
-    data: []
-  }
+export const favoriteBooks = new LocalStorage({
+  id: "favorite-books"
 });
   `,
   queryable: `
