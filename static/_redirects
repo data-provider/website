@@ -3,3 +3,5 @@ https://data-provider.netlify.com/* https://www.data-provider.org/:splat 301!
 
 # Redirect from docs home to intro
 /docs /docs/getting-started
+/docs/recipes-index /docs/guides-index
+/docs/recipes-querying-selectors /docs/guides-querying-selectors

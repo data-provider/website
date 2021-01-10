@@ -1,0 +1,142 @@
+{
+  "version-3.0.0/docs": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Welcome",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.0.0/about-docs"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Introduction",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.0.0/getting-started"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/motivation"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/installation"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Basic Tutorial",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-intro"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-providers"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-selectors"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-queries"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-actions"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-configuration"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-usage-with-react"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/basics-example"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Guides",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.0.0/guides-index"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/guides-querying-selectors"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/guides-migrating-from-v2-to-v3"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Addons",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.0.0/addons-intro"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/addons-creating-origin-addons"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "API Reference",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-reference"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-provider"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-selector"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-providers-and-selectors-methods"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-events"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-providers"
+        },
+        {
+          "type": "doc",
+          "id": "version-3.0.0/api-store-manager"
+        }
+      ]
+    }
+  ]
+}
