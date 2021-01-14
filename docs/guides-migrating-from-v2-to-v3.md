@@ -139,9 +139,9 @@ The `Provider` class in this version also accepts defining the `id` as first arg
 
 Next addons versions are compatible with v2 and v3:
 
-* `@data-provider/memory@2.1.0`
-* `@data-provider/browser-storage@2.3.0`
-* `@data-provider/axios@2.2.0`
+* `@data-provider/memory@2.1.1`
+* `@data-provider/browser-storage@2.3.1`
+* `@data-provider/axios@2.2.1`
 * `@data-provider/prismic@2.1.0`
 
 ### Configure renamed option
@@ -240,7 +240,7 @@ export class MyAddon extends Provider {
   constructor(...args) {
     const [id, options, queryValue] = providerArgsV3(args);
     console.log(`The id is ${id}`);
-    super({ id, ...options }, queryValue);
+    super({ ...options, id }, queryValue);
   }
 }
 ```
