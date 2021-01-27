@@ -142,7 +142,7 @@ Next addons versions are compatible with v2 and v3:
 * `@data-provider/memory@2.1.1`
 * `@data-provider/browser-storage@2.3.1`
 * `@data-provider/axios@2.2.1`
-* `@data-provider/prismic@2.1.0`
+* `@data-provider/prismic@2.1.1`
 
 ### Configure renamed option
 
