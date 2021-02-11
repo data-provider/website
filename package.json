@@ -22,7 +22,7 @@
     "babel-eslint": "10.1.0",
     "clsx": "1.1.1",
     "docusaurus-plugin-sass": "0.1.11",
-    "eslint": "7.15.0",
+    "eslint": "7.19.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-prettier": "3.2.0",
     "eslint-plugin-react": "7.21.5",
