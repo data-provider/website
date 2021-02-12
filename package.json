@@ -17,8 +17,8 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.69",
-    "@docusaurus/preset-classic": "2.0.0-alpha.69",
+    "@docusaurus/core": "2.0.0-alpha.fd17476c3",
+    "@docusaurus/preset-classic": "2.0.0-alpha.fd17476c3",
     "babel-eslint": "10.1.0",
     "clsx": "1.1.1",
     "docusaurus-plugin-sass": "0.1.11",
