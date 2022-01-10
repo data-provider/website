@@ -154,7 +154,8 @@ module.exports = {
       },
     },
     algolia: {
-      apiKey: "449d11b242930928dc2b89189eda6c5a",
+      appId: "VSFIYFAALU",
+      apiKey: "22f330a811273f6c83e3f2e46360efc5",
       indexName: "data-provider",
       contextualSearch: true,
     },
