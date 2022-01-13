@@ -41,6 +41,10 @@ module.exports = {
             require.resolve("./src/css/index.scss"),
           ],
         },
+        gtag: {
+          trackingID: "UA-158982048-1",
+          anonymizeIP: true,
+        },
       },
     ],
   ],
@@ -158,9 +162,6 @@ module.exports = {
       apiKey: "22f330a811273f6c83e3f2e46360efc5",
       indexName: "data-provider",
       contextualSearch: true,
-    },
-    gtag: {
-      trackingID: "UA-158982048-1",
     },
   },
 };
