@@ -1,0 +1,40 @@
+{
+  "docs": {
+    "Welcome": [
+      "about-docs"
+    ],
+    "Introduction": [
+      "getting-started",
+      "motivation",
+      "installation"
+    ],
+    "Basic Tutorial": [
+      "basics-intro",
+      "basics-providers",
+      "basics-selectors",
+      "basics-queries",
+      "basics-actions",
+      "basics-configuration",
+      "basics-usage-with-react",
+      "basics-example"
+    ],
+    "Guides": [
+      "guides-index",
+      "guides-querying-selectors",
+      "guides-migrating-from-v2-to-v3"
+    ],
+    "Addons": [
+      "addons-intro",
+      "addons-creating-origin-addons"
+    ],
+    "API Reference": [
+      "api-reference",
+      "api-provider",
+      "api-selector",
+      "api-providers-and-selectors-methods",
+      "api-events",
+      "api-providers",
+      "api-store-manager"
+    ]
+  }
+}
