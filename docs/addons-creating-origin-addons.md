@@ -297,5 +297,5 @@ If you are going to publish your addon to NPM, you should follow some tips:
 }
 ```
 
-[examples]: https://github.com/data-provider/examples
-[axios]: https://github.com/data-provider/axios
+[examples]: https://github.com/data-provider/core/tree/master/examples
+[axios]: https://github.com/data-provider/core/tree/master/packages/axios

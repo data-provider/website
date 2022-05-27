@@ -20,4 +20,4 @@ The complete source code of the guide is in our [repository of examples][example
 
 [json-server]: https://www.npmjs.com/package/json-server
 [data-provider-axios]: https://www.npmjs.com/package/@data-provider/axios
-[examples]: https://github.com/data-provider/examples
+[examples]: https://github.com/data-provider/core/tree/master/examples

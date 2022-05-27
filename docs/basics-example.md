@@ -68,5 +68,5 @@ Notice also how all modifications or new todos are saved in the `db.json` file.
 Now you know the basics, you should take some time to read through the [guides](guides-index.md) to get a better understanding of what Data Provider can really do for you in a real world project.
 
 [json-server]: https://www.npmjs.com/package/json-server
-[examples]: https://github.com/data-provider/examples
+[examples]: https://github.com/data-provider/core/tree/master/examples
 [redux-devtools]: https://github.com/reduxjs/redux-devtools
