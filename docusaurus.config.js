@@ -150,7 +150,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: "Copyright © 2021 Javier Brea",
+      copyright: "Copyright © 2019-2022 Javier Brea",
       logo: {
         alt: "Data Provider logo",
         src: "img/logo_white.svg",
