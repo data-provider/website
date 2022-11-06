@@ -42,7 +42,7 @@ module.exports = {
           ],
         },
         gtag: {
-          trackingID: "UA-158982048-1",
+          trackingID: "G-YNVWL3HSPV",
           anonymizeIP: true,
         },
       },
