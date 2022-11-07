@@ -16,7 +16,7 @@
     "@docusaurus/preset-classic": "2.2.0",
     "clsx": "1.2.1",
     "docusaurus-plugin-sass": "0.2.2",
-    "eslint": "8.14.0",
+    "eslint": "8.26.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.29.4",
