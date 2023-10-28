@@ -50,3 +50,12 @@ html[data-theme="dark"] .Section .ActionButton.primary {
   color: var(--dark);
 }
 
+div[class^='announcementBar'] {
+  height: auto;
+}
+
+.deprecation-notice {
+  padding: 10px;
+  font-size: 16px;
+}
+

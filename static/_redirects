@@ -1,5 +1,7 @@
 # Redirect default Netlify subdomain to primary domain
-https://data-provider.netlify.com/* https://www.data-provider.org/:splat 301!
+https://data-provider.netlify.com/* https://data-provider.javierbrea.com/:splat 301!
+https://data-provider.org/* https://data-provider.javierbrea.com/:splat 301!
+https://www.data-provider.org/* https://data-provider.javierbrea.com/:splat 301!
 
 # Redirect from docs home to intro
 /docs /docs/getting-started
