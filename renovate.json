@@ -13,9 +13,6 @@
   },
   "separateMultipleMajor": true,
   "rangeStrategy": "pin",
-  "node": {
-    "supportPolicy": ["active"]
-  },
   "labels": [
     "dependencies",
     "renovate"
