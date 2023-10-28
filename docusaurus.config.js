@@ -55,11 +55,11 @@ module.exports = {
       additionalLanguages: ["bash", "json"],
     },
     announcementBar: {
-      id: 'deprecation-notice',
+      id: "deprecation-notice",
       content:
         '<div class="deprecation-notice"><b>Important Notice: Project Discontinuation</b></br>We regret to inform you that this project is no longer maintained. For an alternative solution, consider using <a href="https://tanstack.com/query" target="_blank" rel="noopener noreferrer">React Query</a></div>',
-      backgroundColor: '#FCCB01',
-      textColor: '#000000',
+      backgroundColor: "#FCCB01",
+      textColor: "#000000",
       isCloseable: false,
     },
     navbar: {

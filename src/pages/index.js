@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import CodeBlock from "@theme/CodeBlock";
-import GitHubButton from "react-github-btn";
 import Head from "@docusaurus/Head";
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -214,21 +213,6 @@ function HomeCallToAction() {
   );
 }
 
-function GitHubStarButton() {
-  return (
-    <div className="github-button">
-      <GitHubButton
-        href="https://github.com/data-provider/core"
-        data-icon="octicon-star"
-        data-size="large"
-        aria-label="Star Data Provider on GitHub"
-      >
-        Star
-      </GitHubButton>
-    </div>
-  );
-}
-
 function Section({ element = "section", children, className, background = "light" }) {
   const El = element;
   return <El className={`Section ${className} ${background}`}>{children}</El>;
@@ -375,37 +359,6 @@ function Motivation({ background }) {
       <div className="OneColumn content">
         <TextColumn title="Motivation" text={useContent("motivation")} />
       </div>
-    </Section>
-  );
-}
-
-function Star() {
-  return (
-    <Section className="Star" background="dark">
-      <TwoColumns
-        columnOne={
-          <>
-            <Heading text="Give it a star on GitHub" />
-            <div className="StarLinkContainer">
-              <GitHubStarButton />
-            </div>
-          </>
-        }
-        columnTwo={
-          <>
-            <Heading text="Become a backer" />
-            <div className="StarLinkContainer">
-              <a
-                href="https://opencollective.com/data-provider"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="https://opencollective.com/data-provider/tiers/backer.svg?avatarHeight=70" />
-              </a>
-            </div>
-          </>
-        }
-      />
     </Section>
   );
 }
