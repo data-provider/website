@@ -434,7 +434,6 @@ const Index = () => {
       <Queryable background="tint" />
       <EventEmitter reverse />
       <Motivation background="tint" />
-      <Star />
     </Layout>
   );
 };
