@@ -1,3 +1,8 @@
+# Important Notice
+
+> **⚠ Project Discontinuation**  
+> We regret to inform you that this project is no longer maintained. For an alternative solution, consider using [React Query](https://tanstack.com/query)
+
 # Data Provider Documentation website
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a92f8352-bec6-496d-a960-fd55e93269ae/deploy-status)](https://app.netlify.com/sites/data-provider/deploys) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
