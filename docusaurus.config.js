@@ -1,7 +1,7 @@
 module.exports = {
   title: "Data Provider",
   tagline: "JavaScript Async Data Provider",
-  url: "https://www.data-provider.org",
+  url: "https://data-provider.javierbrea.com",
   baseUrl: "/",
   organizationName: "data-provider",
   projectName: "data-provider",
@@ -162,7 +162,7 @@ module.exports = {
       logo: {
         alt: "Data Provider logo",
         src: "img/logo_white.svg",
-        href: "https://www.data-provider.org",
+        href: "https://data-provider.javierbrea.com",
       },
     },
     algolia: {
