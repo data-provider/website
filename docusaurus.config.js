@@ -22,6 +22,7 @@ module.exports = {
     contributingUrl: "https://github.com/data-provider/core/blob/master/.github/CONTRIBUTING.md",
     contributorCovenanceUrl: "https://www.contributor-covenant.org/",
   },
+  trailingSlash: true,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   presets: [
